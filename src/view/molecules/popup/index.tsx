@@ -6,6 +6,7 @@
  * 
  */
 // GENERIC IMPORT
+import clsx from 'clsx';
 import {
     Box,
     Dialog, 
@@ -59,7 +60,7 @@ const Popup = ({
             style={{padding: 0}}
         >
         {title && 
-        <DialogTitle>
+        <DialogTitle className={clsx(classes.popupHeader)}>
             <Grid container justifyContent="space-between" alignItems="center">
                 <Box pl={1}>
                     <Typography variant="h6">{title}</Typography>
@@ -71,7 +72,7 @@ const Popup = ({
                 )}
             </Grid>
         </DialogTitle>}
-        <DialogContent dividers className={externalClasses}>
+        <DialogContent className={clsx(classes.popupBody, externalClasses)}>
            {children}
         </DialogContent>
         {actions && (

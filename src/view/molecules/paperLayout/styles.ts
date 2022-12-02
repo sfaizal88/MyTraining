@@ -17,7 +17,6 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     },
     info: {
         fontSize: 12,
-        color: palette.text.secondary,
     },
     paperLayoutContainer: {
         display: 'flex',

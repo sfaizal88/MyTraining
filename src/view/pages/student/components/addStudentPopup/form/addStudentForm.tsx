@@ -12,7 +12,7 @@ import {useForm} from 'react-hook-form';
 
 // GENERIC COMPONENT IMPORT 
 import {NumberField, TextField} from '@/view/atoms';
-import {FormAction, FormRow} from '@/view/molecules';
+import {FormAction, FormRow, PopupFooter} from '@/view/molecules';
 
 // API
 import {StudentGetItem, useCreateStudentMutation, useUpdateStudentMutation} from '@/api/student/student';
@@ -115,14 +115,14 @@ const AddStudentForm = ({onClose, data}: AddStudentFormProps) => {
         defaultValue={data?.id}
         />
       </form>
-      <Box flex="1" py={2} className={classes.footerButtonsBox}>
+      <PopupFooter>
         <FormAction
             showSubmit
             onCancel={onClose}
             submitLabel="Save"
             onSubmit={handleSubmit(onSubmit)}
         />
-      </Box>
+      </PopupFooter>
     </Box>
   );
 };

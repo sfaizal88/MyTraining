@@ -1,6 +1,6 @@
 /**
  * 
- * Add Roadmap form component
+ * Add TechStack form component
  * @author - NA 
  * @date - 3th December, 2022
  * 
@@ -15,14 +15,14 @@ import {NumberField, TextField, AutoComplete} from '@/view/atoms';
 import {FormAction, FormRow, PopupFooter} from '@/view/molecules';
 
 // API
-import {RoadmapGetItem, useCreateRoadmapMutation, useUpdateRoadmapMutation} from '@/api/roadmap/roadmap';
+import {TechStackGetItem, useCreateTechStackMutation, useUpdateTechStackMutation} from '@/api/techStack/techStack';
 
 // MODELS
 import {OptionType} from '@/models/generic';
 
-// ROAD MAP COMPONENT
-import MileStoneTitles from './mileStoneTitles';
-import MileStoneFormItem from './mileStoneFormItem';
+// TECH STACK COMPONENT
+import TechDetailsTitles from './techDetailsTitles';
+import TechDetailsFormItem from './techDetailsFormItem';
 
 // UTILS IMPORT
 import useNotification from '@/utils/notification';
@@ -31,15 +31,15 @@ import schema from '../schema';
 import useStyles from '../styles';
 
 // TITLES COMPONENT PROPS
-const widths: (boolean | GridSize)[] = [3, 5, 2, 1, 1];
+const widths: (boolean | GridSize)[] = [3, 4, 4, 1];
 
-type AddRoadmapFormProps = {
+type AddTechStackFormProps = {
   onClose: () => void;
-  data?: RoadmapGetItem;
+  data?: TechStackGetItem;
   studentOptions: OptionType[]
 };
 
-const AddRoadmapForm = ({onClose, data, studentOptions}: AddRoadmapFormProps) => {
+const AddTechStackForm = ({onClose, data, studentOptions}: AddTechStackFormProps) => {
     // DECLARE STYLE
     const classes = useStyles();
 
@@ -47,17 +47,17 @@ const AddRoadmapForm = ({onClose, data, studentOptions}: AddRoadmapFormProps) =>
     const setNotification = useNotification();
 
     // DECLARE API CALL
-    const createRoadmapMutation = useCreateRoadmapMutation();
-    const updateRoadmapMutation = useUpdateRoadmapMutation();
+    const createTechStackMutation = useCreateTechStackMutation();
+    const updateTechStackMutation = useUpdateTechStackMutation();
 
-    const {control, handleSubmit, register, formState: { errors }, setValue, watch} = useForm<RoadmapGetItem>({
+    const {control, handleSubmit, register, formState: { errors }, setValue, watch} = useForm<TechStackGetItem>({
         defaultValues: data,
         mode: 'onChange',
         // resolver: yupResolver(schema),
     });
     const formData = watch();
     
-  const onSubmit = (postData: RoadmapGetItem) => {
+  const onSubmit = (postData: TechStackGetItem) => {
     const postResponse = {
       onSuccess: () => {
         setNotification.success();
@@ -69,23 +69,23 @@ const AddRoadmapForm = ({onClose, data, studentOptions}: AddRoadmapFormProps) =>
       },
     };
     if (postData.id) {
-      createRoadmapMutation.mutate(postData, postResponse);
+      createTechStackMutation.mutate(postData, postResponse);
     } else {
-      updateRoadmapMutation.mutate(postData, postResponse);
+      updateTechStackMutation.mutate(postData, postResponse);
     }
   };
 
   return (
     <Box className={classes.root}>
       <form>
-        <FormRow label="roadmap name" required spacing={1.5}>
+        <FormRow label="Technology Name" required spacing={1.5}>
             <TextField
             register={register}
-            id="name"
-            name="name"
+            id="title"
+            name="title"
             control={control}
-            placeholder="Roadmap Name"
-            errors={errors?.name}
+            placeholder="Technology Name"
+            errors={errors?.title}
             />
         </FormRow>
         <FormRow label="students" required spacing={1.5}>
@@ -101,8 +101,28 @@ const AddRoadmapForm = ({onClose, data, studentOptions}: AddRoadmapFormProps) =>
               options={studentOptions}
             />
         </FormRow>
-        <MileStoneTitles widths={widths}/>
-        <MileStoneFormItem 
+        <FormRow label="tutorial url" spacing={1.5}>
+            <TextField
+            register={register}
+            id="tutorial_url"
+            name="tutorial_url"
+            control={control}
+            placeholder="Tutorial link"
+            errors={errors?.tutorial_url}
+            />
+        </FormRow>
+        <FormRow label="video url" spacing={1.5}>
+            <TextField
+            register={register}
+            id="video_url"
+            name="video_url"
+            control={control}
+            placeholder="Video link"
+            errors={errors?.video_url}
+            />
+        </FormRow>
+        <TechDetailsTitles widths={widths}/>
+        <TechDetailsFormItem 
         {...{widths, register, control, errors, setValue, formData}}/>
         <NumberField
           id="id"
@@ -112,7 +132,7 @@ const AddRoadmapForm = ({onClose, data, studentOptions}: AddRoadmapFormProps) =>
           hidden
           defaultValue={data?.id}
         />
-      </form>    
+      </form>
       <PopupFooter>
         <FormAction
             showSubmit
@@ -125,4 +145,4 @@ const AddRoadmapForm = ({onClose, data, studentOptions}: AddRoadmapFormProps) =>
   );
 };
 
-export default AddRoadmapForm;
+export default AddTechStackForm;

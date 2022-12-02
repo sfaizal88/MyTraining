@@ -7,12 +7,6 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
         flexDirection: 'column',
         flex: 1,
     },
-    footerButtonsBox: {
-        display: 'flex',
-        flex: 1,
-        padding: spacing(0, 2),
-        justifyContent: 'flex-end',
-    },
     no: {
         width: '20px',
         height: '20px',

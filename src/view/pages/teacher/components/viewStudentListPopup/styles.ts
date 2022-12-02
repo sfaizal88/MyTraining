@@ -7,11 +7,6 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
         display: 'flex',
         flexDirection: 'column',
     },
-    footerButtonsBox: {
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'flex-end',
-    },
 }));
   
 export default useStyles;

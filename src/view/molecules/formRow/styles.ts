@@ -5,7 +5,7 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     fieldSet: {
         display: 'flex',
         flexDirection: 'row',
-        flex: 1,
+        width: '100%',
         margin: spacing(1.5, 0),
         justifyContent: 'flex-end',
     },
@@ -32,7 +32,7 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     viewFormRow: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     viewFieldLabel: {
         paddingTop: spacing(0.5),

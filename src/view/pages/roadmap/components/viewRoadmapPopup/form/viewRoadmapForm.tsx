@@ -13,7 +13,7 @@ import {KeyboardArrowDownOutlined, KeyboardArrowUpOutlined} from '@mui/icons-mat
 
 // GENERIC COMPONENT IMPORT 
 import {Badge} from '@/view/atoms';
-import {FormAction, FormRow} from '@/view/molecules';
+import {FormAction, FormRow, PopupFooter} from '@/view/molecules';
 
 // API
 import type {RoadmapGetItem} from '@/api/roadmap/roadmap';
@@ -94,13 +94,13 @@ const ViewRoadmapForm = ({onClose, data, studentOptions}: ViewRoadmapFormProps) 
           </Box>
         )}
       </form>
-      <Box className={classes.footerButtonsBox}>
+      <PopupFooter>
         <FormAction
             showSubmit
             submitLabel="Close"
             onSubmit={onClose}
         />
-      </Box>
+      </PopupFooter>
     </Box>
   );
 };

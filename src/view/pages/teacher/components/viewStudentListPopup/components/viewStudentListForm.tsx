@@ -9,7 +9,7 @@
 import {Box, Avatar, Chip, Grid} from '@mui/material';
 
 // GENERIC COMPONENT IMPORT 
-import {FormAction, TableRow} from '@/view/molecules';
+import {FormAction, TableRow, PopupFooter} from '@/view/molecules';
 
 // API
 import {TeacherGetItem} from '@/api/teacher/teacher';
@@ -57,13 +57,13 @@ const ViewTeacherForm = ({onClose, data, studentOptions}: ViewTeacherFormProps) 
           <Grid item xs={3}>{studentMap[item].email}</Grid>
         </TableRow>
         )}
-      <Box flex="1" py={2} className={classes.footerButtonsBox}>
+      <PopupFooter>
         <FormAction
             showSubmit
             submitLabel="Close"
             onSubmit={onClose}
         />
-      </Box>
+      </PopupFooter>
     </Box>
   );
 };

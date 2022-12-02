@@ -3,9 +3,9 @@ import { Theme } from "@mui/system";
 
 const useStyles = makeStyles(({palette, spacing}: Theme) => ({
     root: {
-        width: '600px',
         display: 'flex',
         flexDirection: 'column',
+        flex: 1,
     },
 }));
   

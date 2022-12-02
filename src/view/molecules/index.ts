@@ -16,3 +16,4 @@ export {default as TableRow} from './tableRow';
 export {default as TableRowAction} from './tableRowAction';
 export {default as Options} from './options';
 export {default as Popup} from './popup';
+export {default as PopupFooter} from './popup/popupFooter';
