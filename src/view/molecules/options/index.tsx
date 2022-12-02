@@ -31,9 +31,13 @@ const Options = ({
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: MouseEvent<HTMLElement>) => {
-      setAnchorEl(event.currentTarget);
+        event.stopPropagation();
+        event.preventDefault();
+        setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+    const handleClose = (event: MouseEvent<HTMLElement>) => {
+        event.stopPropagation();
+        event.preventDefault();
       setAnchorEl(null);
     };
     const options = optionsList.filter(item => itemsKey.includes(item.id));

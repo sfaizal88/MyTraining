@@ -1,4 +1,14 @@
+/**
+ * 
+ * Add Teacher schema
+ * @author - NA 
+ * @date - 3th December, 2022
+ * 
+ */
+// GENERIC IMPORT
 import * as yup from 'yup';
+
+// UTILS IMPORT
 import {formValidationMessages} from '@/utils/validationMessages';
 
 const schema = 

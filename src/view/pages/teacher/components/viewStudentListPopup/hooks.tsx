@@ -1,6 +1,6 @@
 /**
  * 
- * View Teacher hook
+ * View Student list hook
  * @author - NA 
  * @date - 3th December, 2022
  * 

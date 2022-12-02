@@ -2,7 +2,7 @@
  * 
  * Teacher hooks
  * @author - NA 
- * @date - 1st dECEMBER, 2022
+ * @date - 1st December, 2022
  * 
  */
 // GENERIC IMPORT

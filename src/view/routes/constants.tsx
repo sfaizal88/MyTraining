@@ -14,6 +14,7 @@ import {
     TaskOutlined,
     SettingsOutlined,
     SchoolOutlined,
+    RouteOutlined,
 } from '@mui/icons-material';
 
 // ROUTER IMPORT
@@ -27,6 +28,7 @@ export const TEACHER_PATH = '/teacher';
 export const REPORT_PATH = '/report';
 export const TASK_PATH = '/task';
 export const SETTINGS_PATH = '/settings';
+export const ROADMAP_PATH = '/roadmap';
 export const OTHER_PATH = '*';
 
 // MENU STRUCTURE
@@ -65,6 +67,15 @@ export const menuList: MenuType[] = compact([
         link: REPORT_PATH,
         subLinks: REPORT_PATH,
         icon: <AssessmentOutlined style={{fontSize: '20px'}}/>,
+        submenuList: [],
+    },
+    {
+        id: 'roadmap',
+        label: 'Roadmap',
+        permissionKey: 'roadmap',
+        link: ROADMAP_PATH,
+        subLinks: ROADMAP_PATH,
+        icon: <RouteOutlined style={{fontSize: '20px'}}/>,
         submenuList: [],
     },
     {

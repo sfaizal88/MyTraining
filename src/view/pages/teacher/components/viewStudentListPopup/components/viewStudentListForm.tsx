@@ -1,6 +1,6 @@
 /**
  * 
- * View Teacher form component
+ * View student list view component
  * @author - NA 
  * @date - 3th December, 2022
  * 
