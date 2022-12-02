@@ -19,7 +19,7 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         textTransform: 'uppercase',
         lineHeight: spacing(3.5),
         minWidth: 135,
-        padding:  spacing(1.5, 2, 0, 0),
+        padding:  spacing(0.5, 2, 0, 0),
         display: 'flex',
     },
     field: {

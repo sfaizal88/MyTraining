@@ -6,7 +6,8 @@
  * 
  */
 // GENERIC CONSTANT
-export const displayDateFormat = "DD/MM/YYYY"; // Old "Do MMM, YYYY"
+export const serverDisplayDateFormat = "DD/MM/YYYY"; // Old "Do MMM, YYYY"
+export const displayDateFormat = "Do MMM, YYYY"; // Old "Do MMM, YYYY"
 export const displayDateTimeFormat = "Do MMM, YYYY hh:mm A";
 export const serverDateTimeFormat = "YYYY-MM-DD hh:mm:ss";
 export const serverDateFormat = "YYYY-MM-DD";

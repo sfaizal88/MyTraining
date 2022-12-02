@@ -6,6 +6,7 @@
  * 
  */
 // GENERIC IMPORT
+import {useState} from 'react';
 import {Controller, FieldErrors} from 'react-hook-form';
 import { TextField, Autocomplete as MuiAutocomplete, Checkbox as MuiCheckbox } from '@mui/material';
 import {CheckBoxOutlineBlank, CheckBox} from '@mui/icons-material';
@@ -22,11 +23,12 @@ type OptionType = {
 type AutoCompleteProps = {
     register: any,
     control: any,
+    setValue: any,
     errors: any,
     id: string;
     name: string;
     placeholder?: string;
-    defaultValue?: string | number | null | boolean;
+    defaultValue?: number[];
     options: OptionType[]
     multiple?: boolean;
 }
@@ -38,14 +40,14 @@ const AutoComplete = ({
     placeholder,
     defaultValue,
     control,
+    setValue,
     errors,
     register,
     options,
     multiple = true,
 }: AutoCompleteProps) => {
     // STYLE DECLARE
-    const classes = useStyles();
-
+    const classes = useStyles(); 
     return (
         <Controller
             control={control}
@@ -56,11 +58,18 @@ const AutoComplete = ({
                     multiple={multiple}
                     options={options}
                     disableCloseOnSelect
+                    defaultValue={options.filter(item => defaultValue?.includes(item.value))}
                     classes={{
                         root: classes.autoCompleteRoot,
                         inputRoot: classes.autoCompleteInputContainer,
                         option: classes.optionItem,
                     }}
+                    onChange={(
+                        _: unknown,
+                        newValue: OptionType[],
+                        ) => {
+                            setValue(name, newValue.map((v) => v.value))
+                        }}
                     getOptionLabel={(option: OptionType) => option.label}
                     renderOption={(props, option: OptionType, { selected }) => (
                         <li {...props}>

@@ -43,7 +43,7 @@ const AddTeacherForm = ({onClose, data, studentOptions}: AddTeacherFormProps) =>
     const createTeacherMutation = useCreateTeacherMutation();
     const updateTeacherMutation = useUpdateTeacherMutation();
 
-    const {control, handleSubmit, register, formState: { errors }} = useForm<TeacherGetItem>({
+    const {control, handleSubmit, register, formState: { errors }, setValue} = useForm<TeacherGetItem>({
         defaultValues: data,
         mode: 'onChange',
         resolver: yupResolver(schema),
@@ -66,7 +66,6 @@ const AddTeacherForm = ({onClose, data, studentOptions}: AddTeacherFormProps) =>
       updateTeacherMutation.mutate(formData, postResponse);
     }
   };
-  console.log("studentOptions: ", studentOptions);
 
   return (
     <Box className={classes.root}>
@@ -84,6 +83,7 @@ const AddTeacherForm = ({onClose, data, studentOptions}: AddTeacherFormProps) =>
         <FormRow label="students" required spacing={1.5}>
             <AutoComplete
               register={register}
+              setValue={setValue}
               id="students"
               name="students"
               control={control}

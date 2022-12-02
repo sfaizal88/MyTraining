@@ -46,7 +46,6 @@ const Login = () => {
     const [isLoading, setLoading] = useState(false);
 
     const onSubmit = (formData: UserGetItem) => {
-        console.log("formData: ", formData);
         navigate(PATH.DASHBOARD_PATH);
     };
 

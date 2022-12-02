@@ -25,7 +25,6 @@ export function useDeleteTeacherPopup() {
     const close = () => setPopupOpen({isOpen: false, selectedId: null});
 
     const onConfirm = () => {
-        console.log("Delete this teacher: ", selectedId);
         close();
         setNotification.success("Teacher deleted successfully!");
     }

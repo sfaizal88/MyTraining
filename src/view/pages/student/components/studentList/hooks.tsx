@@ -13,7 +13,6 @@ export function useDeleteStudentPopup() {
     const close = () => setPopupOpen({isOpen: false, selectedId: null});
 
     const onConfirm = () => {
-        console.log("Delete this student: ", selectedId);
         close();
         setNotification.success("Student deleted successfully!");
     }

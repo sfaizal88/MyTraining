@@ -29,39 +29,23 @@ const Options = ({
 }: OptionsProps) => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event: MouseEvent<HTMLElement>) => {
-        event.stopPropagation();
-        event.preventDefault();
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = (event: MouseEvent<HTMLElement>) => {
-        event.stopPropagation();
-        event.preventDefault();
-      setAnchorEl(null);
-    };
+    const [isOpen, setIsOpen] = useState(false);
     const options = optionsList.filter(item => itemsKey.includes(item.id));
 
   return (
-    <Box textAlign={'right'} mr={1}>
-        <IconButton
-            aria-label="more"
-            id="long-button"
-            aria-controls={open ? 'long-menu' : undefined}
-            aria-expanded={open ? 'true' : undefined}
-            aria-haspopup="true"
-            onClick={handleClick}
-        >
+    <Box textAlign={'right'} mr={1} flex={1}
+        onClick={(event) => {
+            event.stopPropagation();
+            event.preventDefault();
+            setAnchorEl(event.currentTarget);
+        }}>
+        <IconButton onClick={() => setIsOpen(true)}>
             <MoreVert />
         </IconButton>
         <Menu
-            id="long-menu"
-            MenuListProps={{
-            'aria-labelledby': 'long-button',
-            }}
             anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
+            open={isOpen}
+            onClose={() => setIsOpen(false)}
             PaperProps={{
             style: {
                 width: '150px',

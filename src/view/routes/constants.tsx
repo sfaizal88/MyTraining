@@ -15,6 +15,7 @@ import {
     SettingsOutlined,
     SchoolOutlined,
     RouteOutlined,
+    CodeOutlined,
 } from '@mui/icons-material';
 
 // ROUTER IMPORT
@@ -27,6 +28,7 @@ export const STUDENT_PATH = '/student';
 export const TEACHER_PATH = '/teacher';
 export const REPORT_PATH = '/report';
 export const TASK_PATH = '/task';
+export const TECH_STACK_PATH = '/techStack';
 export const SETTINGS_PATH = '/settings';
 export const ROADMAP_PATH = '/roadmap';
 export const OTHER_PATH = '*';
@@ -70,6 +72,15 @@ export const menuList: MenuType[] = compact([
         submenuList: [],
     },
     {
+        id: 'techStack',
+        label: 'Tech Stack',
+        permissionKey: 'techStack',
+        link: TECH_STACK_PATH,
+        subLinks: TECH_STACK_PATH,
+        icon: <CodeOutlined style={{fontSize: '20px'}}/>,
+        submenuList: [],
+    },
+    {
         id: 'roadmap',
         label: 'Roadmap',
         permissionKey: 'roadmap',
@@ -88,9 +99,9 @@ export const menuList: MenuType[] = compact([
         submenuList: [],
     },
     {
-        id: 'setting',
-        label: 'Setting',
-        permissionKey: 'setting',
+        id: 'settings',
+        label: 'Settings',
+        permissionKey: 'settings',
         link: SETTINGS_PATH,
         subLinks: SETTINGS_PATH,
         icon: <SettingsOutlined style={{fontSize: '20px'}}/>,

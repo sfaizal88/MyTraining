@@ -15,16 +15,18 @@ import useStyles from './styles';
 
 // COMPONENT PROPS
 type TableRowProps = {
-    externalClasses?: string,
+    externalClasses?: string;
+    spacing?: number;
 }
 
 const TableRow = ({
     externalClasses,
     children,
+    spacing,
 }: PropsWithChildren<TableRowProps>) => {
     const classes = useStyles();
     return (
-        <Grid container className={clsx(classes.row, externalClasses)}>
+        <Grid container className={clsx(classes.row, externalClasses)} spacing={spacing || 0}>
             {children}
         </Grid>
     )

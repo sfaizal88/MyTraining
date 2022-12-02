@@ -20,7 +20,7 @@ const AddTeacherPopup = ({onClose, id}: AddTeacherPopupProps) => {
     const studentOptionsQuery = useStudentOptionsQuery();
 
     if (!studentOptionsQuery.data || (id && !teacherByIdQuery?.data)) return null;
-    console.log(teacherByIdQuery.data)
+
     return (
         <AddTeacherForm
             onClose={onClose}

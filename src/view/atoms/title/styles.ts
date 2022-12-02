@@ -8,6 +8,9 @@ const useStyles = makeStyles(({spacing, palette} : Theme) => ({
     },
     centerAlign: {
         textAlign: 'center',
+    },
+    rightAlign: {
+        textAlign: 'right',
     }
   }));
   

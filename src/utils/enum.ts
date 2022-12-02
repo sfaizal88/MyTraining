@@ -10,3 +10,10 @@ export enum NotificationType {
     success = 'success',
     error = 'error',
 }
+
+// STATUS TYPE
+export enum StatusType {
+    completed = 1,
+    pending = 2,
+    rejected = 3,
+}

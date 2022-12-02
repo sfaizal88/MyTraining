@@ -20,7 +20,7 @@ const ViewStudentListPopup = ({onClose, id}: ViewStudentListPopupProps) => {
     const studentListQuery = useStudentListQuery();
 
     if (!studentListQuery.data || (id && !teacherByIdQuery?.data)) return null;
-    console.log(teacherByIdQuery.data)
+
     return (
         <ViewStudentListForm
             onClose={onClose}

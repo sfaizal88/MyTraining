@@ -20,6 +20,7 @@ import {SideMenu, Header} from '@/view/molecules';
 import Dashboard from '@/view/pages/dashboard';
 import StudentPage from '@/view/pages/student';
 import TeacherPage from '@/view/pages/teacher/components/teacherPage';
+import RoadmapPage from '@/view/pages/roadmap';
 import NoPage from '@/view/pages/error/noPage';
 
 const AppRoutes = () => {
@@ -39,6 +40,7 @@ const AppRoutes = () => {
                         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />}/>
                         <Route path={PATH.STUDENT_PATH} element={<StudentPage />}/>
                         <Route path={PATH.TEACHER_PATH} element={<TeacherPage />}/>
+                        <Route path={PATH.ROADMAP_PATH} element={<RoadmapPage />}/>
                         <Route path="*" element={<NoPage />} />
                     </Routes>
                 </Box>

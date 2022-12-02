@@ -16,15 +16,17 @@ import useStyles from './styles';
 type TitleProps = {
   title: string;
   center?: boolean;
+  right?: boolean;
 }
 
 const Title = ({
     title,
     center,
+    right,
 }: TitleProps) => {
   const classes = useStyles();
   return (
-    <Box className={clsx(classes.title, center && classes.centerAlign)}>
+    <Box className={clsx(classes.title, center && classes.centerAlign, right && classes.rightAlign)}>
     {title}
     </Box>
   )
