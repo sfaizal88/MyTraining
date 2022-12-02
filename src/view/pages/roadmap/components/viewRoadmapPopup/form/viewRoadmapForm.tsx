@@ -56,7 +56,7 @@ const ViewRoadmapForm = ({onClose, data, studentOptions}: ViewRoadmapFormProps) 
         <FormRow label="roadmap name" isViewOnly spacing={1.5}>
           {data?.name}
         </FormRow>
-        <FormRow label="students" isViewOnly spacing={1.5}>
+        <FormRow label="assigned to" isViewOnly spacing={1.5}>
             {data?.students.map((item: number) => 
               <Box key={item} mr={1} mb={1} display='inline-block'>
                 <Chip avatar={<Avatar>{studentMap[item][0]}</Avatar>} label={studentMap[item]} variant="outlined"/>

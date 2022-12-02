@@ -52,7 +52,7 @@ const ViewTechStackForm = ({onClose, data, studentOptions}: ViewTechStackFormPro
       <FormRow label="Technology" isViewOnly>
         {data?.title}
       </FormRow>
-      <FormRow label="students" isViewOnly>
+      <FormRow label="assigned to" isViewOnly>
           {data?.students.map((item: number) => 
             <Box key={item} mr={1} mb={1} display='inline-block'>
               <Chip avatar={<Avatar>{studentMap[item][0]}</Avatar>} label={studentMap[item]} variant="outlined"/>
