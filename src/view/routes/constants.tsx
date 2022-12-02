@@ -13,6 +13,7 @@ import {
     AssessmentOutlined,
     TaskOutlined,
     SettingsOutlined,
+    SchoolOutlined,
 } from '@mui/icons-material';
 
 // ROUTER IMPORT
@@ -22,6 +23,7 @@ import {MenuType} from './type';
 export const LOGIN_PATH = '/';
 export const DASHBOARD_PATH = '/home';
 export const STUDENT_PATH = '/student';
+export const TEACHER_PATH = '/teacher';
 export const REPORT_PATH = '/report';
 export const TASK_PATH = '/task';
 export const SETTINGS_PATH = '/settings';
@@ -45,6 +47,15 @@ export const menuList: MenuType[] = compact([
         link: STUDENT_PATH,
         subLinks: STUDENT_PATH,
         icon: <PersonOutlined style={{fontSize: '20px'}}/>,
+        submenuList: [],
+    },
+    {
+        id: 'teacher',
+        label: 'Teacher',
+        permissionKey: 'teacher',
+        link: TEACHER_PATH,
+        subLinks: TEACHER_PATH,
+        icon: <SchoolOutlined style={{fontSize: '20px'}}/>,
         submenuList: [],
     },
     {

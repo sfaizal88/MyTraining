@@ -8,6 +8,7 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         margin: spacing(3),
         borderRadius: spacing(1),
         background: palette.background.paper,
+        flex: 1,
     },
     title: {
         fontSize: 17,

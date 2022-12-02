@@ -27,7 +27,8 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
   },
   bodyContent: {
     flex: 1,
-    paddingTop: '60px'
+    paddingTop: '60px',
+    display: 'flex',
   }
 }));
   

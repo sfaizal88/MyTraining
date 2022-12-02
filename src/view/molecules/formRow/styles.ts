@@ -30,17 +30,17 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         fontSize: 15,
     },
     viewFormRow: {
-        border: `1px solid ${palette.primary.light}`,
-        borderRadius: '5px',
-        background: '#ecf0f1',
-        color: palette.background.default,
-        paddingTop: spacing(1.5),
-        paddingBottom: spacing(1.5),
-        margin: spacing(0.5, 0)
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     viewFieldLabel: {
         paddingTop: spacing(0.5),
-    }
+    },
+    viewData: {
+        fontSize: 13,
+        fontWeight: 600,
+    },
   }));
   
   export default useStyles;

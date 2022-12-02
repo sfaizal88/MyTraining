@@ -1,9 +1,17 @@
+/**
+ * 
+ * View Teacher hook
+ * @author - NA 
+ * @date - 3th December, 2022
+ * 
+ */
+// GENERIC IMPORT
 import {useState} from 'react';
 import {Box} from '@mui/material';
 import {Popup} from '@/view/molecules';
-import AddStudentPopup from './index';
+import ViewTeacherPopup from './index';
 
-export function useAddStudentPopup() {
+export function useViewTeacherPopup() {
   const [{isOpen, id}, setPopupOpen] = useState<{
     isOpen: boolean;
     id: number | null;
@@ -15,11 +23,11 @@ export function useAddStudentPopup() {
     <Popup
       isOpen
       onClose={close}
-      title={id ? 'Edit student' : 'New student'}
-      customWidth={500}
+      title='View Teacher'
+      maxWidth='xl'
     >
       <Box height="100%" minHeight={200} display="flex" margin="auto">
-        <AddStudentPopup onClose={close} studentId={id} />
+        <ViewTeacherPopup onClose={close} id={id} />
       </Box>
     </Popup>
   );

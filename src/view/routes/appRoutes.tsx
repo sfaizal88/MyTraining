@@ -19,6 +19,7 @@ import {SideMenu, Header} from '@/view/molecules';
 // PAGE IMPORT 
 import Dashboard from '@/view/pages/dashboard';
 import StudentPage from '@/view/pages/student';
+import TeacherPage from '@/view/pages/teacher/components/teacherPage';
 import NoPage from '@/view/pages/error/noPage';
 
 const AppRoutes = () => {
@@ -37,6 +38,7 @@ const AppRoutes = () => {
                     <Routes>
                         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />}/>
                         <Route path={PATH.STUDENT_PATH} element={<StudentPage />}/>
+                        <Route path={PATH.TEACHER_PATH} element={<TeacherPage />}/>
                         <Route path="*" element={<NoPage />} />
                     </Routes>
                 </Box>

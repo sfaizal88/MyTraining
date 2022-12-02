@@ -29,11 +29,19 @@ export type StudentGetItem = {
     email: string;
 }
 
-// USE TO FETCH ALL USERS
+// USE TO FETCH ALL STUDENTS
 export function useStudentListQuery() {
     return useQuery(queryKeys.studentList, getStudentList, {
         placeholderData: [],
         select: (data) => studentListMockData,
+    });
+}
+
+// USE TO FETCH ALL STUDENT AS OPTIONS
+export function useStudentOptionsQuery() {
+    return useQuery(queryKeys.studentList, getStudentList, {
+        placeholderData: [],
+        select: (data) => studentListMockData.map(item => ({label: item.name, value: item.id})),
     });
 }
 

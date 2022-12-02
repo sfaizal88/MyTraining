@@ -21,6 +21,7 @@ import {StudentGetItem, useStudentListQuery} from '@/api/student/student';
 import StudentListTitles from './studentListTitles';
 import StudentListItem from './studentListItem';
 import {useDeleteStudentPopup} from './hooks';
+import {useViewStudentPopup} from '../viewStudentPopup/hooks';
 
 // UTILS IMPORT
 import useNotification from '@/utils/notification';
@@ -47,6 +48,7 @@ const StudentList = ({
 
     // DECLARE HOOK CALL
     const deleteStudentPopup = useDeleteStudentPopup();
+    const viewStudentPopup = useViewStudentPopup();
 
     // DECLARE NOTIFICATION AND NAVIDATE
     const setNotification = useNotification();
@@ -66,6 +68,7 @@ const StudentList = ({
                             widths={widths}
                             onEdit={onEdit}
                             onDelete={deleteStudentPopup.show}
+                            onView={viewStudentPopup.show}
                         />
                     </Box>
             )) : (
@@ -75,6 +78,7 @@ const StudentList = ({
                 />
             )}
             {deleteStudentPopup.child}
+            {viewStudentPopup.child}
         </>
     )
 }

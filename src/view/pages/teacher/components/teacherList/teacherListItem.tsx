@@ -1,6 +1,6 @@
 /**
  * 
- * Customer list item component
+ * Teacher list item component
  * @author - NA 
  * @date - 3th September, 2022
  * 
@@ -11,7 +11,7 @@ import {Dispatch, SetStateAction} from 'react';
 import {generatePath, Link} from 'react-router-dom';
 
 // API
-import type {StudentGetItem} from '@/api/student/student';
+import type {TeacherGetItem} from '@/api/teacher/teacher';
 
 // GENERIC COMPONENT IMPORT 
 import {TableRow, Options} from '@/view/molecules';
@@ -20,20 +20,22 @@ import {TableRow, Options} from '@/view/molecules';
 import useStyles from '../../styles';
 
 // COMPONENT PROPS
-type StudentListItemProps = StudentGetItem & {
+type TeacherListItemProps = TeacherGetItem & {
   widths: (boolean | GridSize)[];
-  onEdit: (studentId: number | null) => void;
-  onDelete: (studentId: number | null) => void;
-  onView: (studentId: number | null) => void;
+  onEdit: (id: number | null) => void;
+  onDelete: (id: number | null) => void;
+  onView: (id: number | null) => void;
+  onStudentList: (id: number | null) => void;
 };
 
-const StudentListItem = ({
+const TeacherListItem = ({
   widths,
   onEdit,
   onDelete,
   onView,
+  onStudentList,
   ...props
-}: StudentListItemProps) => {
+}: TeacherListItemProps) => {
   // DECLARE STYLE
   const classes = useStyles();
 
@@ -42,7 +44,14 @@ const StudentListItem = ({
     <Box onClick={() => onView(props.id)}>
       <TableRow>
         <Grid item xs={widths[0]}><Chip avatar={<Avatar>{props.name[0]}</Avatar>} label={props.name} variant="outlined"/></Grid>
-        <Grid item xs={widths[1]}>{props.role}</Grid>
+        <Grid item xs={widths[1]}>
+          <Box className={classes.link} 
+          onClick={(event) => {
+            event.stopPropagation();
+            event.preventDefault();
+            onStudentList(props.id);
+          }}>{props.students.length} Students</Box>
+        </Grid>
         <Grid item xs={widths[2]}>{props.contact_no}</Grid>
         <Grid item xs={widths[3]}>{props.email}</Grid>
         <Grid item xs={widths[4]}>
@@ -57,4 +66,4 @@ const StudentListItem = ({
   )
 }
 
-export default StudentListItem;
+export default TeacherListItem;

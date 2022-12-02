@@ -1,22 +1,23 @@
 import {useStudentByIdQuery} from '@/api/student/student';
-import AddStudentForm from './form/addStudentForm';
+import ViewStudentForm from './form/viewStudentForm';
   
-type AddStudentPopupProps = {
+type ViewStudentPopupProps = {
 onClose: () => void;
 studentId?: number | null;
 };
 
-const AddStudentPopup = ({onClose, studentId}: AddStudentPopupProps) => {
+const ViewStudentPopup = ({onClose, studentId}: ViewStudentPopupProps) => {
     const studentByIdQuery = useStudentByIdQuery(studentId);
 
     if ((studentId && !studentByIdQuery?.data)) return null;
+
     return (
-        <AddStudentForm
+        <ViewStudentForm
             onClose={onClose}
             data={studentByIdQuery.data}
         />
     );
 };
 
-export default AddStudentPopup;
+export default ViewStudentPopup;
   

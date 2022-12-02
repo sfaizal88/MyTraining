@@ -1,9 +1,9 @@
 import {useState} from 'react';
 import {Box} from '@mui/material';
 import {Popup} from '@/view/molecules';
-import AddStudentPopup from './index';
+import ViewStudentPopup from './index';
 
-export function useAddStudentPopup() {
+export function useViewStudentPopup() {
   const [{isOpen, id}, setPopupOpen] = useState<{
     isOpen: boolean;
     id: number | null;
@@ -15,11 +15,11 @@ export function useAddStudentPopup() {
     <Popup
       isOpen
       onClose={close}
-      title={id ? 'Edit student' : 'New student'}
-      customWidth={500}
+      title={'View student'}
+      maxWidth={'xs'}
     >
       <Box height="100%" minHeight={200} display="flex" margin="auto">
-        <AddStudentPopup onClose={close} studentId={id} />
+        <ViewStudentPopup onClose={close} studentId={id} />
       </Box>
     </Popup>
   );

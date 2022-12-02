@@ -39,7 +39,7 @@ const FormRow = ({
             <Box className={clsx(classes.fieldLabel, isViewOnly && classes.viewFieldLabel)}>
                 {label} {required && <span className={classes.required}>&nbsp;*</span>}
             </Box>
-            <Box className={classes.field}>
+            <Box className={clsx(classes.field, isViewOnly && classes.viewData)}>
                 {children}
             </Box>
         </Box>

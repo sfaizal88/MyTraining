@@ -15,44 +15,23 @@ export const mockData = [
     },
     {
         id: 3,
-        name: "Seyed Mazeen",
-        role: "Front end developer",
+        name: "Jamal Mohamed",
+        role: "Back end developer",
         contact_no: "+91-9112233445",
-        email: "mazeen@gmail.com"
+        email: "jamal@gmail.com"
     },
     {
         id: 4,
-        name: "Seyed Mazeen",
-        role: "Front end developer",
+        name: "Arsath Ahamed",
+        role: "Junior Front end developer",
         contact_no: "+91-9112233445",
-        email: "mazeen@gmail.com"
+        email: "arsath@gmail.com"
     },
     {
         id: 5,
-        name: "Seyed Mazeen",
-        role: "Front end developer",
+        name: "Hyser",
+        role: "Full stack developer",
         contact_no: "+91-9112233445",
-        email: "mazeen@gmail.com"
-    },
-    {
-        id: 6,
-        name: "Seyed Mazeen",
-        role: "Front end developer",
-        contact_no: "+91-9112233445",
-        email: "mazeen@gmail.com"
-    },
-    {
-        id: 7,
-        name: "Seyed Mazeen",
-        role: "Front end developer",
-        contact_no: "+91-9112233445",
-        email: "mazeen@gmail.com"
-    },
-    {
-        id: 8,
-        name: "Seyed Mazeen",
-        role: "Front end developer",
-        contact_no: "+91-9112233445",
-        email: "mazeen@gmail.com"
+        email: "hyser@gmail.com"
     },
 ]
