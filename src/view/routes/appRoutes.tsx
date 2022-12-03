@@ -22,8 +22,10 @@ import StudentPage from '@/view/pages/student';
 import TeacherPage from '@/view/pages/teacher';
 import RoadmapPage from '@/view/pages/roadmap';
 import TechStackPage from '@/view/pages/techStack';
+import ReportPage from '@/view/pages/report';
 import TaskPage from '@/view/pages/task';
 import NoPage from '@/view/pages/error/noPage';
+import ProfilePage from '@/view/pages/report/components/profile';
 
 const AppRoutes = () => {
     // STYLE DECLARE
@@ -44,7 +46,9 @@ const AppRoutes = () => {
                         <Route path={PATH.TEACHER_PATH} element={<TeacherPage />}/>
                         <Route path={PATH.ROADMAP_PATH} element={<RoadmapPage />}/>
                         <Route path={PATH.TECH_STACK_PATH} element={<TechStackPage />}/>
+                        <Route path={PATH.REPORT_PATH} element={<ReportPage />}/>
                         <Route path={PATH.TASK_PATH} element={<TaskPage />}/>
+                        <Route path={PATH.STUDENT_REPORT_PATH} element={<ProfilePage />}/>
                         <Route path="*" element={<NoPage />} />
                     </Routes>
                 </Box>

@@ -27,6 +27,7 @@ export const DASHBOARD_PATH = '/home';
 export const STUDENT_PATH = '/student';
 export const TEACHER_PATH = '/teacher';
 export const REPORT_PATH = '/report';
+export const STUDENT_REPORT_PATH = '/report/:id';
 export const TASK_PATH = '/task';
 export const TECH_STACK_PATH = '/techStack';
 export const SETTINGS_PATH = '/settings';

@@ -6,6 +6,7 @@
  * 
  */
 // GENERIC IMPORT
+import clsx from 'clsx';
 import {useState, ChangeEvent, ReactNode} from 'react';
 import {Box, Tab, Tabs} from '@mui/material';
 
@@ -42,8 +43,9 @@ const TabContainer = ({
                     <Tab label={tab} className={classes.tab} key={tab}/>
                 ))}
             </Tabs>
-            {value === 0 && <Box className={classes.tabContainer}>{tabsComponent[0]}</Box>}
-            {value === 1 && <Box className={classes.tabContainer}>{tabsComponent[1]}</Box>}
+            {tabsComponent.map((_, index) => 
+                <Box className={clsx(classes.tabContainer, value !== index && classes.hidden)}>{tabsComponent[index]}</Box>
+            )}
        </Box>
     )
 }

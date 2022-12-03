@@ -8,12 +8,14 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         padding: spacing(1, 1),
         margin: spacing(4),
         borderRadius: '10px',
+        background: palette.background.paper,
+        flex: 1
     },
     tab: {
         color: '#48576c',
         fontSize: 12,
         fontWeight: 600,
-        padding: spacing(0.8, 0.25),
+        padding: spacing(0.8, 1),
         minWidth: '110px',
     },
     tabContainer: {
@@ -23,6 +25,9 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     indicator: {
         backgroundColor: palette.primary.main,
         minWidth: '110px',
+    },
+    hidden: {
+        display: 'none'
     }
   }));
   
