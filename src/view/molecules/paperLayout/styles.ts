@@ -5,8 +5,8 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     paperLayoutWrapper: {
         boxShadow: '1px 1px 3px #d4d4d4',
         padding: spacing(3, 4, 4, 4),
-        margin: spacing(3),
-        borderRadius: spacing(1),
+        margin: spacing(3, 3, 0, 3),
+        borderRadius: spacing(0.5),
         background: palette.background.paper,
         flex: 1,
     },

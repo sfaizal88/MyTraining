@@ -20,7 +20,6 @@ import {CallDataApi} from '@/api/apiCalls';
 // MOCK DATA
 import {mockData as roadmapListMockData} from '@/view/pages/roadmap/mock/list';
 import {mockData as roadmapDetailsMockData} from '@/view/pages/roadmap/mock/details';
-import {mockData as roadmapDetailsByUserIdMockData} from '@/view/pages/profile/components/roadmap/mock/details';
 
 export type MileStoneGetItem = {
     title: string;
@@ -60,19 +59,6 @@ export function useRoadmapByIdQuery(id?: number | null) {
 function getRoadmapById({
     queryKey: [{id}],
   }: QueryFunctionContext<ReturnType<typeof queryKeys.roadmapById>>) {
-    return CallDataApi({url: `${web_url}user/getAllUser.php`});
-}
-
-export function useRoadmapByUserIdQuery(id?: number | null) {
-    return useQuery(queryKeys.roadmapByUserId(id), getRoadmapByUserId, {
-      enabled: Boolean(id),
-      select: (data) => roadmapDetailsByUserIdMockData,
-    });
-}
-  
-function getRoadmapByUserId({
-    queryKey: [{id}],
-  }: QueryFunctionContext<ReturnType<typeof queryKeys.roadmapByUserId>>) {
     return CallDataApi({url: `${web_url}user/getAllUser.php`});
 }
 

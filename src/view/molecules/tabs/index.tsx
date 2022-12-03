@@ -31,20 +31,21 @@ const TabContainer = ({
     }
 
     return (
-       <Box className={classes.paperLayout}>
+       <Box className={classes.root}>
            <Tabs 
             value={value} 
             onChange={handleChange}
+            className={classes.tabContainer}
             classes={{
                 indicator: classes.indicator,
               }}
             >
-                {tabsLabel.map((tab, index) => (
-                    <Tab label={<Box component={'span'} className={classes.tabLabel}>{tab}</Box>} className={classes.tab} key={tab}/>
+                {tabsLabel.map((tab) => (
+                    <Tab label={<Box component={'span'} className={classes.tabLabel}>{tab}</Box>} key={tab}/>
                 ))}
             </Tabs>
             {tabsComponent.map((_, index) => 
-                <Box key={`tab-container-${index}`} className={clsx(classes.tabContainer, value !== index && classes.hidden)}>{tabsComponent[index]}</Box>
+                <Box key={`tab-container-${index}`} className={clsx(classes.tabContentContainer, value !== index && classes.hidden)}>{tabsComponent[index]}</Box>
             )}
        </Box>
     )

@@ -14,7 +14,7 @@ import useStyles from '@/view/routes/styles';
 import * as PATH from '@/view/routes/constants';
 
 // GENERIC VIEW IMPORT 
-import {SideMenu, Header} from '@/view/molecules';
+import {SideMenu, Header, Footer} from '@/view/molecules';
 
 // PAGE IMPORT 
 import Dashboard from '@/view/pages/dashboard';
@@ -33,7 +33,7 @@ const AppRoutes = () => {
 
     // RENDER HTML
     return (
-        <Box className={classes.mainLayout}>
+        <>
             <Box className={classes.sideMenu}>
                 <SideMenu/>
             </Box>
@@ -52,8 +52,9 @@ const AppRoutes = () => {
                         <Route path="*" element={<NoPage />} />
                     </Routes>
                 </Box>
+                <Footer/>
             </Box>
-        </Box>
+        </>
     );
 };
 

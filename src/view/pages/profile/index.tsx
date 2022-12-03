@@ -6,13 +6,21 @@
  * 
  */
 // GENERCI IMPORT
+import { Box } from '@mui/material';
 import {useParams} from 'react-router-dom';
 
 // GENERIC VIEW IMPORT 
-import {PaperLayout, TabContainer} from '@/view/molecules';
+import {Loader} from '@/view/atoms';
+import {TabContainer} from '@/view/molecules';
+
+// API IMPORT
+import {useProfileByUserIdQuery} from '@/api/profile/profile';
+
+// CONTEXT IMPORT
+import {ProfileContext} from '@/contexts/profileContext';
 
 // PROFILE IMPORT
-import Profile from './components/profile';
+import ProfileHeader from './components/profileHeader';
 import Roadmap from './components/roadmap';
 import TechStack from './components/techStack';
 import MockInterview from './components/mockInterview';
@@ -29,11 +37,21 @@ const ProfilePage = () => {
     // DECLARE GENERIC VAR
     const {id} = useParams<{ id: string}>();
 
+    // API CALL
+    const profileByUserIdQuery = useProfileByUserIdQuery(Number(id));
+
+    if (!profileByUserIdQuery.data) return <Loader/>;
+
     return (
-        <TabContainer
-            tabsLabel={['Profile', 'Technology stack', 'Mock Interview', 'Task', 'Road Map',]}
-            tabsComponent={[<Profile/>, <TechStack/>, <MockInterview/>, <Task/>, <Roadmap userId={Number(id)}/>]}
-        />
+        <ProfileContext.Provider value={profileByUserIdQuery.data}>
+            <Box className={classes.root}>
+                <ProfileHeader/>
+                <TabContainer
+                    tabsLabel={['Technology stack', 'Mock Interview', 'Task', 'Road Map',]}
+                    tabsComponent={[<TechStack/>, <MockInterview/>, <Task/>, <Roadmap/>]}
+                />
+            </Box>
+        </ProfileContext.Provider>
     )
 }
 

@@ -3,13 +3,15 @@ import { Theme } from "@mui/system";
 
 const useStyles = makeStyles(({spacing, palette}: Theme) => ({
   mainLayout: {
-    height: '100%',
+    minHeight: '100%',
     display: 'flex',
     width: '100%',
+    flexDirection: 'column',
+    flex: 1,
   },
   layout: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     flex: 1,
     height: '100vh',
     paddingLeft: '240px',
@@ -27,7 +29,7 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
   },
   bodyContent: {
     flex: 1,
-    paddingTop: '60px',
+    paddingTop: '50px',
     display: 'flex',
   }
 }));

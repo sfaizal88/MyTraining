@@ -16,6 +16,7 @@ import {
     SchoolOutlined,
     RouteOutlined,
     CodeOutlined,
+    HelpOutlineOutlined,
 } from '@mui/icons-material';
 
 // ROUTER IMPORT
@@ -79,7 +80,7 @@ export const menuList: MenuType[] = compact([
         permissionKey: 'mockInterview',
         link: MOCK_INTERVIEW_PATH,
         subLinks: MOCK_INTERVIEW_PATH,
-        icon: <AssessmentOutlined style={{fontSize: '20px'}}/>,
+        icon: <HelpOutlineOutlined style={{fontSize: '20px'}}/>,
         submenuList: [],
     },
     {

@@ -6,10 +6,16 @@
  * 
  */
 // GENERIC IMPORT
+import {Box, Avatar} from '@mui/material';
+
+// STYLE IMPORT
+import useStyles from './styles';
+
 const Footer = () => {
+    const classes = useStyles();
 
     return (
-        <>Footer</>
+        <Box className={classes.root}>&#169;Copyrights 2022 Training : All rights reserved.</Box>
     )
 }
 

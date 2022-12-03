@@ -6,27 +6,30 @@
  * 
  */
 // GENERIC IMPORT
-import {useState} from 'react';
+import {useContext} from 'react';
+import { Paper } from '@mui/material';
 
-// API IMPORT
-import {useRoadmapByUserIdQuery} from '@/api/roadmap/roadmap';
-
-// GENERIC VIEW IMPORT 
+// GENERIC IMPORT 
 import {Timeline} from '@/view/molecules';
 
-type RoadmapProps = {
-    userId: number;
-}
-// ROADMAP SCREEN COMPONENT DECLARE
-const Roadmap = ({
-    userId
-}: RoadmapProps) => {
-    const roadmapByUserIdQuery = useRoadmapByUserIdQuery(userId);
+// CONTEXT IMPORT
+import {ProfileContext} from '@/contexts/profileContext';
 
-    if (!roadmapByUserIdQuery.data) return null;
+// STYLE IMPORT
+import useStyles from '../../styles';
+
+// ROADMAP SCREEN COMPONENT DECLARE
+const Roadmap = () => {
+    // STYLE DECLARE
+    const classes = useStyles();
+
+    // CONTEXT DECALRE
+    const profileContext = useContext(ProfileContext);
 
     return (
-        <Timeline mileStone={roadmapByUserIdQuery?.data?.mile_stone || []}/>
+        <Paper className={classes.profileContentLayout}>
+            <Timeline mileStone={profileContext.roadmap.mile_stone}/>
+        </Paper>
     )
 }
 

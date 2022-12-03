@@ -6,7 +6,7 @@
  * 
  */
 // GENERIC IMPORT
-import {Typography, Box} from '@mui/material';
+import {Box} from '@mui/material';
 import {
     Timeline as MuiTimeline, 
     TimelineItem, 
@@ -51,8 +51,8 @@ const Timeline = ({
                     </Box>
                     </TimelineOppositeContent>
                     <TimelineSeparator>
-                    <TimelineDot>
-                        <ArrowDownwardOutlined />
+                    <TimelineDot color="primary">
+                        <ArrowDownwardOutlined/>
                     </TimelineDot>
                     {mileStone.length - 1 !== index && <TimelineConnector />}
                     </TimelineSeparator>

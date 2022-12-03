@@ -23,7 +23,7 @@ const Header = () => {
             <Box flex={1}></Box>
             <Box flex={1}></Box>
             <Box flex={1}></Box>
-            <Box flex={1} display='inline-flex' justifyContent='flex-end' alignItems='center'>
+            <Box flex={1} className={classes.profileContainer}>
                 <Avatar src={UserIcon} sx={{ width: 30, height: 30, marginRight: '10px' }}/>Ahamed Faizal </Box>
             <Box width={60} display='inline-flex' justifyContent='center'>
                 <SettingsOutlined style={{fontSize: 25}}/>
