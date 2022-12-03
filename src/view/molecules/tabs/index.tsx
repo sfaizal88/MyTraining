@@ -36,15 +36,15 @@ const TabContainer = ({
             value={value} 
             onChange={handleChange}
             classes={{
-                indicator: classes.indicator
+                indicator: classes.indicator,
               }}
             >
-                {tabsLabel.map(tab => (
-                    <Tab label={tab} className={classes.tab} key={tab}/>
+                {tabsLabel.map((tab, index) => (
+                    <Tab label={<Box component={'span'} className={classes.tabLabel}>{tab}</Box>} className={classes.tab} key={tab}/>
                 ))}
             </Tabs>
             {tabsComponent.map((_, index) => 
-                <Box className={clsx(classes.tabContainer, value !== index && classes.hidden)}>{tabsComponent[index]}</Box>
+                <Box key={`tab-container-${index}`} className={clsx(classes.tabContainer, value !== index && classes.hidden)}>{tabsComponent[index]}</Box>
             )}
        </Box>
     )

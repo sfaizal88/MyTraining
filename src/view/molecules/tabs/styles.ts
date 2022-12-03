@@ -12,11 +12,13 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         flex: 1
     },
     tab: {
+        padding: spacing(0.8, 1),
+    },
+    tabLabel: {
         color: '#48576c',
         fontSize: 12,
         fontWeight: 600,
-        padding: spacing(0.8, 1),
-        minWidth: '110px',
+        minWidth: '80px',
     },
     tabContainer: {
         padding: spacing(2, 3),

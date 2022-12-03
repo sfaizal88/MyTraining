@@ -25,7 +25,7 @@ import TechStackPage from '@/view/pages/techStack';
 import ReportPage from '@/view/pages/report';
 import TaskPage from '@/view/pages/task';
 import NoPage from '@/view/pages/error/noPage';
-import ProfilePage from '@/view/pages/report/components/profile';
+import ProfilePage from '@/view/pages/profile';
 
 const AppRoutes = () => {
     // STYLE DECLARE

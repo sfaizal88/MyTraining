@@ -28,12 +28,11 @@ const ProfilePage = () => {
 
     // DECLARE GENERIC VAR
     const {id} = useParams<{ id: string}>();
-    const selectedId = Number(id === 'create' ?  0 : id)
 
     return (
         <TabContainer
             tabsLabel={['Profile', 'Technology stack', 'Mock Interview', 'Task', 'Road Map',]}
-            tabsComponent={[<Profile/>, <TechStack/>, <MockInterview/>, <Task/>, <Roadmap/>]}
+            tabsComponent={[<Profile/>, <TechStack/>, <MockInterview/>, <Task/>, <Roadmap userId={Number(id)}/>]}
         />
     )
 }

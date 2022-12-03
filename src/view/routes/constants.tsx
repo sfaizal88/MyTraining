@@ -30,6 +30,7 @@ export const REPORT_PATH = '/report';
 export const STUDENT_REPORT_PATH = '/report/:id';
 export const TASK_PATH = '/task';
 export const TECH_STACK_PATH = '/techStack';
+export const MOCK_INTERVIEW_PATH = '/mockInterview';
 export const SETTINGS_PATH = '/settings';
 export const ROADMAP_PATH = '/roadmap';
 export const OTHER_PATH = '*';
@@ -69,6 +70,15 @@ export const menuList: MenuType[] = compact([
         permissionKey: 'report',
         link: REPORT_PATH,
         subLinks: REPORT_PATH,
+        icon: <AssessmentOutlined style={{fontSize: '20px'}}/>,
+        submenuList: [],
+    },
+    {
+        id: 'mockInterview',
+        label: 'Mock Interview',
+        permissionKey: 'mockInterview',
+        link: MOCK_INTERVIEW_PATH,
+        subLinks: MOCK_INTERVIEW_PATH,
         icon: <AssessmentOutlined style={{fontSize: '20px'}}/>,
         submenuList: [],
     },

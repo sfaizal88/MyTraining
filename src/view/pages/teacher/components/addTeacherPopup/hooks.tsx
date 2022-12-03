@@ -8,6 +8,8 @@
 // GENERIC IMPORT
 import {useState} from 'react';
 import {Box} from '@mui/material';
+
+// GENERIC VIEW IMPORT 
 import {Popup} from '@/view/molecules';
 import AddTeacherPopup from './index';
 
