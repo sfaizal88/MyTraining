@@ -20,6 +20,9 @@ type TextFieldProps = {
     name: string;
     placeholder?: string;
     defaultValue?: string | number | null | boolean;
+    multiline?: boolean;
+    rows?: number;
+    type?: 'text' | 'file' | 'number'
 }
 
 // TEXTFIELD COMPONENT DECLARE
@@ -31,6 +34,9 @@ const TextField = ({
     control,
     errors,
     register,
+    type = 'text',
+    multiline = false,
+    rows = 1,
 }: TextFieldProps) => {
     // STYLE DECLARE
     const classes = useStyles();
@@ -45,16 +51,19 @@ const TextField = ({
                     error={Boolean(errors)}
                     variant="outlined" 
                     id={id || name}
+                    type={type}
                     classes={{root: classes.inputFieldContainer}}
                     defaultValue={defaultValue || null}
                     placeholder={placeholder}
                     fullWidth
+                    multiline={multiline}
                     helperText={errors?.message || null}
+                    rows={rows}
                     InputProps={{
                         autoComplete: 'off',
                         role: 'presentation',
                         classes: {
-                           root: classes.root,
+                           root: multiline ? classes.multilineRow : classes.root,
                            notchedOutline:  classes.notchedOutline
                         }
                     }}

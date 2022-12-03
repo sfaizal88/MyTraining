@@ -21,6 +21,14 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
             border: 'none',
         }
     },
+    multilineRow: {
+        background: palette.secondary.light,
+        padding: spacing(1, 2),
+        height: 'auto',
+        '&:hover': {
+            border: 'none',
+        }
+    },
     notchedOutline: {
         border: 'none',
     },

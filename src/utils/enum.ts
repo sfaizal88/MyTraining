@@ -14,6 +14,22 @@ export enum NotificationType {
 // STATUS TYPE
 export enum StatusType {
     completed = 1,
-    pending = 2,
-    rejected = 3,
+    pending,
+    rejected,
+}
+
+// TASK STATUS TYPE
+export enum TaskStatusType {
+    notStarted = 1,
+    started,
+    reviewPending,
+    completed,
+}
+
+// DURATION TYPE
+export enum DurationType {
+    minutes = 'm',
+    hours = 'h',
+    days = 'd',
+    weeks = 'w',
 }

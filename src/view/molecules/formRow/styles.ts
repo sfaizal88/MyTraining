@@ -12,6 +12,7 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     rowFieldSet: {
         flexDirection: 'column',
         justifyContent: 'flex-start',
+        margin: spacing(0.5, 0),
     },
     fieldLabel: {
         fontSize: 12,

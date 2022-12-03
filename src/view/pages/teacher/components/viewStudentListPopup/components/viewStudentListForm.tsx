@@ -15,9 +15,6 @@ import {FormAction, TableRow, PopupFooter} from '@/view/molecules';
 import {TeacherGetItem} from '@/api/teacher/teacher';
 import type {StudentGetItem} from '@/api/student/student';
 
-// MODELS
-import {OptionType} from '@/models/generic';
-
 // TEACHER COMPONENTS
 import ViewStudentListTitles from './viewStudentListTitles';
 
@@ -28,7 +25,7 @@ import useStyles from '../styles';
 type ViewTeacherFormProps = {
   onClose: () => void;
   data?: TeacherGetItem;
-  studentOptions: StudentGetItem[]
+  studentOptions: StudentGetItem[];
 };
 
 const ViewTeacherForm = ({onClose, data, studentOptions}: ViewTeacherFormProps) => {
