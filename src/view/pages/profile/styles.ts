@@ -8,7 +8,8 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
         flex: 1,
     },
     profileContentLayout: {
-        padding: spacing(3, 4, 4, 4)
+        padding: spacing(5, 4, 4, 4),
+        flex: 1
     },
     profileHeader: {
         background: palette.background.paper,
@@ -35,7 +36,14 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
     profileBtnContainer: {
         width: '150px',
         textAlign: 'right'
-    }
+    },
+    grid4: {
+        display: 'grid',
+        gridTemplateColumns: 'auto auto auto auto',
+        boxSizing: 'border-box',
+        columnGap: spacing(2),
+        rowGap: spacing(2),
+    },
 }));
   
 export default useStyles;

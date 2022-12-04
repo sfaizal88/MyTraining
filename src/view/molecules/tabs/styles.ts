@@ -3,6 +3,8 @@ import { Theme } from "@mui/system";
 
 const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     root: {
+        display: 'flex',
+        flexDirection: 'column',
         flex: 1
     },
     tabContainer: {
@@ -20,6 +22,8 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     tabContentContainer: {
         padding: spacing(1, 3, 0, 3),
         margin: spacing(0.5, 0, 0, 0),
+        flex: 1,
+        display: 'flex'
     },
     indicator: {
         backgroundColor: palette.primary.main,

@@ -45,8 +45,6 @@ export function useTaskListQuery() {
 const getTaskList = () => 
     CallDataApi({url: `${web_url}user/getAllUser.php`});
 
-
-
 export function useTaskByIdQuery(id?: number | null) {
     return useQuery(queryKeys.taskById(id), getTaskById, {
       enabled: Boolean(id),
