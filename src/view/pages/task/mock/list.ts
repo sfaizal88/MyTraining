@@ -6,7 +6,7 @@ export const mockData = [
         title: "HTML table",
         type: "HTML exercise",
         details: "If several languages coalesce the grammar is more simple and regular than that of the individual languages.",
-        status: TaskStatusType.completed,
+        status: TaskStatusType.reviewCompleted,
         images: ['https://parallelcodes.com/wp-content/uploads/2021/08/create-login-page-with-html-css-sample.png'],
         students: [1, 2],
         duration: '4h'

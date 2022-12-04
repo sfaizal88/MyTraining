@@ -69,7 +69,8 @@ const TaskCard = ({
                   [TaskStatusType.notStarted]: 'grey',
                   [TaskStatusType.started]: 'yellow',
                   [TaskStatusType.reviewPending]: 'red',
-                  [TaskStatusType.completed]: 'green',
+                  [TaskStatusType.reviewCompleted]: 'green',
+                  [TaskStatusType.done]: 'green',
                 }}
               />
             </Box>}

@@ -33,7 +33,8 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     viewFormRow: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'flex-start',
+        flex: 1,
     },
     viewFieldLabel: {
         paddingTop: spacing(0.5),
@@ -41,6 +42,7 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     viewData: {
         fontSize: 13,
         fontWeight: 600,
+        color: '#707070'
     },
   }));
   

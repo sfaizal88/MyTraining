@@ -24,7 +24,8 @@ export const taskStatusDisplayMap = {
     [TaskStatusType.notStarted]: 'Not started',
     [TaskStatusType.started]: 'Started',
     [TaskStatusType.reviewPending]: 'Review Pending',
-    [TaskStatusType.completed]: 'Completed',
+    [TaskStatusType.reviewCompleted]: 'Review completed',
+    [TaskStatusType.done]: 'Completed',
 }
 
 export const durationDisplayMap: Record<string, string> = {

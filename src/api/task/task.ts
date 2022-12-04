@@ -31,6 +31,9 @@ export type TaskGetItem = {
     images: string[];
     students: number[];
     duration: string;
+    notes?: string;
+    githubLink?: string;
+    review?: string;
 }
 
 export type TaskAssignPostItem = {

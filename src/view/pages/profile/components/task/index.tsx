@@ -10,7 +10,7 @@ import { Box, Paper } from '@mui/material';
 import {useContext, useState} from 'react';
 import {PersonOffOutlined} from '@mui/icons-material';
 
-// GENERIC VIEW IMPORT 
+// GENERIC IMPORT 
 import {Loader, AddButton} from '@/view/atoms';
 import {EmptyScreen} from '@/view/molecules';
 import {TaskCard, AssignTaskModal} from '@/view/organisms';
@@ -22,8 +22,9 @@ import {ProfileContext} from '@/contexts/profileContext';
 import {TaskGetItem} from '@/api/task/task';
 import {useStudentListQuery} from '@/api/student/student';
 
-// ROADMAP IMPORT
+// HOOK IMPORT
 import {useViewStudentListPopup} from '@/view/pages/teacher/components/viewStudentListPopup/hooks';
+import {useViewTaskPopup} from './components/viewTaskPopup/hooks';
 
 // STYLE IMPORT
 import useStyles from '../../styles';
@@ -46,6 +47,7 @@ const Task = () => {
 
     // DECLARE HOOK CALL
     const viewStudentListPopup = useViewStudentListPopup();
+    const viewTaskPopup = useViewTaskPopup();
 
     // IF API LOADS, TURN ON LOADER
     if (!studentListQuery.data) return <Loader/>;
@@ -65,6 +67,8 @@ const Task = () => {
                             onStudentList={viewStudentListPopup.show}
                             studentOptions={studentListQuery.data}
                             showStatus
+                            showView
+                            onView={viewTaskPopup.show}
                         />
                 ))}
                 </Box>
@@ -77,6 +81,7 @@ const Task = () => {
                 />
             )}
             {viewStudentListPopup.child}
+            {viewTaskPopup.child}
             {isOpen && <AssignTaskModal userId={userId} isOpen={isOpen} onClose={() => setOpen(false)}/>}
         </Paper>
     )

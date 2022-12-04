@@ -23,7 +23,8 @@ export enum TaskStatusType {
     notStarted = 1,
     started,
     reviewPending,
-    completed,
+    reviewCompleted,
+    done,
 }
 
 // DURATION TYPE

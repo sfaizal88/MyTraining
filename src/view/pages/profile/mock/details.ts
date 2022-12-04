@@ -12,7 +12,7 @@ export const mockData = {
             title: "HTML table",
             type: "HTML exercise",
             details: "If several languages coalesce the grammar is more simple and regular than that of the individual languages.",
-            status: TaskStatusType.completed,
+            status: TaskStatusType.reviewCompleted,
             images: ['https://parallelcodes.com/wp-content/uploads/2021/08/create-login-page-with-html-css-sample.png'],
             students: [1, 2],
             duration: '4h'
@@ -29,13 +29,16 @@ export const mockData = {
         },
         {
             id: 3,
-            title: "Pricing table design",
-            type: "HTML & CSS exercise",
-            details: "If several languages coalesce the grammar is more simple and regular than that of the individual languages.",
-            status: TaskStatusType.reviewPending,
-            images: ['https://parallelcodes.com/wp-content/uploads/2021/08/create-login-page-with-html-css-sample.png'],
+            title: "Grid exercise",
+            type: "CSS exercise",
+            details: "Websites often include forms as a part of their customer data collection strategy. A well-made survey form can help you acquire relevant information about your target audiences like their demographic age, job, location, taste and preference, and pain points. This HTML project is a great way to test your skills and knowledge of designing forms and structuring a webpage.",
+            status: TaskStatusType.done,
+            images: ['https://img.freepik.com/premium-vector/coding-programming-languages-css-html-it-ui-programmer-cartoon-character-developing-website-design-flat-illustration-landing-page_128772-1405.jpg', 'https://img.freepik.com/premium-vector/web-development-programming-languages-css-html-it-ui-programmer-cartoon-character-developing-website-coding-flat-illustration-banner-landing-page-template_128772-1368.jpg'],
             students: [1, 2],
-            duration: '8h'
+            duration: '2d',
+            notes: "I have completed all the code",
+            githubLink: "https://github.com/faizalahd4/BookWeb",
+            review: "To summarize, good and valuable code review feedback is feedback to focuses on the goal of the code review: to inspect whether the current code change is correct and of high-quality. Discussions that aren't helping to achieve this goal should happen outside of the code review process."
         },
     ],
     roadmap: {
