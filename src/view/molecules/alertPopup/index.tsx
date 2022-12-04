@@ -6,6 +6,7 @@
  * 
  */
 // GENERIC IMPORT
+import {ReactNode} from 'react';
 import {
     Box,
     Dialog, 
@@ -33,7 +34,7 @@ type AlertPopupProps = {
     onSubmit: () => void;
     submitLabel?: string;
     closeLabel?: string;
-    content: string;
+    content: string | ReactNode;
     fullWidth?: boolean;
 }
 
@@ -48,11 +49,6 @@ const AlertPopup = ({
     onSubmit,
 }: AlertPopupProps) => {
     const classes = useStyles();
-
-    const onAgree = () => {
-        onSubmit();
-        onClose();
-    }
 
     return (
         <Dialog 
@@ -73,11 +69,11 @@ const AlertPopup = ({
                 </Grid>
             </DialogTitle>
             <DialogContent dividers className={classes.alertContent}>
-                <Box py={4}>{content}</Box>
+                {content}
             </DialogContent>
             <DialogActions>
-                <Button variant="outlined" onClick={() => onClose()} isSecondary>{closeLabel}</Button>
-                <Button  variant="contained" onClick={onAgree}>{submitLabel}</Button>
+                <Button variant="outlined"  onClick={() => onClose()} isSecondary>{closeLabel}</Button>
+                <Button  variant="contained" onClick={() => onSubmit()}>{submitLabel}</Button>
             </DialogActions>
         </Dialog>
     )

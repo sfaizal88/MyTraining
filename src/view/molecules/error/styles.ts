@@ -2,6 +2,13 @@ import { makeStyles } from '@mui/styles';
 import { Theme } from "@mui/system";
 
 const useStyles = makeStyles(({spacing, palette}: Theme) => ({
+    root: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%'
+    },
     noRecordContainer: {
         display: 'flex',
         flexDirection: 'column',
@@ -16,6 +23,12 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         fontWeight: 600,
         marginTop: spacing(1),
         textTransform: 'uppercase',
+    },
+    subtitle: {
+        flex: 1,
+        fontSize: 13,
+        color: '#707070',
+        margin: spacing(1, 0),
     },
     pageNotFound: {
         display: 'flex',

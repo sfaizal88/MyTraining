@@ -33,11 +33,24 @@ export type TaskGetItem = {
     duration: string;
 }
 
+export type TaskAssignPostItem = {
+    userId: number;
+    name: number;
+}
+
 // USE TO FETCH ALL TASK
 export function useTaskListQuery() {
     return useQuery(queryKeys.taskList, getTaskList, {
         placeholderData: [],
         select: (data) => taskListMockData,
+    });
+}
+
+// USE TO FETCH ALL TASK OPTIONS
+export function useTaskOptionsQuery() {
+    return useQuery(queryKeys.taskList, getTaskList, {
+        placeholderData: [],
+        select: (data) => taskListMockData.map(item => ({label: item.title, value: item.id})),
     });
 }
 
@@ -91,6 +104,25 @@ export function useUpdateTaskMutation() {
 const updateTask = (data: TaskGetItem) => {
     return CallDataApi({
         url: `${web_url}transaction/single/updateTransaction.php`,
+        method: 'POST',
+        data: JSON.stringify({...data /* , token: getStorage('token') */})
+    });
+}
+
+// USE TO ASSIGN TASK TO USER
+export function useAssignTaskToUserMutation(userId: number) {
+    const queryClient = useQueryClient();
+    return useMutation(assignTaskToUser, {
+        onSuccess() {
+        queryClient.invalidateQueries(queryKeys.taskById(userId));
+        },
+    });
+}
+
+// ASSIGN TASK TO USER API DETAILS
+const assignTaskToUser = (data: TaskAssignPostItem) => {
+    return CallDataApi({
+        url: `${web_url}transaction/single/createTransaction.php`,
         method: 'POST',
         data: JSON.stringify({...data /* , token: getStorage('token') */})
     });

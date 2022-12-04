@@ -6,7 +6,7 @@
  * 
  */
 // GENERIC IMPORT
-import {Box, Typography} from '@mui/material';
+import {Box} from '@mui/material';
 import {ReactElement} from 'react';
 
 // STYLE IMPORT
@@ -15,18 +15,26 @@ import useStyles from './styles';
 // COMPONENT PROPS
 type EmptyScreenProps = {
     title: string;
+    subtitle?: string;
+    button?: ReactElement;
     icon?: ReactElement;
 }
 
 const EmptyScreen = ({
     title,
+    subtitle,
+    button,
     icon,
 }: EmptyScreenProps) => {
     const classes = useStyles();
     return (
-        <Box className={classes.noRecordContainer}>
-            {icon}
-            <Typography variant="h4" className={classes.title}>{title}</Typography>
+        <Box className={classes.root}>
+            <Box className={classes.noRecordContainer}>
+                {icon}
+                <Box className={classes.title}>{title}</Box>
+                <Box className={classes.subtitle}>{subtitle}</Box>
+                {button}
+            </Box>
         </Box>
     )
 }

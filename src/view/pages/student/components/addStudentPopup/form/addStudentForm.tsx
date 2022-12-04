@@ -19,7 +19,6 @@ import {StudentGetItem, useCreateStudentMutation, useUpdateStudentMutation} from
 
 // UTILS IMPORT
 import useNotification from '@/utils/notification';
-import {formValidationMessages, validationMessages} from '@/utils/validationMessages';
 import schema from '../schema';
 import useStyles from '../styles';
 

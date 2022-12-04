@@ -8,7 +8,7 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
         flex: 1,
     },
     profileContentLayout: {
-        padding: spacing(5, 4, 4, 4),
+        padding: spacing(3, 4, 4, 4),
         flex: 1
     },
     profileHeader: {

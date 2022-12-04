@@ -8,7 +8,7 @@
 // GENERIC IMPORT
 import {useState} from 'react';
 
-// GENERIC VIEW IMPORT 
+// GENERIC IMPORT 
 import {AlertPopup} from '@/view/molecules';
 
 // UTILS IMPORT

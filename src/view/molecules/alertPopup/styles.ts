@@ -10,7 +10,8 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
     alertContent: {
         fontSize: 14,
         fontWeight: 500,
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: `${spacing(1, 3, 3, 3)} !important`
     },
     titleContainer: {
         padding:  spacing(1.5, 2)
