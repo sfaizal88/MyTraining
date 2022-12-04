@@ -15,7 +15,8 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         zIndex: 3,
         boxShadow: '1px 1px 3px #d4d4d4',
         alignItems: 'center',
-        padding: spacing(0, 1, 0, 3),
+        padding: spacing(0, 1, 0, 2),
+        paddingLeft: spacing(33)
     },
     profileContainer: {
         display: 'inline-flex',
@@ -23,6 +24,9 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         alignItems: 'center',
         fontSize: 14,
         fontWeight: 600
+    },
+    menuIcon: {
+        cursor: 'pointer'
     }
 }));
   

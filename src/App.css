@@ -21,11 +21,11 @@ body {
   padding-bottom: 2px !important;
 }
 .MuiPickersToolbar-toolbar, .MuiPickersDay-daySelected {
-  background-color: #14a085 !important;
+  background-color: #027bb3 !important;
 }
 .MuiPickersDay-dayDisabled {
   color: #c7c7c7 !important;
 }
 .MuiPickersCalendarHeader-dayLabel {
-  color: #14a085 !important;
+  color: #027bb3 !important;
 }

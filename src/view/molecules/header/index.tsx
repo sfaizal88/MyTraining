@@ -7,7 +7,7 @@
  */
 // GENERIC IMPORT
 import {Box, Avatar} from '@mui/material';
-import {SettingsOutlined} from '@mui/icons-material';
+import {SettingsOutlined, MenuOutlined} from '@mui/icons-material';
     
 // ICON IMPORT
 import UserIcon from '@/assets/img/user.jpeg';
@@ -20,7 +20,7 @@ const Header = () => {
 
     return (
         <Box className={classes.header}>
-            <Box flex={1}></Box>
+            <Box flex={1} className={classes.menuIcon}><MenuOutlined style={{fontSize: 25}}/></Box>
             <Box flex={1}></Box>
             <Box flex={1}></Box>
             <Box flex={1} className={classes.profileContainer}>

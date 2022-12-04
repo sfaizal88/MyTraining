@@ -25,7 +25,8 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     bottom: 0,
     zIndex: 4,
     left: 0,
-    background: '#fff'
+    background: '#007bb3',
+    color: '#fff'
   },
   bodyContent: {
     flex: 1,

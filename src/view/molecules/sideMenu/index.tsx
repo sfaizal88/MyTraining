@@ -14,7 +14,7 @@ import clsx from 'clsx';
 import { Link, useLocation } from "react-router-dom";
 
 // ICON IMPORT
-import LogoIcon from '@/assets/img/logo.png';
+import LogoIcon from '@/assets/img/logo_1.png';
 import UserIcon from '@/assets/img/user.jpeg';
 
 // ROUTER IMPORT
@@ -64,7 +64,7 @@ const SideMenu = () => {
     return (
         <Box className={classes.menuContainer}>
             <Box className={classes.logoContainer}>
-                <img src={LogoIcon}  alt="Loading..." width={100}/>
+                <img src={LogoIcon}  alt="Loading..." height={25}/>
             </Box>
             <Box className={classes.profileContainer}>
                 <Avatar src={UserIcon} sx={{ width: 100, height: 100 }}/>

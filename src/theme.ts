@@ -7,7 +7,7 @@ const theme = createTheme({
           disabled: '#a8a9b6',
         },
         primary: {
-          main: '#16a085',
+          main: '#027bb3', // '#16a085',
           light: '#dadce0', // Border color
           dark: '#6261B5', //
         },

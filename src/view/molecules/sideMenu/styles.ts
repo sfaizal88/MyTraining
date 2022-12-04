@@ -6,8 +6,10 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         width: '100%',
     },
     logoContainer: {
-        padding: spacing(3, 2),
-        textAlign: 'center'
+        padding: spacing(1.4, 2),
+        textAlign: 'center',
+        background: '#025b8b',
+        marginBottom:  spacing(4),
     },
     menu: {
         padding: 0,
@@ -20,13 +22,13 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         transition: 'all 0.5s linear',
         '&:hover': {
             color: palette.text.secondary,
-            background: '#ecf0f1',
+            background: '#025b8b',
         },
         display: 'block'
     },
     menuItemActive: {
         color: palette.text.secondary,
-        background: '#ecf0f1',
+        background: '#025b8b',
     },
     menuLink: {
         textDecoration: 'none',
@@ -40,14 +42,12 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         }
     },
     menuIcon: {
-        color: palette.text.secondary,
-        // color: '#6e768e',
+        // color: palette.text.secondary,
         display: 'inline-block',
         width: '25px',
     },
     menuLabel: {
-        color: palette.text.secondary,
-        // color: '#6e768e',
+        // color: palette.text.secondary,
         fontWeight: 500,
         flex: 1,
         textAlign: 'left',
@@ -70,7 +70,7 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         background: '#2c3e50',
         '&:hover': {
             color: palette.text.secondary,
-            background: '#ecf0f1',
+            background: '#025b8b',
         }
     },
     profileContainer: {
