@@ -16,7 +16,7 @@ import {
     SchoolOutlined,
     RouteOutlined,
     CodeOutlined,
-    HelpOutlineOutlined,
+    AssignmentIndOutlined,
 } from '@mui/icons-material';
 
 // ROUTER IMPORT
@@ -28,10 +28,10 @@ export const DASHBOARD_PATH = '/home';
 export const STUDENT_PATH = '/student';
 export const TEACHER_PATH = '/teacher';
 export const REPORT_PATH = '/report';
+export const PROFILE_PATH = '/myProfile';
 export const STUDENT_REPORT_PATH = '/report/:id';
 export const TASK_PATH = '/task';
 export const TECH_STACK_PATH = '/techStack';
-export const MOCK_INTERVIEW_PATH = '/mockInterview';
 export const SETTINGS_PATH = '/settings';
 export const ROADMAP_PATH = '/roadmap';
 export const OTHER_PATH = '*';
@@ -45,6 +45,15 @@ export const menuList: MenuType[] = compact([
         link: DASHBOARD_PATH,
         subLinks: DASHBOARD_PATH,
         icon: <DashboardOutlined style={{fontSize: '20px'}}/>,
+        submenuList: [],
+    },
+    {
+        id: 'myProfile',
+        label: 'My Profile',
+        permissionKey: 'myProfile',
+        link: PROFILE_PATH,
+        subLinks: PROFILE_PATH,
+        icon: <AssignmentIndOutlined style={{fontSize: '20px'}}/>,
         submenuList: [],
     },
     {
@@ -72,15 +81,6 @@ export const menuList: MenuType[] = compact([
         link: REPORT_PATH,
         subLinks: REPORT_PATH,
         icon: <AssessmentOutlined style={{fontSize: '20px'}}/>,
-        submenuList: [],
-    },
-    {
-        id: 'mockInterview',
-        label: 'Mock Interview',
-        permissionKey: 'mockInterview',
-        link: MOCK_INTERVIEW_PATH,
-        subLinks: MOCK_INTERVIEW_PATH,
-        icon: <HelpOutlineOutlined style={{fontSize: '20px'}}/>,
         submenuList: [],
     },
     {
