@@ -27,13 +27,19 @@ import TaskPage from '@/view/pages/task';
 import NoPage from '@/view/pages/error/noPage';
 import ProfilePage from '@/view/pages/profile';
 
+// CONTEXT IMPORT
+import {UserContext} from '@/contexts/userContext';
+
+// MOCK DATA FATER USER LOGIN
+import { mockData as loginMockData } from '@/view/pages/login/mock/details';
+
 const AppRoutes = () => {
     // STYLE DECLARE
     const classes = useStyles();
 
     // RENDER HTML
     return (
-        <>
+        <UserContext.Provider value={loginMockData}>
             <Box className={classes.sideMenu}>
                 <SideMenu/>
             </Box>
@@ -49,12 +55,13 @@ const AppRoutes = () => {
                         <Route path={PATH.REPORT_PATH} element={<ReportPage />}/>
                         <Route path={PATH.TASK_PATH} element={<TaskPage />}/>
                         <Route path={PATH.STUDENT_REPORT_PATH} element={<ProfilePage />}/>
+                        <Route path={PATH.PROFILE_PATH} element={<ProfilePage />}/>
                         <Route path="*" element={<NoPage />} />
                     </Routes>
                 </Box>
                 <Footer/>
             </Box>
-        </>
+        </UserContext.Provider>
     );
 };
 

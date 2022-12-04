@@ -34,3 +34,10 @@ export enum DurationType {
     days = 'd',
     weeks = 'w',
 }
+
+// USER ROLES TYPE
+export enum UserRoleType {
+    admin = 1,
+    teacher,
+    student,
+}

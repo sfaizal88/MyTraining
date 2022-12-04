@@ -6,6 +6,7 @@
  * 
  */
 // GENERCI IMPORT
+import {useContext} from 'react';
 import { Box } from '@mui/material';
 import {useParams} from 'react-router-dom';
 
@@ -16,8 +17,12 @@ import {TabContainer} from '@/view/molecules';
 // API IMPORT
 import {useProfileByUserIdQuery} from '@/api/profile/profile';
 
+// UTILS IMPORT
+import {UserRoleType} from '@/utils/enum';
+
 // CONTEXT IMPORT
 import {ProfileContext} from '@/contexts/profileContext';
+import {UserContext} from '@/contexts/userContext';
 
 // PROFILE IMPORT
 import ProfileHeader from './components/profileHeader';
@@ -34,11 +39,16 @@ const ProfilePage = () => {
     // STYLE DECLARE
     const classes = useStyles();
 
+    // CONTEXT DECALRE
+    const profileContext = useContext(ProfileContext);
+    const userContext = useContext(UserContext);
+
     // DECLARE GENERIC VAR
     const {id} = useParams<{ id: string}>();
+    const profileId = userContext.role == UserRoleType.student ?  userContext.id : Number(id);
 
     // API CALL
-    const profileByUserIdQuery = useProfileByUserIdQuery(Number(id));
+    const profileByUserIdQuery = useProfileByUserIdQuery(profileId);
 
     if (!profileByUserIdQuery.data) return <Loader/>;
 

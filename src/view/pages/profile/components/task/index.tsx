@@ -22,6 +22,9 @@ import {ProfileContext} from '@/contexts/profileContext';
 import {TaskGetItem} from '@/api/task/task';
 import {useStudentListQuery} from '@/api/student/student';
 
+// HOOK
+import {useProfileDetails} from '@/view/pages/profile/hook';
+
 // HOOK IMPORT
 import {useViewStudentListPopup} from '@/view/pages/teacher/components/viewStudentListPopup/hooks';
 import {useViewTaskPopup} from './components/viewTaskPopup/hooks';
@@ -48,6 +51,7 @@ const Task = () => {
     // DECLARE HOOK CALL
     const viewStudentListPopup = useViewStudentListPopup();
     const viewTaskPopup = useViewTaskPopup();
+    const profileDetails = useProfileDetails();
 
     // IF API LOADS, TURN ON LOADER
     if (!studentListQuery.data) return <Loader/>;
@@ -55,10 +59,9 @@ const Task = () => {
     return (
         <Paper className={classes.profileContentLayout}>
             {taskList.length > 0 ? 
-            <>
-                <Box mb={3}>
-                    <AddButton customLabel='Assign task' onClick={() => setOpen(true)} type="button"/>
-                </Box>
+            <Box mb={3}>
+                {!profileDetails.isLoginUserStudent() &&<AddButton customLabel='Assign task' onClick={() => setOpen(true)} type="button"/>}
+                
                 <Box className={classes.grid4}>
                     {taskList.map((item: TaskGetItem) => (
                         <TaskCard 
@@ -72,7 +75,7 @@ const Task = () => {
                         />
                 ))}
                 </Box>
-            </> : (
+            </Box> : (
                 <EmptyScreen
                     title={'No Task assigned'}
                     subtitle='Assign new task by clicking assign task button'
