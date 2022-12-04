@@ -14,10 +14,13 @@ import {NumberField, SelectField} from '@/view/atoms';
 import {AlertPopup, FormRow} from '@/view/molecules';
 
 // API IMPORT
-import {useTaskOptionsQuery} from '@/api/task/task';
+import {useTaskOptionsQuery, TaskAssignPostItem, useAssignTaskToUserMutation} from '@/api/task/task';
 
 // MODAL IMPORT
 import schema from './schema';
+
+// UTILS IMPORT
+import useNotification from '@/utils/notification';
 
 // STYLE IMPORT
 import useStyles from './styles';
@@ -28,11 +31,6 @@ type AssignTaskModalProps = {
     onClose: () => void;
 }
 
-type SubmitForm = {
-    userId: number;
-    name: number;
-}
-
 const AssignTaskModal = ({
     userId,
     isOpen,
@@ -41,16 +39,30 @@ const AssignTaskModal = ({
     // STYLE DECLARE
     const classes = useStyles();
 
+    // DECLARE NOTIFICATION AND NAVIDATE
+    const setNotification = useNotification();
+
     // DECLARE API CALL
     const taskOptionsQuery = useTaskOptionsQuery();
+    const assignTaskToUserMutation = useAssignTaskToUserMutation(userId);
 
-    const {control, handleSubmit, register, formState: { errors }} = useForm<SubmitForm>({
+    const {control, handleSubmit, register, formState: { errors }} = useForm<TaskAssignPostItem>({
         mode: 'onChange',
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (formData: SubmitForm) => {
+    const onSubmit = (formData: TaskAssignPostItem) => {
         console.log("Submit...", formData);
+        assignTaskToUserMutation.mutate(formData, {
+            onSuccess: () => {
+                setNotification.success();
+                onClose();
+            },
+            onError(e: unknown) {
+                setNotification.error();
+                
+            },
+        });
     }
 
     // IF API LOADS, TURN ON LOADER
