@@ -9,6 +9,9 @@
 import {useContext} from 'react';
 import {useStudentListQuery} from '@/api/student/student';
 
+// GENERIC IMPORT 
+import {Loader} from '@/view/atoms';
+
 // CONTEXT IMPORT
 import {ProfileContext} from '@/contexts/profileContext';
 
@@ -32,7 +35,7 @@ const ViewTaskPopup = ({onClose}: ViewTaskPopupProps) => {
     const profileContext = useContext(ProfileContext);
     const taskDetails = profileContext.task[2];
 
-    if (!studentListQuery.data) return null;
+    if (!studentListQuery.data) return <Loader/>;
     return (
         <>
             <ViewTaskForm

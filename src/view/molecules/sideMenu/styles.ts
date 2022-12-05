@@ -31,14 +31,18 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         background: '#025b8b',
     },
     menuLink: {
+        color: palette.background.paper,
         textDecoration: 'none',
         fontSize: 14,
         display: 'flex',
         flexDirection: 'row',
         flex: 1,
         paddingLeft: '8px',
+        '&:active': {
+            color: palette.background.paper,
+        },
         '&:visited': {
-            color: '#fff',
+            color: palette.background.paper,
         }
     },
     menuIcon: {

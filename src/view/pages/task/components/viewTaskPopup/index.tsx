@@ -5,6 +5,9 @@
  * @date - 3th December, 2022
  * 
  */
+// GENERIC IMPORT 
+import {Loader} from '@/view/atoms';
+
 // API IMPORT
 import {useTaskByIdQuery} from '@/api/task/task';
 import {useStudentListQuery} from '@/api/student/student';
@@ -27,7 +30,7 @@ const ViewTaskPopup = ({onClose, id}: ViewTaskPopupProps) => {
     // DECLARE HOOK CALL
     const viewStudentListPopup = useViewStudentListPopup();
 
-    if (!studentListQuery.data || !taskByIdQuery?.data) return null;
+    if (!studentListQuery.data || !taskByIdQuery?.data) return <Loader/>;
     return (
         <>
             <ViewTaskForm

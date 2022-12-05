@@ -5,6 +5,9 @@
  * @date - 3th December, 2022 faizal
  * 
  */
+// GENERIC IMPORT 
+import {Loader} from '@/view/atoms';
+
 // API IMPORT
 import {useRoadmapByIdQuery} from '@/api/roadmap/roadmap';
 import {useStudentOptionsQuery} from '@/api/student/student';
@@ -19,7 +22,7 @@ const AddRoadmapPopup = ({onClose, id}: AddRoadmapPopupProps) => {
     const roadmapByIdQuery = useRoadmapByIdQuery(id);
     const studentOptionsQuery = useStudentOptionsQuery();
 
-    if (!studentOptionsQuery.data || (id && !roadmapByIdQuery?.data)) return null;
+    if (!studentOptionsQuery.data || (id && !roadmapByIdQuery?.data)) return <Loader/>;
 
     return (
         <AddRoadmapForm

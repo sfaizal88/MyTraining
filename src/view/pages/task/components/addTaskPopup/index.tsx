@@ -5,6 +5,9 @@
  * @date - 3th December, 2022 faizal
  * 
  */
+// GENERIC IMPORT 
+import {Loader} from '@/view/atoms';
+
 // API IMPORT
 import {useTaskByIdQuery} from '@/api/task/task';
 import {useStudentOptionsQuery} from '@/api/student/student';
@@ -19,7 +22,7 @@ const AddTaskPopup = ({onClose, id}: AddTaskPopupProps) => {
     const taskByIdQuery = useTaskByIdQuery(id);
     const studentOptionsQuery = useStudentOptionsQuery();
 
-    if (!studentOptionsQuery.data || (id && !taskByIdQuery?.data)) return null;
+    if (!studentOptionsQuery.data || (id && !taskByIdQuery?.data)) return <Loader/>;
 
     return (
         <AddTaskForm
@@ -31,4 +34,3 @@ const AddTaskPopup = ({onClose, id}: AddTaskPopupProps) => {
 };
 
 export default AddTaskPopup;
-  

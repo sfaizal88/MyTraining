@@ -5,6 +5,9 @@
  * @date - 3th December, 2022
  * 
  */
+// GENERIC IMPORT 
+import {Loader} from '@/view/atoms';
+
 // API IMPORT
 import {useMockInterviewByIdQuery} from '@/api/mockInterview/mockInterview';
 
@@ -19,7 +22,7 @@ type ViewMockInterviewPopupProps = {
 const ViewMockInterviewPopup = ({onClose, id}: ViewMockInterviewPopupProps) => {
     const mockInterviewByIdQuery = useMockInterviewByIdQuery(id);
 
-    if (!mockInterviewByIdQuery?.data) return null;
+    if (!mockInterviewByIdQuery?.data) return <Loader/>;
 
     return (
         <ViewMockInterviewForm

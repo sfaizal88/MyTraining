@@ -5,6 +5,9 @@
  * @date - 3th December, 2022
  * 
  */
+// GENERIC IMPORT 
+import {Loader} from '@/view/atoms';
+
 // API IMPORT
 import {useMentorByIdQuery} from '@/api/mentor/mentor';
 import {useStudentOptionsQuery} from '@/api/student/student';
@@ -19,7 +22,7 @@ const AddMentorPopup = ({onClose, id}: AddMentorPopupProps) => {
     const mentorByIdQuery = useMentorByIdQuery(id);
     const studentOptionsQuery = useStudentOptionsQuery();
 
-    if (!studentOptionsQuery.data || (id && !mentorByIdQuery?.data)) return null;
+    if (!studentOptionsQuery.data || (id && !mentorByIdQuery?.data)) return <Loader/>;
 
     return (
         <AddMentorForm

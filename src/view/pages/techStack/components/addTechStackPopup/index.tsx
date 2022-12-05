@@ -5,6 +5,9 @@
  * @date - 3th December, 2022 faizal
  * 
  */
+// GENERIC IMPORT 
+import {Loader} from '@/view/atoms';
+
 // API IMPORT
 import {useTechStackByIdQuery} from '@/api/techStack/techStack';
 import {useStudentOptionsQuery} from '@/api/student/student';
@@ -19,7 +22,7 @@ const AddTechStackPopup = ({onClose, id}: AddTechStackPopupProps) => {
     const techStackByIdQuery = useTechStackByIdQuery(id);
     const studentOptionsQuery = useStudentOptionsQuery();
 
-    if (!studentOptionsQuery.data || (id && !techStackByIdQuery?.data)) return null;
+    if (!studentOptionsQuery.data || (id && !techStackByIdQuery?.data)) return <Loader/>;
 
     return (
         <AddTechStackForm
