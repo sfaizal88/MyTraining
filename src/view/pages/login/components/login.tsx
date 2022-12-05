@@ -2,7 +2,7 @@
  * 
  * Login component
  * @author - NA 
- * @date - 3th September, 2022
+ * @date - 3th December, 2022
  * 
  */
 // GENERIC IMPORT
@@ -14,16 +14,21 @@ import {useForm} from 'react-hook-form';
 
 // ROUTER IMPORT
 import * as PATH from '@/view/routes/constants';
+import background from '@/assets/icons/wave.svg';
 
 // API
-import {UserGetItem} from '@/api/user/user';
+import {UserGetItem, useLoginMutation} from '@/api/user/user';
 
-// GENERIC VIEW IMPORT 
+// GENERIC IMPORT 
 import {Loader, TextField} from '@/view/atoms';
 import {FormRow, FormAction} from '@/view/molecules';
 
 // UTILS IMPORT
 import useNotification from '@/utils/notification';
+import {setStorage} from '@/utils/helper';
+
+// LOGIN IMPORT
+import schema from '../schema';
 
 // STYLE IMPORT
 import useStyles from '../styles';
@@ -37,23 +42,53 @@ const Login = () => {
     const setNotification = useNotification();
     const navigate = useNavigate();
 
+    // DECLARE API CALL
+    const loginMutation = useLoginMutation();
+
+    // REACT HOOK FORM DECLARE
     const {control, handleSubmit, register, formState: { errors }} = useForm<UserGetItem>({
         mode: 'onChange',
-        // resolver: yupResolver(schema(categoryList)),
+        resolver: yupResolver(schema),
     });
 
     // STATE DECLARE
     const [isLoading, setLoading] = useState(false);
 
+    // LOGIN FUNCTION
     const onSubmit = (formData: UserGetItem) => {
-        navigate(PATH.DASHBOARD_PATH);
+        console.log("formData: ", formData);
+        // SHOWING LOADER
+        setLoading(true);
+        // CALLING API WITH LOGIN DETAILS
+        loginMutation.mutate(formData, {
+            // ON SUCCESS RESPONSE
+            onSuccess: (response) => {
+                // IF ERROR COMES
+                if (response.code === -1) {
+                    setNotification.error();
+                } else {
+                    // ON SUCCESS, NAVIGATE TO DASHBOARD SCREEN
+                    navigate(PATH.DASHBOARD_PATH);  
+                    // SETUP TOKEN IN THE BROWSER
+                    setStorage("userObject", JSON.stringify(response));
+                    setStorage("token", response.token);
+                }
+                // TURN OFF LOADER
+                setLoading(false);
+            },
+            onError(e: unknown) {
+                // TURN OFF LOADER
+                setLoading(false);
+                setNotification.error(e);
+            },
+        });  
     };
 
     // IF API LOADS, TURN ON LOADER
     if (isLoading) return <Loader/>;
 
     return (
-    <Box className={classes.pageContainer}>
+    <Box className={classes.pageContainer} style={{ background: `url(${background}) no-repeat 0 100%` }}>
         <Box className={classes.loginContainer}>
             <FormRow label="Username" isRow spacing={2}>
                 <TextField

@@ -6,7 +6,7 @@
  * 
  */
 // UTILS IMPORT
-import {TaskStatusType, DurationType, MockInterviewStatusType} from './enum';
+import {TaskStatusType, DurationType, MockInterviewStatusType, UserRoleType} from './enum';
 
 // GENERIC CONSTANT
 export const serverDisplayDateFormat = "DD/MM/YYYY"; // Old "Do MMM, YYYY"
@@ -38,4 +38,10 @@ export const durationDisplayMap: Record<string, string> = {
 export const mockInterviewStatusDisplayMap: Record<string, string> = {
     [MockInterviewStatusType.pending]: 'Pending',
     [MockInterviewStatusType.completed]: 'Completed',
+}
+
+export const userRoleDisplayMap: Record<string, string> = {
+    [UserRoleType.admin]: 'Admin',
+    [UserRoleType.mentor]: 'Mentor',
+    [UserRoleType.student]: 'Student',
 }

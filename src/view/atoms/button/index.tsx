@@ -31,9 +31,12 @@ import useStyles from './styles';
     return (
       <MuiButton
         {...props}
-        classes={{
-          root: clsx(isSecondary ? classes.secondaryButton : classes.primaryButton),
-          text: classes.buttonLabel
+        className={clsx(isSecondary ? classes.secondaryButton : classes.primaryButton)}
+        sx={{
+          ':hover': {
+            bgcolor: isSecondary ? 'background.paper' : '#025b8b',
+            color: 'background.paper',
+          },
         }}
       >
         {children}

@@ -56,7 +56,6 @@ const AddMockInterviewForm = ({onClose, data}: AddMockInterviewFormProps) => {
   const interviewerId = userContext.id;
 
   const onSubmit = (formData: MockInterviewGetItem) => {
-    console.log("formData: ", formData);
     const postResponse = {
       onSuccess: () => {
         setNotification.success();

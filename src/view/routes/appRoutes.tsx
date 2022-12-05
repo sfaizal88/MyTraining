@@ -30,16 +30,20 @@ import ProfilePage from '@/view/pages/profile';
 // CONTEXT IMPORT
 import {UserContext} from '@/contexts/userContext';
 
-// MOCK DATA FATER USER LOGIN
-import { mockData as loginMockData } from '@/view/pages/login/mock/details';
+// UTILS IMPORT
+import {getStorage} from '@/utils/helper';
 
 const AppRoutes = () => {
     // STYLE DECLARE
     const classes = useStyles();
 
+    // DECLARE LOCAL VAR
+    const userInitialData = JSON.parse(getStorage("userObject") || "");
+    console.log("userInitialData: ", userInitialData);
+    
     // RENDER HTML
     return (
-        <UserContext.Provider value={loginMockData}>
+        <UserContext.Provider value={userInitialData}>
             <Box className={classes.sideMenu}>
                 <SideMenu/>
             </Box>

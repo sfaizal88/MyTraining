@@ -13,6 +13,8 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
     loginContainer: {
         border: `1px solid ${palette.primary.light}`,
         borderRadius: spacing(1),
+        background: palette.background.paper,
+        boxShadow: '1px 1px 2px #d4d4d4',
         padding: spacing(3, 4, 5, 4),
         width: '300px'
     }
