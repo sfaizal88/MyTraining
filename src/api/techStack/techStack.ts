@@ -26,6 +26,7 @@ export type TechDetailsGetItem = {
     title: string;
     tutorial_url: string;
     video_url: string;
+    isSelected?: boolean;
 }
 
 export type TechStackGetItem = {
@@ -37,11 +38,28 @@ export type TechStackGetItem = {
     students: number[];
 }
 
+export type TechStackGet = {
+    tech_stack: TechStackGetItem[]
+}
+
+export type TechStackAssignPostItem = {
+    userId: number;
+    name: number;
+}
+
 // USE TO FETCH ALL TECH STACK
 export function useTechStackListQuery() {
     return useQuery(queryKeys.techStackList, getTechStackList, {
         placeholderData: [],
         select: (data) => techStackListMockData,
+    });
+}
+
+// USE TO FETCH ALL TECH STACK OPTIONS
+export function useTechStackOptionsQuery() {
+    return useQuery(queryKeys.techStackList, getTechStackList, {
+        placeholderData: [],
+        select: (data) => techStackListMockData.map(item => ({value: item.id, label: item.title})),
     });
 }
 
@@ -97,6 +115,25 @@ export function useUpdateTechStackMutation() {
 const updateTechStack = (data: TechStackGetItem) => {
     return CallDataApi({
         url: `${web_url}transaction/single/updateTransaction.php`,
+        method: 'POST',
+        data: JSON.stringify({...data /* , token: getStorage('token') */})
+    });
+}
+
+// USE TO ASSIGN TECH STACK TO USER
+export function useAssignTechStackToUserMutation(userId: number) {
+    const queryClient = useQueryClient();
+    return useMutation(assignTechStackToUser, {
+        onSuccess() {
+        queryClient.invalidateQueries(queryKeys.techStackById(userId));
+        },
+    });
+}
+
+// ASSIGN TECH STACK TO USER API DETAILS
+const assignTechStackToUser = (data: TechStackAssignPostItem) => {
+    return CallDataApi({
+        url: `${web_url}transaction/single/createTransaction.php`,
         method: 'POST',
         data: JSON.stringify({...data /* , token: getStorage('token') */})
     });

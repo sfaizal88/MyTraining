@@ -28,7 +28,7 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         flex: 1,
         fontSize: 13,
         color: '#707070',
-        margin: spacing(1, 0),
+        margin: spacing(1, 0, 2, 0),
     },
     pageNotFound: {
         display: 'flex',

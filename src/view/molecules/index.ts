@@ -20,3 +20,5 @@ export {default as PopupFooter} from './popup/popupFooter';
 export {default as TabContainer} from './tabs';
 export {default as Timeline} from './timeline';
 export {default as SocialMedia} from './socialMedia';
+export {default as TitleLayout} from './titleLayout';
+export {default as ChipTech} from './chipTech';

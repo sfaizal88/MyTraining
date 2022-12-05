@@ -8,7 +8,12 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         justifyContent: 'flex-start',
         alignItems: 'center',
         fontSize: 14,
-        fontWeight: 600,
+        fontWeight: 400,
+    },
+    checkboxRoot: {
+        width: '14px',
+        height: '14px',
+        marginRight: spacing(0.5),
     },
   }));
   

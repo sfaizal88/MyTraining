@@ -8,7 +8,6 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
         flex: 1,
     },
     profileContentLayout: {
-        padding: spacing(3, 4, 4, 4),
         flex: 1
     },
     profileHeader: {
@@ -44,6 +43,28 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
         columnGap: spacing(2),
         rowGap: spacing(2),
     },
+    profileContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1,
+        position: 'relative',
+        height: '100%'
+    },
+    footer: {
+        position: 'absolute',
+        bottom: 0,
+        background: palette.background.paper,
+        width: '100%',
+        boxSizing: 'border-box',
+        left: 0,
+        padding: spacing(2, 3),
+        borderTop: `1px solid ${palette.primary.light}`,
+        height: '70px',
+    },
+    content: {
+        flex: 1,
+        padding: spacing(3, 4, 4, 4),
+    }
 }));
   
 export default useStyles;

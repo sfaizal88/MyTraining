@@ -18,9 +18,11 @@ export function useProfileDetails() {
     // CONTEXT DECALRE
     const userContext = useContext(UserContext);
 
-    const isLoginUserStudent = () => userContext.role === UserRoleType.student;
+    const isLoginUserStudent = () => userContext.role !== UserRoleType.student;
+    const isLoginUserAdmin = () => userContext.role === UserRoleType.admin;
 
     return {
-        isLoginUserStudent
+        isLoginUserStudent,
+        isLoginUserAdmin,
     };
 }

@@ -11,6 +11,9 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         fontWeight: 600,
         cursor: 'pointer'
     },
+    hide: {
+        display: 'none',
+    }
   }));
   
   export default useStyles;

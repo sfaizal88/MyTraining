@@ -52,21 +52,34 @@ const CheckboxField = ({
         defaultValue={state}
         render={() => (
             <Box display="flex" alignItems="center">
-            <Checkbox
-                {...register(name)}
-                style={{padding: 0}}
-                id={id || name}
-                color="primary"
-                checked={state}
-                onChange={(e) => {
-                    changeEffect?.(e.target.checked);
-                    setValue(name, e.target.checked);
-                    setState(e.target.checked)
-                }}
-                disabled={disabled}
-                indeterminate={indeterminate}
-            />
-            <Box ml={1} className={classes.label}>{children}</Box>
+                <Checkbox
+                    {...register(name)}
+                    style={{padding: 0}}
+                    id={id || name}
+                    color="primary"
+                    checked={state}
+                    classes={{
+                        root: classes.checkboxRoot
+                    }}
+                    sx={{
+                        color: "#dfe6e9",
+                        background: '#fff',
+                        borderRadius: 0,
+                        '&.Mui-checked': {
+                            color: "#027bb3",
+                         },
+                       }}
+                    onChange={(e) => {
+                        console.log("name: ", name);
+                        console.log("e.target.checked: ", e.target.checked);
+                        changeEffect?.(e.target.checked);
+                        setValue(name, e.target.checked);
+                        setState(e.target.checked)
+                    }}
+                    disabled={disabled}
+                    indeterminate={indeterminate}
+                />
+                <Box ml={1} className={classes.label}>{children}</Box>
             </Box>
         )}
         />

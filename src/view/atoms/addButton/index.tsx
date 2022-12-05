@@ -6,6 +6,7 @@
  * 
  */
 // GENERIC IMPORT
+import clsx from 'clsx';
 import {Box} from '@mui/material';
 import {ReactElement} from 'react';
 import {AddCircleOutlineOutlined} from '@mui/icons-material';
@@ -21,7 +22,8 @@ export type AddButtonProps = {
   customLabel?: string;
   icon?: ReactElement | null;
   onClick: () => void;
-  type?: 'link' | 'button'
+  type?: 'link' | 'button',
+  hide?: boolean;
 }
 
 // ADD BUTTON COMPONENT DECLARE
@@ -30,6 +32,7 @@ const AddButton = ({
   customLabel,
   type = "link",
   icon = <AddCircleOutlineOutlined style={{fontSize: 24, marginRight: '8px'}}/>,
+  hide,
   onClick,
 }: AddButtonProps) => {
   // STYLE DECLARE
@@ -37,10 +40,10 @@ const AddButton = ({
   return (
     <>
       {type === 'link' ? 
-        <Box className={classes.root} onClick={onClick}>
+        <Box className={clsx(classes.root, hide && classes.hide)} onClick={onClick}>
           {icon}  {customLabel || `Add ${label}`}
         </Box> : 
-        <Button  variant="contained" onClick={onClick}>
+        <Button className={clsx(hide && classes.hide)} variant="contained" onClick={onClick}>
           {icon}  {customLabel || `Add ${label}`}
         </Button>
       }

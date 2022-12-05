@@ -11,8 +11,7 @@ import {useState} from 'react';
 import {Box, Avatar, Chip} from '@mui/material';
 
 // GENERIC COMPONENT IMPORT 
-import {ChipTech} from '@/view/atoms';
-import {FormAction, FormRow, PopupFooter} from '@/view/molecules';
+import {FormAction, FormRow, PopupFooter, ChipTech} from '@/view/molecules';
 
 // API
 import type {TechStackGetItem} from '@/api/techStack/techStack';
@@ -60,14 +59,14 @@ const ViewTechStackForm = ({onClose, data, studentOptions}: ViewTechStackFormPro
           )}
       </FormRow>
       <FormRow label="topics" isViewOnly>
-        {data?.tech_details.map((item, index) =>
-            <Box key={item.id} mr={1} mb={1} display='inline-block'>
-              <ChipTech
-                label={item.title}
-                videoLink={item.video_url}
-                tutorialLink={item.tutorial_url}
-              />
-            </Box>
+        {data?.tech_details.map((item) =>
+          <ChipTech
+            key={item.id}
+            name={item.title}
+            label={item.title}
+            videoLink={item.video_url}
+            tutorialLink={item.tutorial_url}
+          />
         )}
       </FormRow>
       <PopupFooter>

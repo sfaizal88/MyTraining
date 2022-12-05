@@ -51,7 +51,7 @@ const TaskDetails = ({
   return (
       <>
         <Typography className={classes.viewTitle} variant='h6'>
-          {data.title} - 
+          {data.title}&nbsp;-&nbsp;
           <Box component={'span'} className={classes.viewSubtitle} mr={1}>{data.type}</Box>
           {showStatus && <Badge
               status={data.status.toString()}

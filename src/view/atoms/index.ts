@@ -10,5 +10,5 @@ export {default as AddButton} from './addButton';
 export {default as CheckboxField} from './checkbox';
 export {default as DateField} from './dateField';
 export {default as Badge} from './badge';
-export {default as ChipTech} from './chipTech';
 export {default as SelectField} from './selectField';
+export {default as IconField} from './iconField';

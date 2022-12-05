@@ -98,8 +98,8 @@ const TaskCard = ({
                 onStudentList(props.id);
               }}>
               <AvatarGroup max={4}>
-                {props.students.map(item => 
-                  <Avatar alt={studentMap[item].name} sx={{ width: 24, height: 24, fontSize: 12, fontWeight: 600, bgcolor: '#027bb3'}}>{studentMap[item].name[0]}</Avatar>
+                {props.students.map((item, index) => 
+                  <Avatar key={item} alt={studentMap[item].name} sx={{ width: 24, height: 24, fontSize: 12, fontWeight: 600, bgcolor: '#027bb3'}}>{studentMap[item].name[0]}</Avatar>
                 )}
               </AvatarGroup>
             </Box>

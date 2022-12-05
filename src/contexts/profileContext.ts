@@ -14,6 +14,7 @@ import {ProfileType} from '@/models/profile';
 // API
 import type {RoadmapGetItem} from '@/api/roadmap/roadmap';
 import type {TaskGetItem} from '@/api/task/task';
+import type {TechStackGetItem} from '@/api/techStack/techStack';
 
 // CREATING CONTEXT WITH INITIAL VALUES
 export const ProfileContext = createContext<ProfileType>({
@@ -23,5 +24,6 @@ export const ProfileContext = createContext<ProfileType>({
     contact_no: "",
     email: "",
     task: [] as TaskGetItem[],
-    roadmap: {} as RoadmapGetItem
+    roadmap: {} as RoadmapGetItem,
+    tech_stack: [] as TechStackGetItem[],
 });

@@ -75,5 +75,277 @@ export const mockData = {
                 }
             ],
             students: [1, 2]
+        },
+    tech_stack: [
+        {
+            id: 1,
+            title: "HTML Language",
+            tutorial_url: 'https://www.w3schools.com/html/default.asp',
+            video_url: 'https://www.youtube.com/watch?v=aPpK3Tb3wjI&list=PLpYn3LR7eQI2trAr1z1lmvYGAQfsbllY5',
+            tech_details: [
+                {
+                    id: 1,
+                    title: 'Heading tag',
+                    tutorial_url: 'https://www.w3schools.com/html/html_headings.asp',
+                    video_url: 'https://www.youtube.com/watch?v=aPpK3Tb3wjI&list=PLpYn3LR7eQI2trAr1z1lmvYGAQfsbllY5&index=8',
+                },
+                {
+                    id: 2,
+                    title: 'Paragraphs tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_p.asp',
+                    video_url: 'https://www.youtube.com/watch?v=aPpK3Tb3wjI&list=PLpYn3LR7eQI2trAr1z1lmvYGAQfsbllY5&index=8',
+                },
+                {
+                    id: 3,
+                    title: 'Anchor tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_a.asp',
+                    video_url: '',
+                },
+                {
+                    id: 4,
+                    title: 'Images tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 5,
+                    title: 'Style tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 6,
+                    title: 'Fonts tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 7,
+                    title: 'Bold tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 8,
+                    title: 'Italic tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 9,
+                    title: 'Strong tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 10,
+                    title: 'Small tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 11,
+                    title: 'Div tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 12,
+                    title: 'Span tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 13,
+                    title: 'Blockquote tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 14,
+                    title: 'Comments info',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 15,
+                    title: 'Title tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 16,
+                    title: 'Head tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 17,
+                    title: 'Html tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 18,
+                    title: 'Body tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 19,
+                    title: 'Favicon',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 20,
+                    title: 'Ordered list tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 21,
+                    title: 'Unordered list tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 22,
+                    title: 'Class and Id tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 23,
+                    title: 'IFrame tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 24,
+                    title: 'Input tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 25,
+                    title: 'Select tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 26,
+                    title: 'Textarea tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 27,
+                    title: 'Radio tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 28,
+                    title: 'Checkbox tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 29,
+                    title: 'HR tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 30,
+                    title: 'Breakling tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 31,
+                    title: 'Form tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 32,
+                    title: 'Video tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 33,
+                    title: 'Audio tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 34,
+                    title: 'Link tag css',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 35,
+                    title: 'Script tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 36,
+                    title: 'Center tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 37,
+                    title: 'No script tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                },
+                {
+                    id: 38,
+                    title: 'Map tag',
+                    tutorial_url: 'https://www.w3schools.com/tags/tag_img.asp',
+                    video_url: '',
+                }
+            ],
+            students: [1, 2]
+        },
+        {
+            id: 2,
+            title: "CSS",
+            tutorial_url: 'https://www.w3schools.com/css/default.asp',
+            video_url: '',
+            tech_details: [
+                {
+                    id: 1,
+                    title: 'Syntax',
+                    tutorial_url: 'https://www.w3schools.com/css/css_syntax.asp',
+                    video_url: '',
+                },
+                {
+                    id: 2,
+                    title: 'Selectors',
+                    tutorial_url: 'https://www.w3schools.com/css/css_selectors.asp',
+                    video_url: '',
+                },
+                {
+                    id: 3,
+                    title: 'Comments',
+                    tutorial_url: 'https://www.w3schools.com/css/css_comments.asp',
+                    video_url: '',
+                },
+                {
+                    id: 4,
+                    title: 'Colors',
+                    tutorial_url: 'https://www.w3schools.com/css/css_colors.asp',
+                    video_url: '',
+                }
+            ],
+            students: [1, 2, 3, 5]
         }
+    ]
 }

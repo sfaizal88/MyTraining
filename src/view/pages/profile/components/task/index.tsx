@@ -59,27 +59,34 @@ const Task = () => {
     return (
         <Paper className={classes.profileContentLayout}>
             {taskList.length > 0 ? 
-            <Box mb={3}>
-                {!profileDetails.isLoginUserStudent() &&<AddButton customLabel='Assign task' onClick={() => setOpen(true)} type="button"/>}
-                
-                <Box className={classes.grid4}>
-                    {taskList.map((item: TaskGetItem) => (
-                        <TaskCard 
-                            {...item}
-                            key={item.id}
-                            onStudentList={viewStudentListPopup.show}
-                            studentOptions={studentListQuery.data}
-                            showStatus
-                            showView
-                            onView={viewTaskPopup.show}
-                        />
-                ))}
+            <Box mb={3} className={classes.profileContainer}>
+                <Box className={classes.content}>
+                    <AddButton 
+                        customLabel='Assign task' 
+                        onClick={() => setOpen(true)} 
+                        type="button"
+                        hide={profileDetails.isLoginUserStudent()}
+                    />
+                    
+                    <Box className={classes.grid4} mt={3}>
+                        {taskList.map((item: TaskGetItem) => (
+                            <TaskCard 
+                                {...item}
+                                key={item.id}
+                                onStudentList={viewStudentListPopup.show}
+                                studentOptions={studentListQuery.data}
+                                showStatus
+                                showView
+                                onView={viewTaskPopup.show}
+                            />
+                    ))}
+                    </Box>
                 </Box>
             </Box> : (
                 <EmptyScreen
                     title={'No Task assigned'}
-                    subtitle='Assign new task by clicking assign task button'
-                    button={<AddButton customLabel='Assign task' onClick={() => setOpen(true)} type="button"/>}
+                    subtitle={!profileDetails.isLoginUserStudent() ? 'Assign new task by clicking assign task button' : ''}
+                    button={<AddButton customLabel='Assign task' onClick={() => setOpen(true)} type="button" hide={profileDetails.isLoginUserStudent()}/>}
                     icon={<PersonOffOutlined style={{fontSize: 46}}/>}
                 />
             )}
