@@ -1,4 +1,3 @@
-
 /**
  * 
  * View student component
@@ -9,18 +8,26 @@
 // GENERIC IMPORT 
 import {Loader} from '@/view/atoms';
 
+// API IMPORT
 import {useStudentByIdQuery} from '@/api/student/student';
+
+// STUDENT IMPORT
 import ViewStudentForm from './form/viewStudentForm';
   
+// PROPS TYPE
 type ViewStudentPopupProps = {
     onClose: () => void;
-    studentId?: number | null;
+    id?: number | null;
 };
 
-const ViewStudentPopup = ({onClose, studentId}: ViewStudentPopupProps) => {
-    const studentByIdQuery = useStudentByIdQuery(studentId);
+// DEFAULT COMPONENT
+const ViewStudentPopup = ({onClose, id}: ViewStudentPopupProps) => {
 
-    if ((studentId && !studentByIdQuery?.data)) return <Loader/>;
+    // DECLARE API
+    const studentByIdQuery = useStudentByIdQuery(id);
+
+    // LOADER CHECKER
+    if (!studentByIdQuery?.data) return <Loader/>;
 
     return (
         <ViewStudentForm

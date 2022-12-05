@@ -7,10 +7,10 @@
  */
 // GENERIC IMPORT
 import moment from 'moment';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Controller} from 'react-hook-form';
 import {KeyboardDatePicker} from '@material-ui/pickers';
-import {serverDateTimeFormat} from '@/utils/constants';
+import {formatDateDisplay} from '@/utils/helper';
 
 // STYLE IMPORT
 import useStyles from './styles';
@@ -19,10 +19,11 @@ type DateFieldProps = {
     register: any,
     control: any,
     errors: any,
+    setValue?: any,
     id?: string;
     name: string;
     placeholder?: string;
-    defaultValue?: string | number | null | boolean;
+    defaultValue?: string;
     isDisabled?: boolean;
     disableFuture?: boolean;
     disablePast?: boolean;
@@ -34,6 +35,7 @@ const DateField = ({
     name,
     placeholder,
     defaultValue,
+    setValue,
     control,
     errors,
     register,
@@ -43,7 +45,11 @@ const DateField = ({
 }: DateFieldProps) => {
     // STYLE DECLARE
     const classes = useStyles();
-    const [selectedDate, handleDateChange] = useState(defaultValue || '');
+    const [selectedDate, handleDateChange] = useState(defaultValue);
+
+    useEffect(() => {
+        setValue(name, selectedDate)
+    }, [selectedDate]);
 
     return (
         <Controller

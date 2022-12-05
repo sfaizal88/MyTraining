@@ -36,7 +36,7 @@ const StudentListItem = ({
     <Box onClick={() => navigate(generatePath(PATH.STUDENT_REPORT_PATH, {id: props.id.toString()}))}>
       <TableRow>
         <Grid item xs={widths[0]}><Chip avatar={<Avatar>{props.name[0]}</Avatar>} label={props.name} variant="outlined"/></Grid>
-        <Grid item xs={widths[1]}>{props.role}</Grid>
+        <Grid item xs={widths[1]}></Grid>
         <Grid item xs={widths[2]}>{props.contact_no}</Grid>
         <Grid item xs={widths[3]}>{props.email}</Grid>
       </TableRow>

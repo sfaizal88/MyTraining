@@ -1,6 +1,7 @@
 html, body, #root {
   height: 100vh;
 }
+/* default font size 13 */
 body {
   padding: 0;
   margin: 0;
@@ -10,6 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #313131;
+  font-size: 14px;
 }
 
 .MuiButtonBase-root.MuiButton-root {

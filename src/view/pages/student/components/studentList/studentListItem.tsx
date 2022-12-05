@@ -1,14 +1,12 @@
 /**
  * 
- * Customer list item component
+ * Student list item component
  * @author - NA 
- * @date - 3th September, 2022
+ * @date - 3th December, 2022
  * 
  */
 // GENERIC IMPORT
 import {Grid, GridSize, Avatar, Chip, Box} from '@mui/material';
-import {Dispatch, SetStateAction} from 'react';
-import {generatePath, Link} from 'react-router-dom';
 
 // API
 import type {StudentGetItem} from '@/api/student/student';
@@ -16,8 +14,8 @@ import type {StudentGetItem} from '@/api/student/student';
 // GENERIC COMPONENT IMPORT 
 import {TableRow, Options} from '@/view/molecules';
 
-// STYLE IMPORT 
-import useStyles from '../../styles';
+// UTILS IMPORT 
+import {formatDateDisplay} from '@/utils/helper';
 
 // COMPONENT PROPS
 type StudentListItemProps = StudentGetItem & {
@@ -27,6 +25,7 @@ type StudentListItemProps = StudentGetItem & {
   onView: (studentId: number | null) => void;
 };
 
+// DEFAULT COMPONENT
 const StudentListItem = ({
   widths,
   onEdit,
@@ -34,15 +33,13 @@ const StudentListItem = ({
   onView,
   ...props
 }: StudentListItemProps) => {
-  // DECLARE STYLE
-  const classes = useStyles();
 
   // RENDER HTML
   return (
     <Box onClick={() => onView(props.id)}>
       <TableRow>
         <Grid item xs={widths[0]}><Chip avatar={<Avatar>{props.name[0]}</Avatar>} label={props.name} variant="outlined"/></Grid>
-        <Grid item xs={widths[1]}>{props.role}</Grid>
+        <Grid item xs={widths[1]}>{formatDateDisplay(props.dob)}</Grid>
         <Grid item xs={widths[2]}>{props.contact_no}</Grid>
         <Grid item xs={widths[3]}>{props.email}</Grid>
         <Grid item xs={widths[4]}>

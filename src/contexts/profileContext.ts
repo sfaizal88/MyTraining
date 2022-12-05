@@ -21,8 +21,8 @@ import type {MockInterviewGetItem} from '@/api/mockInterview/mockInterview';
 export const ProfileContext = createContext<ProfileType>({
     id: 0,
     name: "",
-    role: "",
     contact_no: "",
+    dob: "",
     email: "",
     task: [] as TaskGetItem[],
     roadmap: {} as RoadmapGetItem,

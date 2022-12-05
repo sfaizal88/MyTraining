@@ -1,17 +1,17 @@
 /**
  * 
- * Customer list item component
+ * Add student component
  * @author - NA 
- * @date - 3th September, 2022
+ * @date - 3th December, 2022
  * 
  */
 // GENERIC IMPORT
 import {yupResolver} from '@hookform/resolvers/yup';
-import {Box} from '@mui/material';
+import {Box, Grid} from '@mui/material';
 import {useForm} from 'react-hook-form';
 
 // GENERIC COMPONENT IMPORT 
-import {NumberField, TextField} from '@/view/atoms';
+import {NumberField, TextField, DateField} from '@/view/atoms';
 import {FormAction, FormRow, PopupFooter} from '@/view/molecules';
 
 // API
@@ -22,96 +22,147 @@ import useNotification from '@/utils/notification';
 import schema from '../schema';
 import useStyles from '../styles';
 
+// PROPS TYPE
 type AddStudentFormProps = {
   onClose: () => void;
   data?: StudentGetItem;
 };
 
+// DEFAULT COMPONENT
 const AddStudentForm = ({onClose, data}: AddStudentFormProps) => {
-    // DECLARE STYLE
-    const classes = useStyles();
+  // DECLARE STYLE
+  const classes = useStyles();
 
-    // DECLARE NOTIFICATION AND NAVIDATE
-    const setNotification = useNotification();
+  // DECLARE NOTIFICATION AND NAVIDATE
+  const setNotification = useNotification();
 
-    // DECLARE API CALL
-    const createStudentMutation = useCreateStudentMutation();
-    const updateStudentMutation = useUpdateStudentMutation();
+  // DECLARE API CALL
+  const createStudentMutation = useCreateStudentMutation();
+  const updateStudentMutation = useUpdateStudentMutation(data?.id);
 
-    const {control, handleSubmit, register, formState: { errors }} = useForm<StudentGetItem>({
-        defaultValues: data,
-        mode: 'onChange',
-        resolver: yupResolver(schema),
-    });
+  // REACT HOOK FORM DECLARE
+  const {control, handleSubmit, register, formState: { errors }, setValue} = useForm<StudentGetItem>({
+      defaultValues: data,
+      mode: 'onChange',
+      resolver: yupResolver(schema),
+  });
 
+    // LOGIN FUNCTION
   const onSubmit = (formData: StudentGetItem) => {
+    console.log("Add student form data: ", formData);
+    // FORMING POST RESPONSE
     const postResponse = {
-      onSuccess: () => {
-        setNotification.success();
+      onSuccess: (response: any) => {
+        // IF ERROR COMES
+        if (response.code === -1) {
+          setNotification.error();
+        } else {
+          setNotification.success();
+        }
         onClose();
       },
       onError(e: unknown) {
-        setNotification.error();
+        setNotification.error(e);
         
       },
     };
+    // CHECKING WHETHER ITS TO CALL ADD OR UPDATE API
     if (formData.id) {
-      createStudentMutation.mutate(formData, postResponse);
-    } else {
+      // CALLING UPDATE API
       updateStudentMutation.mutate(formData, postResponse);
+    } else {
+      // CALLING CREATE API
+      createStudentMutation.mutate(formData, postResponse);
     }
   };
 
   return (
     <Box className={classes.root}>
       <form>
-        <FormRow label="student name" required spacing={1.5}>
-            <TextField
-            register={register}
-            id="name"
-            name="name"
-            control={control}
-            placeholder="Student Name"
-            errors={errors?.name}
-            />
-        </FormRow>
-        <FormRow label="role" required spacing={1.5}>
-            <TextField
-            register={register}
-            id="role"
-            name="role"
-            control={control}
-            placeholder="Student Role"
-            errors={errors?.role}
-            />
-        </FormRow>
-        <FormRow label="contact no" required spacing={1.5}>
-            <TextField
-            register={register}
-            id="contact_no"
-            name="contact_no"
-            control={control}
-            placeholder="Student contact no"
-            errors={errors?.role}
-            />
-        </FormRow>
-        <FormRow label="email" required spacing={1.5}>
-            <TextField
-            register={register}
-            id="email"
-            name="email"
-            control={control}
-            placeholder="Student email"
-            errors={errors?.email}
-            />
-        </FormRow>
+        <Grid container columnSpacing={2} rowSpacing={0.5}>
+          <Grid item xs={6}>
+            <FormRow label="full name" required isRow>
+                <TextField
+                register={register}
+                id="name"
+                name="name"
+                control={control}
+                placeholder="Full Name"
+                errors={errors?.name}
+                />
+            </FormRow>
+          </Grid>
+          <Grid item xs={6}>
+            <FormRow label="date of birth" required isRow>
+                <DateField
+                  register={register}
+                  setValue={setValue}
+                  id="dob"
+                  name="dob"
+                  control={control}
+                  placeholder="Date of birth"
+                  disablePast={false}
+                  errors={errors?.dob}
+                  defaultValue={"04/12/2022"}
+                />
+            </FormRow>
+          </Grid>
+          <Grid item xs={6}>
+            <FormRow label="email" required isRow>
+                <TextField
+                register={register}
+                id="email"
+                name="email"
+                control={control}
+                placeholder="Email"
+                errors={errors?.email}
+                />
+            </FormRow>
+          </Grid>
+          <Grid item xs={6}>
+            <FormRow label="contact no" required isRow>
+                <TextField
+                register={register}
+                id="contact_no"
+                name="contact_no"
+                control={control}
+                placeholder="Contact no"
+                errors={errors?.contact_no}
+                />
+            </FormRow>
+          </Grid>
+          <Grid item xs={6}>
+            <FormRow label="Linked URL" isRow>
+                <TextField
+                register={register}
+                id="linked_link"
+                name="linked_link"
+                control={control}
+                placeholder="Linked URL"
+                errors={errors?.linked_link}
+                />
+            </FormRow>
+          </Grid>
+          <Grid item xs={6}>
+            <FormRow label="Github URL" isRow>
+                <TextField
+                register={register}
+                id="github_link"
+                name="github_link"
+                control={control}
+                placeholder="Github URL"
+                errors={errors?.github_link}
+                />
+            </FormRow>
+          </Grid>
+        </Grid>
         <NumberField
-        id="id"
-        name="id"
-        control={control}
-        register={register}
-        hidden
-        defaultValue={data?.id}
+          id="id"
+          name="id"
+          control={control}
+          register={register}
+          hidden
+          defaultValue={data?.id}
         />
       </form>
       <PopupFooter>

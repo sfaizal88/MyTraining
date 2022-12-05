@@ -45,3 +45,13 @@ export const userRoleDisplayMap: Record<string, string> = {
     [UserRoleType.mentor]: 'Mentor',
     [UserRoleType.student]: 'Student',
 }
+
+export const validationRegex = {
+    WEB_URL: /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+}
+
+export const fieldLength = {
+    NAME: 200,
+    EMAIL: 200,
+    CONTACT_NO: 25,
+}

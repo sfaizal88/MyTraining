@@ -24,7 +24,7 @@ const StudentListTitles = ({widths}: StudentListTitlesProps) => (
         <Title title="Student Name" />
       </Grid>
       <Grid item xs={widths[1]}>
-        <Title title="Role" />
+        <Title title="Date of Birth" />
       </Grid>
       <Grid item xs={widths[2]}>
         <Title title="Contact No" />

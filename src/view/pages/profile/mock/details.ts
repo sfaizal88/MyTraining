@@ -5,6 +5,7 @@ export const mockData = {
     name: "Mohamed Raslan",
     role: "Front end developer",
     contact_no: "+91-9840404382",
+    dob: "22/10/1988",
     email: "sfaizal@gmail.com",
     task: [
         {

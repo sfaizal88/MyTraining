@@ -1,10 +1,10 @@
 import { makeStyles } from '@mui/styles';
 import { Theme } from "@mui/system";
 
-const useStyles = makeStyles(({palette, spacing}: Theme) => ({
+const useStyles = makeStyles(({spacing}: Theme) => ({
     alertTitle: {
         fontSize: 17,
-        fontWeight: 500,
+        fontWeight: 600,
         marginBottom: spacing(0.5),
     },
     alertContent: {
@@ -15,6 +15,20 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
     },
     titleContainer: {
         padding:  spacing(1.5, 2)
+    },
+    confirmContent: {
+        textAlign: 'center',
+    },
+    bodyTitle: {
+        fontSize: 15,
+        fontWeight: 500,
+        padding: spacing(2, 0, 1, 0)
+    },
+    bodyDetails: {
+        fontSize: 13,
+        fontWeight: 500,
+        color: '#707070',
+        padding: spacing(0, 5, 2, 5)
     }
   }));
   

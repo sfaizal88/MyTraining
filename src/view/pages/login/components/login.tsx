@@ -56,7 +56,7 @@ const Login = () => {
 
     // LOGIN FUNCTION
     const onSubmit = (formData: UserGetItem) => {
-        console.log("formData: ", formData);
+        console.log("Login formData: ", formData);
         // SHOWING LOADER
         setLoading(true);
         // CALLING API WITH LOGIN DETAILS

@@ -49,7 +49,7 @@ const ViewMentorForm = ({onClose, data, studentOptions}: ViewMentorFormProps) =>
           <Grid item xs={3}>
             <Chip avatar={<Avatar>{studentMap[item].name[0]}</Avatar>} label={studentMap[item].name} variant="outlined"/>
           </Grid>
-          <Grid item xs={3}>{studentMap[item].role}</Grid>
+          <Grid item xs={3}></Grid>
           <Grid item xs={3}>{studentMap[item].contact_no}</Grid>
           <Grid item xs={3}>{studentMap[item].email}</Grid>
         </TableRow>

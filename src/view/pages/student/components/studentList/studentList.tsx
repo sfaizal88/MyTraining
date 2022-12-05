@@ -2,12 +2,11 @@
  * 
  * Student list component
  * @author - NA 
- * @date - 3th September, 2022
+ * @date - 3th December, 2022
  * 
  */
 // GENERIC IMPORT
 import { Box, GridSize } from '@mui/material';
-import {useNavigate} from 'react-router-dom';
 import {PersonOffOutlined} from '@mui/icons-material';
 
 // GENERIC VIEW IMPORT 
@@ -23,18 +22,16 @@ import StudentListItem from './studentListItem';
 import {useDeleteStudentPopup} from './hooks';
 import {useViewStudentPopup} from '../viewStudentPopup/hooks';
 
-// UTILS IMPORT
-import useNotification from '@/utils/notification';
-
 // STYLE IMPORT
 import useStyles from '../../styles';
 
+// PROPS TYPE
 type StudentListProps = {
     onEdit: (studentId: number | null) => void;
 }
 
 // TITLES COMPONENT PROPS
-const widths: (boolean | GridSize)[] = [3, 3, 2, 3, 1];
+const widths: (boolean | GridSize)[] = [3, 3, 3, 2, 1];
 
 // STUDENT LIST COMPONENT DECLARE
 const StudentList = ({
@@ -49,10 +46,6 @@ const StudentList = ({
     // DECLARE HOOK CALL
     const deleteStudentPopup = useDeleteStudentPopup();
     const viewStudentPopup = useViewStudentPopup();
-
-    // DECLARE NOTIFICATION AND NAVIDATE
-    const setNotification = useNotification();
-    const navigate = useNavigate();
 
     // IF API LOADS, TURN ON LOADER
     if (!studentListQuery.data) return <Loader/>;
@@ -73,7 +66,7 @@ const StudentList = ({
                     </Box>
             )) : (
                 <EmptyScreen
-                    title={'No Customer'}
+                    title={'No Student added'}
                     icon={<PersonOffOutlined style={{fontSize: 46}}/>}
                 />
             )}

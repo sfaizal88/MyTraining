@@ -1,16 +1,34 @@
+
+/**
+ * 
+ * Add Student hooks component
+ * @author - NA 
+ * @date - 3th December, 2022
+ * 
+ */
+// GENERIC IMPORT 
 import {useState} from 'react';
 import {Box} from '@mui/material';
+
+// GENERIC COMPONENT IMPORT
 import {Popup} from '@/view/molecules';
+
+// STUDENT IMPORT
 import AddStudentPopup from './index';
 
+// DEFAULT COMPONENT
 export function useAddStudentPopup() {
+
+  // DECALRE STATE
   const [{isOpen, id}, setPopupOpen] = useState<{
     isOpen: boolean;
     id: number | null;
   }>({isOpen: false, id: null});
 
+  // CLOSE METHOD
   const close = () => setPopupOpen({isOpen: false, id: null});
 
+  // COMPONENT FORM
   const child = isOpen && (
     <Popup
       isOpen

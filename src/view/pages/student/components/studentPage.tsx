@@ -1,19 +1,18 @@
 /**
  * 
- * Login component
+ * Student component
  * @author - NA 
- * @date - 3th September, 2022
+ * @date - 3th December, 2022
  * 
  */
-// GENERIC VIEW IMPORT 
+// GENERIC IMPORT 
 import {PaperLayout} from '@/view/molecules';
 
-// COMPONENT
+// STUDENT COMPONENT
 import StudentList from './studentList/studentList';
 import {useAddStudentPopup} from './addStudentPopup/hooks';
 
-
-// LOGINPAGE COMPONENT DECLARE
+// DEFAULT COMPONENT
 const StudentPage = () => {
     // DECLARE HOOK CALL
     const addStudentPopup = useAddStudentPopup();
