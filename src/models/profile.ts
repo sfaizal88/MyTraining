@@ -10,10 +10,12 @@ import type {StudentGetItem} from '@/api/student/student';
 import type {TaskGetItem} from '@/api/task/task';
 import type {RoadmapGetItem} from '@/api/roadmap/roadmap';
 import type {TechStackGetItem} from '@/api/techStack/techStack';
+import type {MockInterviewGetItem} from '@/api/mockInterview/mockInterview';
 
 // OPTION DATA TYPE
 export type ProfileType = StudentGetItem & {
     task: TaskGetItem[];
     roadmap: RoadmapGetItem;
     tech_stack: TechStackGetItem[],
+    mock_interview: MockInterviewGetItem[],
 } 

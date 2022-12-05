@@ -41,3 +41,9 @@ export enum UserRoleType {
     teacher,
     student,
 }
+
+// MOCK INTERVIEW STATUS TYPE
+export enum MockInterviewStatusType {
+    pending = 1,
+    completed,
+}

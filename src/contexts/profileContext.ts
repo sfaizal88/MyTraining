@@ -15,6 +15,7 @@ import {ProfileType} from '@/models/profile';
 import type {RoadmapGetItem} from '@/api/roadmap/roadmap';
 import type {TaskGetItem} from '@/api/task/task';
 import type {TechStackGetItem} from '@/api/techStack/techStack';
+import type {MockInterviewGetItem} from '@/api/mockInterview/mockInterview';
 
 // CREATING CONTEXT WITH INITIAL VALUES
 export const ProfileContext = createContext<ProfileType>({
@@ -26,4 +27,5 @@ export const ProfileContext = createContext<ProfileType>({
     task: [] as TaskGetItem[],
     roadmap: {} as RoadmapGetItem,
     tech_stack: [] as TechStackGetItem[],
+    mock_interview: [] as MockInterviewGetItem[],
 });

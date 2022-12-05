@@ -1,8 +1,8 @@
-import {TaskStatusType} from '@/utils/enum';
+import {TaskStatusType, MockInterviewStatusType} from '@/utils/enum';
 
 export const mockData = {
     id: 1,
-    name: "Ahamed Faizal",
+    name: "Mohamed Raslan",
     role: "Front end developer",
     contact_no: "+91-9840404382",
     email: "sfaizal@gmail.com",
@@ -346,6 +346,30 @@ export const mockData = {
                 }
             ],
             students: [1, 2, 3, 5]
+        }
+    ],
+    mock_interview: [
+        {
+            id: 1,
+            title: "HTML exercise basic round",
+            details: "Websites often include forms as a part of their customer data collection strategy. A well-made survey form can help you acquire relevant information about your target audiences like their demographic age, job, location, taste and preference, and pain points. This HTML project is a great way to test your skills and knowledge of designing forms and structuring a webpage.",
+            students: 1,
+            interviewer: 1,
+            review: "",
+            meeting_link: "https://coderthemes.com/adminto/layouts/task-details.html",
+            status: MockInterviewStatusType.pending,
+            interview_date: '13/12/2022',
+        },
+        {
+            id: 2,
+            title: "CSS exercise basic round",
+            details: "Websites often include forms as a part of their customer data collection strategy. A well-made survey form can help you acquire relevant information about your target audiences like their demographic age, job, location, taste and preference, and pain points. This HTML project is a great way to test your skills and knowledge of designing forms and structuring a webpage.",
+            students: 2,
+            interviewer: 1,
+            review: "",
+            meeting_link: "https://coderthemes.com/adminto/layouts/task-details.html",
+            status: MockInterviewStatusType.completed,
+            interview_date: '11/12/2022',
         }
     ]
 }

@@ -24,7 +24,7 @@ import useStyles from '../styles';
 
 type ViewTeacherFormProps = {
   onClose: () => void;
-  data?: TeacherGetItem;
+  data: TeacherGetItem;
   studentOptions: StudentGetItem[];
 };
 
@@ -44,7 +44,7 @@ const ViewTeacherForm = ({onClose, data, studentOptions}: ViewTeacherFormProps) 
   return (
     <Box className={classes.root}>
         <ViewStudentListTitles/>
-        {data?.students.map(item => 
+        {data.students.map(item => 
         <TableRow>
           <Grid item xs={3}>
             <Chip avatar={<Avatar>{studentMap[item].name[0]}</Avatar>} label={studentMap[item].name} variant="outlined"/>

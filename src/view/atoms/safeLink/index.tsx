@@ -13,7 +13,7 @@ import {Box} from '@mui/material';
 // PROPS TYPE
 type SafeLinkProps = {
   to: string,
-  className: string,
+  className?: string,
 }
 
 const SafeLink = ({

@@ -21,7 +21,7 @@ const ViewTeacherPopup = ({onClose, id}: ViewTeacherPopupProps) => {
     const teacherByIdQuery = useTeacherByIdQuery(id);
     const studentOptionsQuery = useStudentOptionsQuery();
 
-    if (!studentOptionsQuery.data || (id && !teacherByIdQuery?.data)) return null;
+    if (!studentOptionsQuery.data || !teacherByIdQuery?.data) return null;
 
     return (
         <ViewTeacherForm

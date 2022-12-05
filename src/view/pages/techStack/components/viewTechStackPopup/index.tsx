@@ -21,7 +21,7 @@ const ViewTechStackPopup = ({onClose, id}: ViewTechStackPopupProps) => {
     const techStackByIdQuery = useTechStackByIdQuery(id);
     const studentOptionsQuery = useStudentOptionsQuery();
 
-    if (!studentOptionsQuery.data || (id && !techStackByIdQuery?.data)) return null;
+    if (!studentOptionsQuery.data || !techStackByIdQuery?.data) return null;
     return (
         <ViewTechStackForm
             onClose={onClose}

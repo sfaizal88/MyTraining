@@ -21,7 +21,7 @@ const ViewRoadmapPopup = ({onClose, id}: ViewRoadmapPopupProps) => {
     const roadmapByIdQuery = useRoadmapByIdQuery(id);
     const studentOptionsQuery = useStudentOptionsQuery();
 
-    if (!studentOptionsQuery.data || (id && !roadmapByIdQuery?.data)) return null;
+    if (!studentOptionsQuery.data || !roadmapByIdQuery?.data) return null;
     return (
         <ViewRoadmapForm
             onClose={onClose}
