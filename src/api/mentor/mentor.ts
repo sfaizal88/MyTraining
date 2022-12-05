@@ -1,6 +1,6 @@
 /**
  * 
- * Roadmap API
+ * Mentor API
  * @author - NA 
  * @date - 1st December, 2022
  * 
@@ -9,7 +9,7 @@
 import {useQuery, QueryFunctionContext, useQueryClient, useMutation} from '@tanstack/react-query';
 
 // API IMPORT
-import queryKeys from '@/api/roadmap/queryKeys';
+import queryKeys from '@/api/mentor/queryKeys';
 
 // UTILS IMPORT
 import {web_url} from '@/api/constants';
@@ -18,62 +18,56 @@ import {web_url} from '@/api/constants';
 import {CallDataApi} from '@/api/apiCalls';
 
 // MOCK DATA
-import {mockData as roadmapListMockData} from '@/view/pages/roadmap/mock/list';
-import {mockData as roadmapDetailsMockData} from '@/view/pages/roadmap/mock/details';
+import {mockData as mentorListMockData} from '@/view/pages/mentor/mock/list';
+import {mockData as mentorDetailsMockData} from '@/view/pages/mentor/mock/details';
 
-export type MileStoneGetItem = {
-    title: string;
-    description: string;
-    date: string;
-    completed: boolean;
-}
-
-export type RoadmapGetItem = {
+export type MentorGetItem = {
     id: number;
     name: string;
-    mile_stone: MileStoneGetItem[];
+    contact_no: string;
+    email: string;
     students: number[];
 }
 
 // USE TO FETCH ALL MENTOR
-export function useRoadmapListQuery() {
-    return useQuery(queryKeys.roadmapList, getRoadmapList, {
+export function useMentorListQuery() {
+    return useQuery(queryKeys.mentorList, getMentorList, {
         placeholderData: [],
-        select: (data) => roadmapListMockData,
+        select: (data) => mentorListMockData,
     });
 }
 
 // FETCH ALL MENTOR API DETAILS
-const getRoadmapList = () => 
+const getMentorList = () => 
     CallDataApi({url: `${web_url}user/getAllUser.php`});
 
 
 
-export function useRoadmapByIdQuery(id?: number | null) {
-    return useQuery(queryKeys.roadmapById(id), getRoadmapById, {
+export function useMentorByIdQuery(id?: number | null) {
+    return useQuery(queryKeys.mentorById(id), getMentorById, {
       enabled: Boolean(id),
-      select: (data) => roadmapDetailsMockData,
+      select: (data) => mentorDetailsMockData,
     });
 }
   
-function getRoadmapById({
+function getMentorById({
     queryKey: [{id}],
-  }: QueryFunctionContext<ReturnType<typeof queryKeys.roadmapById>>) {
+  }: QueryFunctionContext<ReturnType<typeof queryKeys.mentorById>>) {
     return CallDataApi({url: `${web_url}user/getAllUser.php`});
 }
 
 // USE TO CREATE MENTOR
-export function useCreateRoadmapMutation() {
+export function useCreateMentorMutation() {
     const queryClient = useQueryClient();
-    return useMutation(createRoadmap, {
+    return useMutation(createMentor, {
         onSuccess() {
-        queryClient.invalidateQueries(queryKeys.roadmapList);
+        queryClient.invalidateQueries(queryKeys.mentorList);
         },
     });
 }
 
 // CREATE MENTOR API DETAILS
-const createRoadmap = (data: RoadmapGetItem) => {
+const createMentor = (data: MentorGetItem) => {
     return CallDataApi({
         url: `${web_url}transaction/single/createTransaction.php`,
         method: 'POST',
@@ -82,17 +76,17 @@ const createRoadmap = (data: RoadmapGetItem) => {
 }
 
 // USE TO UPDATE MENTOR
-export function useUpdateRoadmapMutation() {
+export function useUpdateMentorMutation() {
     const queryClient = useQueryClient();
-    return useMutation(updateRoadmap, {
+    return useMutation(updateMentor, {
         onSuccess() {
-            queryClient.invalidateQueries(queryKeys.roadmapList);
+            queryClient.invalidateQueries(queryKeys.mentorList);
         },
     });
 }
 
 // UPDATE MENTOR API DETAILS
-const updateRoadmap = (data: RoadmapGetItem) => {
+const updateMentor = (data: MentorGetItem) => {
     return CallDataApi({
         url: `${web_url}transaction/single/updateTransaction.php`,
         method: 'POST',

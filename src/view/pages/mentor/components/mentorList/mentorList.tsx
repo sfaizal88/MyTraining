@@ -1,6 +1,6 @@
 /**
  * 
- * Teacher list component
+ * Mentor list component
  * @author - NA 
  * @date - 3th December, 2022
  * 
@@ -15,14 +15,14 @@ import {Loader} from '@/view/atoms';
 import {EmptyScreen} from '@/view/molecules';
 
 // API
-import {TeacherGetItem, useTeacherListQuery} from '@/api/teacher/teacher';
+import {MentorGetItem, useMentorListQuery} from '@/api/mentor/mentor';
 
-// TEACHER IMPORT
-import TeacherListTitles from './teacherListTitles';
-import TeacherListItem from './teacherListItem';
-import {useDeleteTeacherPopup} from './hooks';
-import {useViewTeacherPopup} from '../viewTeacherPopup/hooks';
-import {useViewStudentListPopup} from '../viewStudentListPopup/hooks';
+// MENTOR IMPORT
+import MentorListTitles from './mentorListTitles';
+import MentorListItem from './mentorListItem';
+import {useDeleteMentorPopup} from './hooks';
+import {useViewMentorPopup} from '../viewMentorPopup/hooks';
+import {useViewStudentListPopup} from '../viewSudentListPopup/hooks';
 
 // UTILS IMPORT
 import useNotification from '@/utils/notification';
@@ -30,26 +30,26 @@ import useNotification from '@/utils/notification';
 // STYLE IMPORT
 import useStyles from '../../styles';
 
-type TeacherListProps = {
+type MentorListProps = {
     onEdit: (id: number | null) => void;
 }
 
 // TITLES COMPONENT PROPS
 const widths: (boolean | GridSize)[] = [3, 3, 2, 3, 1];
 
-// TEACHER LIST COMPONENT DECLARE
-const TeacherList = ({
+// MENTOR LIST COMPONENT DECLARE
+const MentorList = ({
     onEdit
-}: TeacherListProps) => {
+}: MentorListProps) => {
     // STYLE DECLARE
     const classes = useStyles();
 
     // DECLARE API CALL
-    const teacherListQuery = useTeacherListQuery();
+    const mentorListQuery = useMentorListQuery();
 
     // DECLARE HOOK CALL
-    const deleteTeacherPopup = useDeleteTeacherPopup();
-    const viewTeacherPopup = useViewTeacherPopup();
+    const deleteMentorPopup = useDeleteMentorPopup();
+    const viewMentorPopup = useViewMentorPopup();
     const viewStudentListPopup = useViewStudentListPopup();
 
     // DECLARE NOTIFICATION AND NAVIDATE
@@ -57,20 +57,20 @@ const TeacherList = ({
     const navigate = useNavigate();
 
     // IF API LOADS, TURN ON LOADER
-    if (!teacherListQuery.data) return <Loader/>;
+    if (!mentorListQuery.data) return <Loader/>;
 
     return (
         <>
-            <TeacherListTitles widths={widths}/>
-            {teacherListQuery.data.length > 0 ? 
-                teacherListQuery.data.map((item: TeacherGetItem) => (
+            <MentorListTitles widths={widths}/>
+            {mentorListQuery.data.length > 0 ? 
+                mentorListQuery.data.map((item: MentorGetItem) => (
                     <Box key={item.id}>
-                        <TeacherListItem
+                        <MentorListItem
                             {...item}
                             widths={widths}
                             onEdit={onEdit}
-                            onDelete={deleteTeacherPopup.show}
-                            onView={viewTeacherPopup.show}
+                            onDelete={deleteMentorPopup.show}
+                            onView={viewMentorPopup.show}
                             onStudentList={viewStudentListPopup.show}
                         />
                     </Box>
@@ -80,11 +80,11 @@ const TeacherList = ({
                     icon={<PersonOffOutlined style={{fontSize: 46}}/>}
                 />
             )}
-            {deleteTeacherPopup.child}
-            {viewTeacherPopup.child}
+            {deleteMentorPopup.child}
+            {viewMentorPopup.child}
             {viewStudentListPopup.child}
         </>
     )
 }
 
-export default TeacherList;
+export default MentorList;

@@ -21,7 +21,7 @@ import {useStudentListQuery} from '@/api/student/student';
 // ROADMAP IMPORT
 import {useDeleteTaskPopup} from './hooks';
 import {useViewTaskPopup} from '../viewTaskPopup/hooks';
-import {useViewStudentListPopup} from '@/view/pages/teacher/components/viewStudentListPopup/hooks';
+import {useViewStudentListPopup} from '@/view/pages/mentor/components/viewSudentListPopup/hooks';
 
 // STYLE IMPORT
 import useStyles from './styles';

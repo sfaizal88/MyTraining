@@ -6,7 +6,7 @@
  * 
  */
 // API IMPORT
-import {useTeacherByIdQuery} from '@/api/teacher/teacher';
+import {useMentorByIdQuery} from '@/api/mentor/mentor';
 import {useStudentListQuery} from '@/api/student/student';
 import ViewStudentListForm from './components/viewStudentListForm';
   
@@ -16,15 +16,15 @@ type ViewStudentListPopupProps = {
 };
 
 const ViewStudentListPopup = ({onClose, id}: ViewStudentListPopupProps) => {
-    const teacherByIdQuery = useTeacherByIdQuery(id);
+    const mentorByIdQuery = useMentorByIdQuery(id);
     const studentListQuery = useStudentListQuery();
 
-    if (!studentListQuery.data || !teacherByIdQuery?.data) return null;
+    if (!studentListQuery.data || !mentorByIdQuery?.data) return null;
 
     return (
         <ViewStudentListForm
             onClose={onClose}
-            data={teacherByIdQuery.data}
+            data={mentorByIdQuery.data}
             studentOptions={studentListQuery.data}
         />
     );

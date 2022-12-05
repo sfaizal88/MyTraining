@@ -1,6 +1,6 @@
 /**
  * 
- * Teacher hooks
+ * Mentor hooks
  * @author - NA 
  * @date - 1st December, 2022
  * 
@@ -14,7 +14,7 @@ import {AlertPopup} from '@/view/molecules';
 // UTILS IMPORT
 import useNotification from '@/utils/notification';
 
-export function useDeleteTeacherPopup() {
+export function useDeleteMentorPopup() {
     // DECLARE NOTIFICATION
     const setNotification = useNotification();
     const [{isOpen, selectedId}, setPopupOpen] = useState<{
@@ -26,7 +26,7 @@ export function useDeleteTeacherPopup() {
 
     const onConfirm = () => {
         close();
-        setNotification.success("Teacher deleted successfully!");
+        setNotification.success("Mentor deleted successfully!");
     }
 
     const child = isOpen && (

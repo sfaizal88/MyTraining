@@ -22,7 +22,7 @@ import TechStackListTitles from './techStackListTitles';
 import TechStackListItem from './techStackListItem';
 import {useDeleteTechStackPopup} from './hooks';
 import {useViewTechStackPopup} from '../viewTechStackPopup/hooks';
-import {useViewStudentListPopup} from '@/view/pages/teacher/components/viewStudentListPopup/hooks';
+import {useViewStudentListPopup} from '@/view/pages/mentor/components/viewSudentListPopup/hooks';
 
 // UTILS IMPORT
 import useNotification from '@/utils/notification';

@@ -1,6 +1,6 @@
 /**
  * 
- * Teacher titles component
+ * Mentor titles component
  * @author - NA 
  * @date - 3th December, 2022
  * 
@@ -12,16 +12,16 @@ import {Grid, GridSize} from '@mui/material';
 import {Title, ListTitles} from '@/view/atoms';
 
 // TITLES PROPS
-type TeacherListTitlesProps = {
+type MentorListTitlesProps = {
   widths: (boolean | GridSize)[];
 };
 
 // RENDER HTML
-const TeacherListTitles = ({widths}: TeacherListTitlesProps) => (
+const MentorListTitles = ({widths}: MentorListTitlesProps) => (
   <ListTitles>
     <Grid container>
       <Grid item xs={widths[0]}>
-        <Title title="Teacher Name" />
+        <Title title="Mentor Name" />
       </Grid>
       <Grid item xs={widths[1]}>
         <Title title="No. of Student" />
@@ -39,4 +39,4 @@ const TeacherListTitles = ({widths}: TeacherListTitlesProps) => (
   </ListTitles>
 );
 
-export default TeacherListTitles;
+export default MentorListTitles;

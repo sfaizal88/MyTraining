@@ -19,7 +19,7 @@ import {SideMenu, Header, Footer} from '@/view/molecules';
 // PAGE IMPORT 
 import Dashboard from '@/view/pages/dashboard';
 import StudentPage from '@/view/pages/student';
-import TeacherPage from '@/view/pages/teacher';
+import MentorPage from '@/view/pages/mentor';
 import RoadmapPage from '@/view/pages/roadmap';
 import TechStackPage from '@/view/pages/techStack';
 import ReportPage from '@/view/pages/report';
@@ -49,7 +49,7 @@ const AppRoutes = () => {
                     <Routes>
                         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />}/>
                         <Route path={PATH.STUDENT_PATH} element={<StudentPage />}/>
-                        <Route path={PATH.TEACHER_PATH} element={<TeacherPage />}/>
+                        <Route path={PATH.MENTOR_PATH} element={<MentorPage />}/>
                         <Route path={PATH.ROADMAP_PATH} element={<RoadmapPage />}/>
                         <Route path={PATH.TECH_STACK_PATH} element={<TechStackPage />}/>
                         <Route path={PATH.REPORT_PATH} element={<ReportPage />}/>

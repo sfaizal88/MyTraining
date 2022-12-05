@@ -26,7 +26,7 @@ import {MenuType} from './type';
 export const LOGIN_PATH = '/';
 export const DASHBOARD_PATH = '/home';
 export const STUDENT_PATH = '/student';
-export const TEACHER_PATH = '/teacher';
+export const MENTOR_PATH = '/mentor';
 export const REPORT_PATH = '/report';
 export const PROFILE_PATH = '/myProfile';
 export const STUDENT_REPORT_PATH = '/report/:id';
@@ -66,11 +66,11 @@ export const menuList: MenuType[] = compact([
         submenuList: [],
     },
     {
-        id: 'teacher',
-        label: 'Teacher',
-        permissionKey: 'teacher',
-        link: TEACHER_PATH,
-        subLinks: TEACHER_PATH,
+        id: 'mentor',
+        label: 'Mentor',
+        permissionKey: 'mentor',
+        link: MENTOR_PATH,
+        subLinks: MENTOR_PATH,
         icon: <SchoolOutlined style={{fontSize: '20px'}}/>,
         submenuList: [],
     },

@@ -55,7 +55,7 @@ const Login = () => {
     return (
     <Box className={classes.pageContainer}>
         <Box className={classes.loginContainer}>
-            <FormRow label="Username" isRow>
+            <FormRow label="Username" isRow spacing={2}>
                 <TextField
                     register={register}
                     id="username"
@@ -65,7 +65,7 @@ const Login = () => {
                     errors={errors?.username}
                 />
             </FormRow>
-            <FormRow label="Password" isRow>
+            <FormRow label="Password" isRow spacing={2}>
                 <TextField
                     register={register}
                     id="password"

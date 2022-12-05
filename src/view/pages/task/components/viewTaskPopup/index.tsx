@@ -10,7 +10,7 @@ import {useTaskByIdQuery} from '@/api/task/task';
 import {useStudentListQuery} from '@/api/student/student';
 
 // STUDENT COMPONENT IMPORT
-import {useViewStudentListPopup} from '@/view/pages/teacher/components/viewStudentListPopup/hooks';
+import {useViewStudentListPopup} from '@/view/pages/mentor/components/viewSudentListPopup/hooks';
 
 // FORM IMPORT
 import ViewTaskForm from './form/viewTaskForm';

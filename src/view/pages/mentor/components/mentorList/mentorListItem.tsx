@@ -1,6 +1,6 @@
 /**
  * 
- * Teacher list item component
+ * Mentor list item component
  * @author - NA 
  * @date - 3th December, 2022
  * 
@@ -11,7 +11,7 @@ import {Dispatch, SetStateAction} from 'react';
 import {generatePath, Link} from 'react-router-dom';
 
 // API
-import type {TeacherGetItem} from '@/api/teacher/teacher';
+import type {MentorGetItem} from '@/api/mentor/mentor';
 
 // GENERIC COMPONENT IMPORT 
 import {TableRow, Options} from '@/view/molecules';
@@ -20,7 +20,7 @@ import {TableRow, Options} from '@/view/molecules';
 import useStyles from '../../styles';
 
 // COMPONENT PROPS
-type TeacherListItemProps = TeacherGetItem & {
+type MentorListItemProps = MentorGetItem & {
   widths: (boolean | GridSize)[];
   onEdit: (id: number | null) => void;
   onDelete: (id: number | null) => void;
@@ -28,14 +28,14 @@ type TeacherListItemProps = TeacherGetItem & {
   onStudentList: (id: number | null) => void;
 };
 
-const TeacherListItem = ({
+const MentorListItem = ({
   widths,
   onEdit,
   onDelete,
   onView,
   onStudentList,
   ...props
-}: TeacherListItemProps) => {
+}: MentorListItemProps) => {
   // DECLARE STYLE
   const classes = useStyles();
 
@@ -66,4 +66,4 @@ const TeacherListItem = ({
   )
 }
 
-export default TeacherListItem;
+export default MentorListItem;

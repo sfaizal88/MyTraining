@@ -38,7 +38,7 @@ export enum DurationType {
 // USER ROLES TYPE
 export enum UserRoleType {
     admin = 1,
-    teacher,
+    mentor,
     student,
 }
 

@@ -1,6 +1,6 @@
 /**
  * 
- * View Teacher form component
+ * View Mentor form component
  * @author - NA 
  * @date - 3th December, 2022
  * 
@@ -12,7 +12,7 @@ import {Box, Stack, Avatar, Chip, Grid} from '@mui/material';
 import {FormAction, FormRow, PopupFooter} from '@/view/molecules';
 
 // API
-import {TeacherGetItem} from '@/api/teacher/teacher';
+import {MentorGetItem} from '@/api/mentor/mentor';
 
 // MODELS
 import {OptionType} from '@/models/generic';
@@ -21,13 +21,13 @@ import {OptionType} from '@/models/generic';
 import useNotification from '@/utils/notification';
 import useStyles from '../styles';
 
-type ViewTeacherFormProps = {
+type ViewMentorFormProps = {
   onClose: () => void;
-  data: TeacherGetItem;
+  data: MentorGetItem;
   studentOptions: OptionType[]
 };
 
-const ViewTeacherForm = ({onClose, data, studentOptions}: ViewTeacherFormProps) => {
+const ViewMentorForm = ({onClose, data, studentOptions}: ViewMentorFormProps) => {
   // DECLARE STYLE
   const classes = useStyles();
 
@@ -43,7 +43,7 @@ const ViewTeacherForm = ({onClose, data, studentOptions}: ViewTeacherFormProps) 
   return (
     <Box className={classes.root}>
       <form>
-        <FormRow label="teacher name" isViewOnly spacing={1.5}>
+        <FormRow label="mentor name" isViewOnly spacing={1.5}>
           {data.name}
         </FormRow>
         <FormRow label="students" isViewOnly spacing={1.5}>
@@ -71,4 +71,4 @@ const ViewTeacherForm = ({onClose, data, studentOptions}: ViewTeacherFormProps) 
   );
 };
 
-export default ViewTeacherForm;
+export default ViewMentorForm;

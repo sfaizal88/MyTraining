@@ -12,23 +12,23 @@ import {Box, Avatar, Chip, Grid} from '@mui/material';
 import {FormAction, TableRow, PopupFooter} from '@/view/molecules';
 
 // API
-import {TeacherGetItem} from '@/api/teacher/teacher';
+import {MentorGetItem} from '@/api/mentor/mentor';
 import type {StudentGetItem} from '@/api/student/student';
 
-// TEACHER COMPONENTS
+// MENTOR COMPONENTS
 import ViewStudentListTitles from './viewStudentListTitles';
 
 // UTILS IMPORT
 import useNotification from '@/utils/notification';
 import useStyles from '../styles';
 
-type ViewTeacherFormProps = {
+type ViewMentorFormProps = {
   onClose: () => void;
-  data: TeacherGetItem;
+  data: MentorGetItem;
   studentOptions: StudentGetItem[];
 };
 
-const ViewTeacherForm = ({onClose, data, studentOptions}: ViewTeacherFormProps) => {
+const ViewMentorForm = ({onClose, data, studentOptions}: ViewMentorFormProps) => {
   // DECLARE STYLE
   const classes = useStyles();
 
@@ -64,4 +64,4 @@ const ViewTeacherForm = ({onClose, data, studentOptions}: ViewTeacherFormProps) 
     </Box>
   );
 };
-export default ViewTeacherForm;
+export default ViewMentorForm;

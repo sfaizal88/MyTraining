@@ -22,7 +22,7 @@ import RoadmapListTitles from './roadmapListTitles';
 import RoadmapListItem from './roadmapListItem';
 import {useDeleteRoadmapPopup} from './hooks';
 import {useViewRoadmapPopup} from '../viewRoadmapPopup/hooks';
-import {useViewStudentListPopup} from '@/view/pages/teacher/components/viewStudentListPopup/hooks';
+import {useViewStudentListPopup} from '@/view/pages/mentor/components/viewSudentListPopup/hooks';
 
 // UTILS IMPORT
 import useNotification from '@/utils/notification';

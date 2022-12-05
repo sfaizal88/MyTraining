@@ -37,6 +37,9 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     },
     viewFieldLabel: {
     },
+    rowFieldLabel: {
+        paddingBottom: spacing(0.5)
+    },
     viewData: {
         fontSize: 13,
         fontWeight: 600,

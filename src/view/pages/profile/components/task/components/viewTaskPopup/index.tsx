@@ -13,7 +13,7 @@ import {useStudentListQuery} from '@/api/student/student';
 import {ProfileContext} from '@/contexts/profileContext';
 
 // STUDENT COMPONENT IMPORT
-import {useViewStudentListPopup} from '@/view/pages/teacher/components/viewStudentListPopup/hooks';
+import {useViewStudentListPopup} from '@/view/pages/mentor/components/viewSudentListPopup/hooks';
 
 // FORM IMPORT
 import ViewTaskForm from './form/viewTaskForm';

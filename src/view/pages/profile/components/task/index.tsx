@@ -26,7 +26,7 @@ import {useStudentListQuery} from '@/api/student/student';
 import {useProfileDetails} from '@/view/pages/profile/hook';
 
 // HOOK IMPORT
-import {useViewStudentListPopup} from '@/view/pages/teacher/components/viewStudentListPopup/hooks';
+import {useViewStudentListPopup} from '@/view/pages/mentor/components/viewSudentListPopup/hooks';
 import {useViewTaskPopup} from './components/viewTaskPopup/hooks';
 
 // STYLE IMPORT

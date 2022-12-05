@@ -1,6 +1,6 @@
 /**
  * 
- * View Teacher hook
+ * View Mentor hook
  * @author - NA 
  * @date - 3th December, 2022
  * 
@@ -9,9 +9,9 @@
 import {useState} from 'react';
 import {Box} from '@mui/material';
 import {Popup} from '@/view/molecules';
-import ViewTeacherPopup from './index';
+import ViewMentorPopup from './index';
 
-export function useViewTeacherPopup() {
+export function useViewMentorPopup() {
   const [{isOpen, id}, setPopupOpen] = useState<{
     isOpen: boolean;
     id: number | null;
@@ -23,11 +23,11 @@ export function useViewTeacherPopup() {
     <Popup
       isOpen
       onClose={close}
-      title='View Teacher'
+      title='View Mentor'
       maxWidth='xl'
     >
       <Box height="100%" minHeight={200} display="flex" margin="auto">
-        <ViewTeacherPopup onClose={close} id={id} />
+        <ViewMentorPopup onClose={close} id={id} />
       </Box>
     </Popup>
   );

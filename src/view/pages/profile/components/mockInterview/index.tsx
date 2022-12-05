@@ -21,7 +21,7 @@ import {ProfileContext} from '@/contexts/profileContext';
 // API
 import {MockInterviewGetItem} from '@/api/mockInterview/mockInterview';
 import {useStudentListQuery} from '@/api/student/student';
-import {useTeacherListQuery} from '@/api/teacher/teacher';
+import {useMentorListQuery} from '@/api/mentor/mentor';
 
 // MOCK INTERVIEW IMPORT COMPONENT
 import MockInterviewCard from './components/list/mockInterviewCard';
@@ -30,7 +30,7 @@ import MockInterviewCard from './components/list/mockInterviewCard';
 import {useProfileDetails} from '@/view/pages/profile/hook';
 import {useViewMockInterviewPopup} from './components/viewMockInterviewPopup/hooks';
 import {useDeleteMockInterviewPopup} from './components/list/hooks';
-import {useViewStudentListPopup} from '@/view/pages/teacher/components/viewStudentListPopup/hooks';
+import {useViewStudentListPopup} from '@/view/pages/mentor/components/viewSudentListPopup/hooks';
 import {useAddMockInterviewPopup} from './components/addMockInterviewPopup/hooks';
 
 // STYLE IMPORT
@@ -51,7 +51,7 @@ const MockInterview = () => {
 
     // DECLARE API CALL
     const studentListQuery = useStudentListQuery();
-    const teacherListQuery = useTeacherListQuery();
+    const mentorListQuery = useMentorListQuery();
 
     // DECLARE HOOK CALL
     const deleteMockInterviewPopup = useDeleteMockInterviewPopup();
@@ -61,7 +61,7 @@ const MockInterview = () => {
     const profileDetails = useProfileDetails();
 
     // IF API LOADS, TURN ON LOADER
-    if (!studentListQuery.data || !teacherListQuery.data) return <Loader/>;
+    if (!studentListQuery.data || !mentorListQuery.data) return <Loader/>;
 
     return (
         <Paper className={classes.profileContentLayout}>
@@ -82,7 +82,7 @@ const MockInterview = () => {
                                 key={item.id}
                                 onStudentList={viewStudentListPopup.show}
                                 studentOptions={studentListQuery.data}
-                                teacherOptions={teacherListQuery.data}
+                                mentorOptions={mentorListQuery.data}
                                 showStatus
                                 showEdit
                                 showDelete

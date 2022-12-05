@@ -1,6 +1,6 @@
 /**
  * 
- * Add Teacher hook
+ * Add Mentor hook
  * @author - NA 
  * @date - 3th December, 2022
  * 
@@ -11,9 +11,9 @@ import {Box} from '@mui/material';
 
 // GENERIC VIEW IMPORT 
 import {Popup} from '@/view/molecules';
-import AddTeacherPopup from './index';
+import AddMentorPopup from './index';
 
-export function useAddTeacherPopup() {
+export function useAddMentorPopup() {
   const [{isOpen, selectedId}, setPopupOpen] = useState<{
     isOpen: boolean;
     selectedId: number | null;
@@ -25,11 +25,11 @@ export function useAddTeacherPopup() {
     <Popup
       isOpen
       onClose={close}
-      title={selectedId ? 'Edit teacher' : 'New teacher'}
+      title={selectedId ? 'Edit mentor' : 'New mentor'}
       customWidth={500}
     >
       <Box height="100%" minHeight={200} display="flex" margin="auto">
-        <AddTeacherPopup onClose={close} id={selectedId} />
+        <AddMentorPopup onClose={close} id={selectedId} />
       </Box>
     </Popup>
   );

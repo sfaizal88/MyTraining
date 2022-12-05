@@ -1,6 +1,6 @@
 /**
  * 
- * Add Teacher form component
+ * Add Mentor form component
  * @author - NA 
  * @date - 3th December, 2022
  * 
@@ -15,7 +15,7 @@ import {NumberField, TextField, AutoComplete} from '@/view/atoms';
 import {FormAction, FormRow, PopupFooter} from '@/view/molecules';
 
 // API
-import {TeacherGetItem, useCreateTeacherMutation, useUpdateTeacherMutation} from '@/api/teacher/teacher';
+import {MentorGetItem, useCreateMentorMutation, useUpdateMentorMutation} from '@/api/mentor/mentor';
 
 // MODELS
 import {OptionType} from '@/models/generic';
@@ -26,13 +26,13 @@ import {formValidationMessages, validationMessages} from '@/utils/validationMess
 import schema from '../schema';
 import useStyles from '../styles';
 
-type AddTeacherFormProps = {
+type AddMentorFormProps = {
   onClose: () => void;
-  data?: TeacherGetItem;
+  data?: MentorGetItem;
   studentOptions: OptionType[]
 };
 
-const AddTeacherForm = ({onClose, data, studentOptions}: AddTeacherFormProps) => {
+const AddMentorForm = ({onClose, data, studentOptions}: AddMentorFormProps) => {
     // DECLARE STYLE
     const classes = useStyles();
 
@@ -40,16 +40,16 @@ const AddTeacherForm = ({onClose, data, studentOptions}: AddTeacherFormProps) =>
     const setNotification = useNotification();
 
     // DECLARE API CALL
-    const createTeacherMutation = useCreateTeacherMutation();
-    const updateTeacherMutation = useUpdateTeacherMutation();
+    const createMentorMutation = useCreateMentorMutation();
+    const updateMentorMutation = useUpdateMentorMutation();
 
-    const {control, handleSubmit, register, formState: { errors }, setValue} = useForm<TeacherGetItem>({
+    const {control, handleSubmit, register, formState: { errors }, setValue} = useForm<MentorGetItem>({
         defaultValues: data,
         mode: 'onChange',
         resolver: yupResolver(schema),
     });
 
-  const onSubmit = (formData: TeacherGetItem) => {
+  const onSubmit = (formData: MentorGetItem) => {
     const postResponse = {
       onSuccess: () => {
         setNotification.success();
@@ -61,22 +61,22 @@ const AddTeacherForm = ({onClose, data, studentOptions}: AddTeacherFormProps) =>
       },
     };
     if (formData.id) {
-      createTeacherMutation.mutate(formData, postResponse);
+      createMentorMutation.mutate(formData, postResponse);
     } else {
-      updateTeacherMutation.mutate(formData, postResponse);
+      updateMentorMutation.mutate(formData, postResponse);
     }
   };
 
   return (
     <Box className={classes.root}>
       <form>
-        <FormRow label="teacher name" required spacing={1.5}>
+        <FormRow label="mentor name" required spacing={1.5}>
             <TextField
             register={register}
             id="name"
             name="name"
             control={control}
-            placeholder="Teacher Name"
+            placeholder="Mentor Name"
             errors={errors?.name}
             />
         </FormRow>
@@ -98,7 +98,7 @@ const AddTeacherForm = ({onClose, data, studentOptions}: AddTeacherFormProps) =>
             id="contact_no"
             name="contact_no"
             control={control}
-            placeholder="Teacher email"
+            placeholder="Mentor email"
             errors={errors?.email}
             />
         </FormRow>
@@ -108,7 +108,7 @@ const AddTeacherForm = ({onClose, data, studentOptions}: AddTeacherFormProps) =>
             id="email"
             name="email"
             control={control}
-            placeholder="Teacher email"
+            placeholder="Mentor email"
             errors={errors?.email}
             />
         </FormRow>
@@ -133,4 +133,4 @@ const AddTeacherForm = ({onClose, data, studentOptions}: AddTeacherFormProps) =>
   );
 };
 
-export default AddTeacherForm;
+export default AddMentorForm;

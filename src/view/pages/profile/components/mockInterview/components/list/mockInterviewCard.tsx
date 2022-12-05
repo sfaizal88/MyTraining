@@ -14,7 +14,7 @@ import {Person4, Person} from '@mui/icons-material';
 // API
 import type {MockInterviewGetItem} from '@/api/mockInterview/mockInterview';
 import type {StudentGetItem} from '@/api/student/student';
-import type {TeacherGetItem} from '@/api/teacher/teacher';
+import type {MentorGetItem} from '@/api/mentor/mentor';
 
 // GENERIC COMPONENT IMPORT 
 import {Badge} from '@/view/atoms';
@@ -35,7 +35,7 @@ type MockInterviewCardProps = MockInterviewGetItem & {
   onView?: (id: number | null) => void;
   onStudentList: (id: number | null) => void;
   studentOptions: StudentGetItem[];
-  teacherOptions: TeacherGetItem[];
+  mentorOptions: MentorGetItem[];
   showEdit?: boolean;
   showDelete?: boolean;
   showView?: boolean;
@@ -48,7 +48,7 @@ const MockInterviewCard = ({
   onView,
   onStudentList,
   studentOptions,
-  teacherOptions,
+  mentorOptions,
   showEdit = false,
   showDelete = false,
   showStatus = false,
@@ -63,10 +63,10 @@ const MockInterviewCard = ({
     acc[cur.id] = cur;
     return acc;
   }, {} as Record<number, StudentGetItem>);
-  const teacherMap = teacherOptions.reduce(function(acc, cur) {
+  const mentorMap = mentorOptions.reduce(function(acc, cur) {
     acc[cur.id] = cur;
     return acc;
-  }, {} as Record<number, TeacherGetItem>);
+  }, {} as Record<number, MentorGetItem>);
 
   // RENDER HTML
   return (
@@ -101,7 +101,7 @@ const MockInterviewCard = ({
                   <Person style={{fontSize: 24, marginRight: '8px'}}/>{studentMap[props.students].name}
                 </Box>
                 <Box className={classes.cardFooterContentItem}>
-                  <Person4 style={{fontSize: 24, marginRight: '8px'}}/>{teacherMap[props.interviewer].name}
+                  <Person4 style={{fontSize: 24, marginRight: '8px'}}/>{mentorMap[props.interviewer].name}
                 </Box>
             </Box>
             <Box className={classes.cardDuration}>

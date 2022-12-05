@@ -1,6 +1,6 @@
 /**
  * 
- * Add Teacher schema
+ * Add Mentor schema
  * @author - NA 
  * @date - 3th December, 2022
  * 

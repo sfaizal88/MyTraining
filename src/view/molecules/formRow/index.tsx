@@ -36,7 +36,7 @@ const FormRow = ({
     const classes = useStyles();
     return (
         <Box mb={spacing} className={clsx(classes.fieldSet, isViewOnly && classes.viewFormRow, externalClasses, isRow && classes.rowFieldSet)}>
-            <Box className={clsx(classes.fieldLabel, isViewOnly && classes.viewFieldLabel)}>
+            <Box className={clsx(classes.fieldLabel, isViewOnly && classes.viewFieldLabel, isRow && classes.rowFieldLabel)}>
                 {label} {required && <span className={classes.required}>&nbsp;*</span>}
             </Box>
             <Box className={clsx(classes.field, isViewOnly && classes.viewData)}>

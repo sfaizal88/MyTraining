@@ -62,7 +62,7 @@ const ViewTaskForm = ({onClose, data, studentOptions, onStudentList}: ViewTaskFo
   return (
     <Box className={classes.root}>
       <form>
-      {[TaskStatusType.reviewPending].includes(data.status) && <Box mb={1}><Alert severity="warning">Your code is in review with teacher, Once your code get reviewed, we will notify you.</Alert></Box>}
+      {[TaskStatusType.reviewPending].includes(data.status) && <Box mb={1}><Alert severity="warning">Your code is in review with mentor, Once your code get reviewed, we will notify you.</Alert></Box>}
       {[TaskStatusType.reviewCompleted].includes(data.status) && <Box mb={1}><Alert severity="success">Teached review your code successfully, you can submit your project finally.</Alert></Box>}
       <TaskDetails {...{data, studentOptions, onStudentList}} showStatus/>
       {[TaskStatusType.started].includes(data.status) && <>
@@ -98,7 +98,7 @@ const ViewTaskForm = ({onClose, data, studentOptions, onStudentList}: ViewTaskFo
         </FormRow>}
       </>}
       {[TaskStatusType.reviewCompleted, TaskStatusType.done].includes(data.status) &&
-        <FormRow label="Teacher review" isRow isViewOnly>
+        <FormRow label="Mentor review" isRow isViewOnly>
           {data.review}
         </FormRow>
       }
