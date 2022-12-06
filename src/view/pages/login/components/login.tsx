@@ -102,6 +102,7 @@ const Login = () => {
             </FormRow>
             <FormRow label="Password" isRow spacing={2}>
                 <TextField
+                    type='password'
                     register={register}
                     id="password"
                     name="password"

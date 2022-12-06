@@ -22,7 +22,7 @@ type TextFieldProps = {
     defaultValue?: string | number | null | boolean;
     multiline?: boolean;
     rows?: number;
-    type?: 'text' | 'file' | 'number'
+    type?: 'text' | 'file' | 'number' | 'password'
 }
 
 // TEXTFIELD COMPONENT DECLARE
