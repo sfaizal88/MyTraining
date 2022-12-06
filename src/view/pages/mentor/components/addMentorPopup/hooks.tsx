@@ -18,31 +18,31 @@ import AddMentorPopup from './index';
 // HOOK FUNCTION
 export function useAddMentorPopup() {
   // DECLARE STATE
-  const [{isOpen, selectedId}, setPopupOpen] = useState<{
+  const [{isOpen, id}, setPopupOpen] = useState<{
     isOpen: boolean;
-    selectedId: number | null;
-  }>({isOpen: false, selectedId: null});
+    id: number | null;
+  }>({isOpen: false, id: null});
 
   // CLOSE FUNCTION
-  const close = () => setPopupOpen({isOpen: false, selectedId: null});
+  const close = () => setPopupOpen({isOpen: false, id: null});
 
   // POPUP COMPONENT
   const child = isOpen && (
     <Popup
       isOpen
       onClose={close}
-      title={selectedId ? 'Edit mentor' : 'New mentor'}
+      title={id ? 'Edit mentor' : 'New mentor'}
       customWidth={500}
     >
       <Box height="100%" minHeight={100} display="flex" margin="auto">
-        <AddMentorPopup onClose={close} id={selectedId} />
+        <AddMentorPopup onClose={close} id={id} />
       </Box>
     </Popup>
   );
 
   return {
     show: (id: number | null = null) =>
-      setPopupOpen({isOpen: true, selectedId: id}),
+      setPopupOpen({isOpen: true, id}),
     child,
   };
 }

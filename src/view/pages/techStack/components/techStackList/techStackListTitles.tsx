@@ -21,7 +21,7 @@ const TechStackListTitles = ({widths}: TechStackListTitlesProps) => (
   <ListTitles>
     <Grid container>
       <Grid item xs={widths[0]}>
-        <Title title="Technology" />
+        <Title title="Technology Title" />
       </Grid>
       <Grid item xs={widths[1]}>
         <Title title="Assigned to" />

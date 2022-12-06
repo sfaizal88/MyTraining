@@ -11,31 +11,34 @@ import {Box} from '@mui/material';
 import {Popup} from '@/view/molecules';
 import AddTechStackPopup from './index';
 
+// ADD TECH STACK HOOK
 export function useAddTechStackPopup() {
-  const [{isOpen, selectedId}, setPopupOpen] = useState<{
+  // DECLARE STATE
+  const [{isOpen, id}, setPopupOpen] = useState<{
     isOpen: boolean;
-    selectedId: number | null;
-  }>({isOpen: false, selectedId: null});
+    id: number | null;
+  }>({isOpen: false, id: null});
 
-  const close = () => setPopupOpen({isOpen: false, selectedId: null});
+  // CLOSE FUNCTION
+  const close = () => setPopupOpen({isOpen: false, id: null});
 
+  // POPUP COMPONENT
   const child = isOpen && (
     <Popup
       isOpen
       onClose={close}
-      title={selectedId ? 'Edit technology' : 'New technology'}
-      fullWidth
+      title={id ? 'Edit technology' : 'New technology'}
       maxWidth='lg'
     >
       <Box height="100%" minHeight={200} display="flex" margin="auto">
-        <AddTechStackPopup onClose={close} id={selectedId} />
+        <AddTechStackPopup onClose={close} id={id} />
       </Box>
     </Popup>
   );
 
   return {
     show: (id: number | null = null) =>
-      setPopupOpen({isOpen: true, selectedId: id}),
+      setPopupOpen({isOpen: true, id}),
     child,
   };
 }

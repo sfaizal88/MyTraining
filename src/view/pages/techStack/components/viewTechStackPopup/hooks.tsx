@@ -8,18 +8,25 @@
 // GENERIC IMPORT
 import {useState} from 'react';
 import {Box} from '@mui/material';
+
+// GENERIC VIEW IMPORT 
 import {Popup} from '@/view/molecules';
+
+// TECH STACK IMPORT
 import ViewTechStackPopup from './index';
 
 export function useViewTechStackPopup() {
+  // DECLCARE STATE
   const [{isOpen, id}, setPopupOpen] = useState<{
     isOpen: boolean;
     id: number | null;
   }>({isOpen: false, id: null});
 
+  // CLOSE POPUP
   const close = () => setPopupOpen({isOpen: false, id: null});
 
-  const child = isOpen && (
+  // CHILD
+  const child = isOpen && id &&(
     <Popup
       isOpen
       onClose={close}

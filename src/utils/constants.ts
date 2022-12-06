@@ -54,4 +54,5 @@ export const fieldLength = {
     NAME: 200,
     EMAIL: 200,
     CONTACT_NO: 25,
+    WEB_URL: 500,
 }

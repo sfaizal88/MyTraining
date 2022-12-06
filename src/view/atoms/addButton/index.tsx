@@ -24,6 +24,7 @@ export type AddButtonProps = {
   onClick: () => void;
   type?: 'link' | 'button',
   hide?: boolean;
+  direction?: 'flex-start' | 'center' | 'flex-end'
 }
 
 // ADD BUTTON COMPONENT DECLARE
@@ -34,16 +35,17 @@ const AddButton = ({
   icon = <AddCircleOutlineOutlined style={{fontSize: 24, marginRight: '8px'}}/>,
   hide,
   onClick,
+  direction = 'flex-start',
 }: AddButtonProps) => {
   // STYLE DECLARE
   const classes = useStyles();
   return (
     <>
       {type === 'link' ? 
-        <Box className={clsx(classes.root, hide && classes.hide)} onClick={onClick}>
+        <Box className={clsx(classes.root, hide && classes.hide)} onClick={onClick} justifyContent={direction}>
           {icon}  {customLabel || `Add ${label}`}
         </Box> : 
-        <Button className={clsx(hide && classes.hide)} variant="contained" onClick={onClick}>
+        <Button className={clsx(hide && classes.hide)} variant="contained" onClick={onClick} justifyContent={direction}>
           {icon}  {customLabel || `Add ${label}`}
         </Button>
       }

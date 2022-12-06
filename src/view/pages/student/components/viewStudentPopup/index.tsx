@@ -17,7 +17,7 @@ import ViewStudentForm from './form/viewStudentForm';
 // PROPS TYPE
 type ViewStudentPopupProps = {
     onClose: () => void;
-    id?: number | null;
+    id: number;
 };
 
 // DEFAULT COMPONENT

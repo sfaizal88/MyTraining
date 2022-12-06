@@ -26,7 +26,7 @@ export const formValidationMessages = {
 // ERROR CODE FROM BE AND GENERATE MESSAGE AT FE
 export const validationMessages: Record<string, () => string> = {
   ERROR_001: () => 'Something went wrong, please try again after sometime.',
-  ERROR_002: () => 'Duplicate customer code exists.',
+  ERROR_002: () => 'Duplicate title.',
   ERROR_003: () => 'Duplicate customer name exists.',
   ERROR_004: () => 'Either username or password wrong.',
   ERROR_005: () => 'Session expired, please login again.',

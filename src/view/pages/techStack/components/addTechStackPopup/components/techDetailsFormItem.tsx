@@ -11,8 +11,6 @@ import {
 } from 'react-hook-form';
 import {DeleteOutlineOutlined} from '@mui/icons-material';
 import {Grid, GridSize, Box} from '@mui/material';
-import {Dispatch, SetStateAction, useState} from 'react';
-import {generatePath, Link} from 'react-router-dom';
 
 // API
 import type {TechStackGetItem} from '@/api/techStack/techStack';
@@ -32,6 +30,7 @@ type TechDetailsFormItemProps = {
   formData: TechStackGetItem;
   widths: (boolean | GridSize)[];
   onDelete?: (id: number | null) => void;
+  canDelete?: boolean;
 };
 
 const TechDetailsFormItem = ({
@@ -42,6 +41,7 @@ const TechDetailsFormItem = ({
   register,
   setValue,
   formData,
+  canDelete = true,
   ...props
 }: TechDetailsFormItemProps) => {
   // DECLARE STYLE
@@ -55,11 +55,11 @@ const TechDetailsFormItem = ({
   });
 
   if (fields.length === 0) {
-    append({title: '', description: '', date: '', completed: false});
+    append({title: '', tutorial_url: '', video_url: ''});
   }
 
   const addMoreTechDetails = () => {
-    append({title: '', description: '', date: '', completed: false});
+    append({title: '', tutorial_url: '', video_url: ''});
   };
   
 
@@ -67,13 +67,13 @@ const TechDetailsFormItem = ({
   return (
     <>{fields.map((field, index) => (
       <Box key={field._id} mb={1}>
-        <Grid container  spacing={1}>
+        <Grid container columnSpacing={1} rowSpacing={0.5}>
           <Grid item xs={widths[0]}>
             <TextField
               register={register}
               name={`tech_details[${index}].title`}
               control={control}
-              placeholder="Enter topic name"
+              placeholder="Topic name"
               errors={
                 formErrors && formErrors[index]?.title
               }
@@ -84,7 +84,7 @@ const TechDetailsFormItem = ({
               register={register}
               name={`tech_details[${index}].tutorial_url`}
               control={control}
-              placeholder="Enter tutorial link"
+              placeholder="Tutorial link"
               errors={
                 formErrors && formErrors[index]?.tutorial_url
               }
@@ -95,19 +95,21 @@ const TechDetailsFormItem = ({
               register={register}
               name={`tech_details[${index}].video_url`}
               control={control}
-              placeholder="Enter video link"
+              placeholder="Video link"
               errors={
                 formErrors && formErrors[index]?.video_url
               }
             />
           </Grid>
-          <Grid item xs={widths[3]} className={classes.center}>
-            <DeleteOutlineOutlined color={'secondary'} style={{fontSize: 24, cursor: 'pointer'}} onClick={() => remove(index)}/>
-          </Grid>
+          {canDelete && 
+            <Grid item xs={widths[3]} className={classes.center}>
+              <DeleteOutlineOutlined color={'secondary'} style={{fontSize: 24, cursor: 'pointer'}} onClick={() => remove(index)}/>
+            </Grid>
+          }
         </Grid>
       </Box>
       ))}
-      <AddButton label='Topic' onClick={() => addMoreTechDetails()}/>
+      <AddButton label='Topic' onClick={() => addMoreTechDetails()} direction={'flex-end'}/>
     </>
   )
 }

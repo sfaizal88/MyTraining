@@ -12,14 +12,13 @@ import {useQuery, QueryFunctionContext, useQueryClient, useMutation} from '@tans
 import queryKeys from '@/api/techStack/queryKeys';
 
 // UTILS IMPORT
-import {web_url} from '@/api/constants';
+import {web_url, api_url} from '@/api/constants';
 
 // API IMPORT 
 import {CallDataApi} from '@/api/apiCalls';
 
-// MOCK DATA
-import {mockData as techStackListMockData} from '@/view/pages/techStack/mock/list';
-import {mockData as techStackDetailsMockData} from '@/view/pages/techStack/mock/details';
+// UTILS IMPORT
+import {getStorage} from '@/utils/helper';
 
 export type TechDetailsGetItem = {
     id: number;
@@ -36,6 +35,8 @@ export type TechStackGetItem = {
     video_url: string;
     tech_details: TechDetailsGetItem[];
     students: number[];
+    total_topics?: number;
+    can_delete?: boolean;
 }
 
 export type TechStackGet = {
@@ -49,37 +50,33 @@ export type TechStackAssignPostItem = {
 
 // USE TO FETCH ALL TECH STACK
 export function useTechStackListQuery() {
-    return useQuery(queryKeys.techStackList, getTechStackList, {
-        placeholderData: [],
-        select: (data) => techStackListMockData,
-    });
+    return useQuery(queryKeys.techStackList, getTechStackList);
 }
 
 // USE TO FETCH ALL TECH STACK OPTIONS
 export function useTechStackOptionsQuery() {
     return useQuery(queryKeys.techStackList, getTechStackList, {
         placeholderData: [],
-        select: (data) => techStackListMockData.map(item => ({value: item.id, label: item.title})),
+        select: (data) => data.map((item: TechStackGetItem) => ({value: item.id, label: item.title})),
     });
 }
 
 // FETCH ALL TECH STACK API DETAILS
 const getTechStackList = () => 
-    CallDataApi({url: `${web_url}user/getAllUser.php`});
+    CallDataApi({url: `${api_url}techStack/getAllTechStack.php`});
 
 
 
 export function useTechStackByIdQuery(id?: number | null) {
     return useQuery(queryKeys.techStackById(id), getTechStackById, {
       enabled: Boolean(id),
-      select: (data) => techStackDetailsMockData,
     });
 }
   
 function getTechStackById({
     queryKey: [{id}],
   }: QueryFunctionContext<ReturnType<typeof queryKeys.techStackById>>) {
-    return CallDataApi({url: `${web_url}user/getAllUser.php`});
+    return CallDataApi({url: `${api_url}techStack/getTechStackById.php?tech_stack_id=${id}&token=${getStorage('token')}`});
 }
 
 // USE TO CREATE TECH STACK
@@ -87,7 +84,7 @@ export function useCreateTechStackMutation() {
     const queryClient = useQueryClient();
     return useMutation(createTechStack, {
         onSuccess() {
-        queryClient.invalidateQueries(queryKeys.techStackList);
+            queryClient.invalidateQueries(queryKeys.techStackList);
         },
     });
 }
@@ -95,9 +92,9 @@ export function useCreateTechStackMutation() {
 // CREATE TECH STACK API DETAILS
 const createTechStack = (data: TechStackGetItem) => {
     return CallDataApi({
-        url: `${web_url}transaction/single/createTransaction.php`,
+        url: `${api_url}techStack/addTechStack.php`,
         method: 'POST',
-        data: JSON.stringify({...data /* , token: getStorage('token') */})
+        data: JSON.stringify({...data, token: getStorage('token')})
     });
 }
 
@@ -114,9 +111,9 @@ export function useUpdateTechStackMutation() {
 // UPDATE TECH STACK API DETAILS
 const updateTechStack = (data: TechStackGetItem) => {
     return CallDataApi({
-        url: `${web_url}transaction/single/updateTransaction.php`,
+        url: `${api_url}techStack/updateTechStack.php`,
         method: 'POST',
-        data: JSON.stringify({...data /* , token: getStorage('token') */})
+        data: JSON.stringify({...data, token: getStorage('token')})
     });
 }
 
@@ -136,5 +133,24 @@ const assignTechStackToUser = (data: TechStackAssignPostItem) => {
         url: `${web_url}transaction/single/createTransaction.php`,
         method: 'POST',
         data: JSON.stringify({...data /* , token: getStorage('token') */})
+    });
+}
+
+// USE TO DELETE TECH STACK
+export function useDeleteTechStackMutation() {
+    const queryClient = useQueryClient();
+    return useMutation(deleteTechStack, {
+        onSuccess() {
+            queryClient.invalidateQueries(queryKeys.techStackList);
+        },
+    });
+}
+
+// DELETE TECH STACK API 
+const deleteTechStack = (tech_stach_id: number | null) => {
+    return CallDataApi({
+        url: `${api_url}techStack/deleteTechStack.php`,
+        method: 'POST',
+        data: JSON.stringify({tech_stach_id, token: getStorage('token')})
     });
 }

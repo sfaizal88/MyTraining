@@ -60,6 +60,16 @@ function getStudentById({
     return CallDataApi({url: `${api_url}student/getStudentById.php?student_id=${id}&token=${getStorage('token')}`});
 }
 
+export function useStudentByIdsQuery(ids: number[]) {
+    return useQuery(queryKeys.studentByIds(ids), getStudentByIds);
+}
+  
+function getStudentByIds({
+    queryKey: [{ids}],
+  }: QueryFunctionContext<ReturnType<typeof queryKeys.studentByIds>>) {
+    return CallDataApi({url: `${api_url}student/getStudentByIds.php?student_ids=${ids}&token=${getStorage('token')}`});
+}
+
 // USE TO CREATE STUDENT
 export function useCreateStudentMutation() {
     const queryClient = useQueryClient();

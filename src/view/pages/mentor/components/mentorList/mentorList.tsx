@@ -21,7 +21,7 @@ import MentorListTitles from './mentorListTitles';
 import MentorListItem from './mentorListItem';
 import {useDeleteMentorPopup} from './hooks';
 import {useViewMentorPopup} from '../viewMentorPopup/hooks';
-import {useViewStudentListPopup} from '../viewSudentListPopup/hooks';
+import {useViewStudentListPopup} from '@/view/pages/student/components/viewSudentListPopup/hooks';
 
 // STYLE IMPORT
 import useStyles from '../../styles';

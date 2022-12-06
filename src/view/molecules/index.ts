@@ -11,6 +11,7 @@ export {default as BoxLayout} from './boxLayout';
 export {default as PaperLayout} from './paperLayout';
 export {default as EmptyMessage} from './error/emptyMessage';
 export {default as EmptyScreen} from './error/emptyScreen';
+export {default as EmptyLabel} from './error/emptyLabel';
 export {default as PageNotFound} from './error/pageNotFound';
 export {default as TableRow} from './tableRow';
 export {default as TableRowAction} from './tableRowAction';

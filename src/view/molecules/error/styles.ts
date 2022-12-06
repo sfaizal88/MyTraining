@@ -51,6 +51,11 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         fontSize: '12px',
         marginTop: spacing(0.5),
     },
+    errorLabel: {
+        color: '#707070',
+        fontSize: 14,
+        fontStyle: 'italic',
+    }
   }));
   
   export default useStyles;

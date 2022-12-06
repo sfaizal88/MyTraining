@@ -7,7 +7,6 @@
  */
 // GENERIC IMPORT
 import { Box, GridSize } from '@mui/material';
-import {useNavigate} from 'react-router-dom';
 import {PersonOffOutlined} from '@mui/icons-material';
 
 // GENERIC VIEW IMPORT 
@@ -22,13 +21,7 @@ import TechStackListTitles from './techStackListTitles';
 import TechStackListItem from './techStackListItem';
 import {useDeleteTechStackPopup} from './hooks';
 import {useViewTechStackPopup} from '../viewTechStackPopup/hooks';
-import {useViewStudentListPopup} from '@/view/pages/mentor/components/viewSudentListPopup/hooks';
-
-// UTILS IMPORT
-import useNotification from '@/utils/notification';
-
-// STYLE IMPORT
-import useStyles from '../../styles';
+import {useViewStudentListPopup} from '@/view/pages/student/components/viewSudentListPopup/hooks';
 
 type TechStackListProps = {
     onEdit: (id: number | null) => void;
@@ -41,9 +34,6 @@ const widths: (boolean | GridSize)[] = [5, 3, 3, 1];
 const TechStackList = ({
     onEdit
 }: TechStackListProps) => {
-    // STYLE DECLARE
-    const classes = useStyles();
-
     // DECLARE API CALL
     const techStackListQuery = useTechStackListQuery();
 
@@ -51,10 +41,6 @@ const TechStackList = ({
     const deleteTechStackPopup = useDeleteTechStackPopup();
     const viewTechStackPopup = useViewTechStackPopup();
     const viewStudentListPopup = useViewStudentListPopup();
-
-    // DECLARE NOTIFICATION AND NAVIDATE
-    const setNotification = useNotification();
-    const navigate = useNavigate();
 
     // IF API LOADS, TURN ON LOADER
     if (!techStackListQuery.data) return <Loader/>;

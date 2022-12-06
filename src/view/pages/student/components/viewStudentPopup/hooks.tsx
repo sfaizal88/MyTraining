@@ -27,7 +27,7 @@ export function useViewStudentPopup() {
   const close = () => setPopupOpen({isOpen: false, id: null});
 
   // COMPONENT 
-  const child = isOpen && (
+  const child = isOpen && id && (
     <Popup
       isOpen
       onClose={close}

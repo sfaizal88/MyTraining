@@ -10,13 +10,13 @@ import * as yup from 'yup';
 
 // UTILS IMPORT
 import {formValidationMessages} from '@/utils/validationMessages';
+import {fieldLength} from '@/utils/constants';
 
 const schema = 
   yup.object({
-    name: yup.string().nullable().required(formValidationMessages.required()),
-    students: yup.array().min(1, formValidationMessages.required()),
-    contact_no: yup.string().nullable().required(formValidationMessages.required()),
-    email: yup.string().nullable().required(formValidationMessages.required()),
+    title: yup.string().nullable().required(formValidationMessages.required()).max(fieldLength.NAME, formValidationMessages.max(fieldLength.NAME)),
+    tutorial_url: yup.string().url(formValidationMessages.invalidURL()),
+    video_url: yup.string().url(formValidationMessages.invalidURL()),
   });
 
 export default schema;

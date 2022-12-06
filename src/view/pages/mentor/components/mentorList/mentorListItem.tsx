@@ -27,7 +27,7 @@ type MentorListItemProps = MentorGetItem & {
   onEdit: (id: number | null) => void;
   onDelete: (id: number | null) => void;
   onView: (id: number | null) => void;
-  onStudentList: (id: number | null) => void;
+  onStudentList: (id: number[] | null) => void;
 };
 
 const MentorListItem = ({
@@ -51,7 +51,7 @@ const MentorListItem = ({
           onClick={(event) => {
             event.stopPropagation();
             event.preventDefault();
-            onStudentList(props.id);
+            onStudentList(props.students);
           }}>{props.students.length} Students</Box>
         </Grid>
         <Grid item xs={widths[2]}>{formatDateDisplay(props.dob)}</Grid>

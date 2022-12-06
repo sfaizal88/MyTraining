@@ -17,7 +17,7 @@ import ViewTechStackForm from './form/viewTechStackForm';
   
 type ViewTechStackPopupProps = {
     onClose: () => void;
-    id?: number | null;
+    id: number;
 };
 
 const ViewTechStackPopup = ({onClose, id}: ViewTechStackPopupProps) => {

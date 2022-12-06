@@ -6,7 +6,7 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
         display: 'flex',
         flexDirection: 'column',
         flex: 1,
-        root: '100%'
+        maxWidth: '600px'
     },
     center: {
         display: 'inline-flex',

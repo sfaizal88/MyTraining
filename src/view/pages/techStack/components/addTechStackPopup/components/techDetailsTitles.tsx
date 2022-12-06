@@ -1,6 +1,6 @@
 /**
  * 
- * Tech Details titles component
+ * Tech Stack titles component
  * @author - NA 
  * @date - 3th December, 2022
  * 
@@ -14,12 +14,16 @@ import {Title, ListTitles} from '@/view/atoms';
 // TITLES PROPS
 type TechDetailsTitlesProps = {
   widths: (boolean | GridSize)[];
+  canDelete?: boolean;
 };
 
 // RENDER HTML
-const TechDetailsTitles = ({widths}: TechDetailsTitlesProps) => (
+const TechDetailsTitles = ({
+  widths,
+  canDelete = true
+}: TechDetailsTitlesProps) => (
   <ListTitles>
-    <Grid container spacing={2}>
+    <Grid container columnSpacing={2} rowSpacing={0.5}>
       <Grid item xs={widths[0]}>
         <Title title="Topic name" />
       </Grid>
@@ -29,9 +33,11 @@ const TechDetailsTitles = ({widths}: TechDetailsTitlesProps) => (
       <Grid item xs={widths[2]}>
         <Title title="Video link" />
       </Grid>
-      <Grid item xs={widths[3]}>
-        <Title title="Actions" center/>
-      </Grid>
+      {canDelete && 
+        <Grid item xs={widths[3]}>
+          <Title title="Actions" center/>
+        </Grid>
+      }
     </Grid>
   </ListTitles>
 );
