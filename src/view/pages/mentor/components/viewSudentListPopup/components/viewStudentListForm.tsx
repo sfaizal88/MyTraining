@@ -6,9 +6,10 @@
  * 
  */
 // GENERIC IMPORT
-import {Box, Avatar, Chip, Grid, Link} from '@mui/material';
+import {Box, Chip, Grid, Link} from '@mui/material';
 
 // GENERIC COMPONENT IMPORT 
+import {Avatar} from '@/view/atoms';
 import {FormAction, TableRow, PopupFooter} from '@/view/molecules';
 
 // API
@@ -48,7 +49,7 @@ const ViewMentorForm = ({onClose, data, studentOptions}: ViewMentorFormProps) =>
         {data.students.map(item => 
         <TableRow>
           <Grid item xs={2}>
-            <Chip avatar={<Avatar>{studentMap[item].name[0]}</Avatar>} label={studentMap[item].name} variant="outlined"/>
+            <Chip avatar={<Avatar size="xs" label={studentMap[item].name[0]}/>} label={studentMap[item].name} variant="outlined"/>
           </Grid>
           <Grid item xs={2}>{formatDateDisplay(studentMap[item].dob)}</Grid>
           <Grid item xs={2}>{studentMap[item].contact_no}</Grid>

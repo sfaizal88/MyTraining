@@ -6,14 +6,13 @@
  * 
  */
 // GENERIC IMPORT
-import {Grid, GridSize, Avatar, Chip, Box} from '@mui/material';
-import {Dispatch, SetStateAction} from 'react';
-import {generatePath, Link} from 'react-router-dom';
+import {Grid, GridSize, Chip, Box} from '@mui/material';
 
 // API
 import type {TechStackGetItem} from '@/api/techStack/techStack';
 
 // GENERIC COMPONENT IMPORT 
+import {Avatar} from '@/view/atoms';
 import {TableRow, Options} from '@/view/molecules';
 
 // STYLE IMPORT 
@@ -45,7 +44,7 @@ const TechStackListItem = ({
         onView(props.id);
       }}>
       <TableRow>
-        <Grid item xs={widths[0]}><Chip avatar={<Avatar>{props.title[0]}</Avatar>} label={props.title} variant="outlined"/></Grid>
+        <Grid item xs={widths[0]}><Chip avatar={<Avatar size="xs" label={props.title[0]}/>} label={props.title} variant="outlined"/></Grid>
         <Grid item xs={widths[1]}>
           <Box className={classes.link} 
               onClick={(event) => {

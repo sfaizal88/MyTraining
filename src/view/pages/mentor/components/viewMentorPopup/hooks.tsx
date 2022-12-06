@@ -24,9 +24,9 @@ export function useViewMentorPopup() {
       isOpen
       onClose={close}
       title='View Mentor'
-      maxWidth='xl'
+      maxWidth={'xs'}
     >
-      <Box height="100%" minHeight={200} display="flex" margin="auto">
+      <Box height="100%" minHeight={100} display="flex" margin="auto">
         <ViewMentorPopup onClose={close} id={id} />
       </Box>
     </Popup>

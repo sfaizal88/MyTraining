@@ -6,14 +6,13 @@
  * 
  */
 // GENERIC IMPORT
-import {Grid, GridSize, Avatar, Chip, Box} from '@mui/material';
-import {Dispatch, SetStateAction} from 'react';
-import {generatePath, Link} from 'react-router-dom';
+import {Grid, GridSize, Chip, Box} from '@mui/material';
 
 // API
 import type {RoadmapGetItem} from '@/api/roadmap/roadmap';
 
 // GENERIC COMPONENT IMPORT 
+import {Avatar} from '@/view/atoms';
 import {TableRow, Options} from '@/view/molecules';
 
 // STYLE IMPORT 
@@ -45,7 +44,7 @@ const RoadmapListItem = ({
         onView(props.id);
       }}>
       <TableRow>
-        <Grid item xs={widths[0]}><Chip avatar={<Avatar>{props.name[0]}</Avatar>} label={props.name} variant="outlined"/></Grid>
+        <Grid item xs={widths[0]}><Chip avatar={<Avatar size="xs" label={props.name[0]}/>} label={props.name} variant="outlined"/></Grid>
         <Grid item xs={widths[1]}>
           <Box className={classes.link} 
               onClick={(event) => {

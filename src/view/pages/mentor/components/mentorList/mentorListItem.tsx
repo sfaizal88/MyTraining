@@ -6,12 +6,13 @@
  * 
  */
 // GENERIC IMPORT
-import {Grid, GridSize, Avatar, Chip, Box} from '@mui/material';
+import {Grid, GridSize, Chip, Box} from '@mui/material';
 
 // API
 import type {MentorGetItem} from '@/api/mentor/mentor';
 
 // GENERIC COMPONENT IMPORT 
+import {Avatar} from '@/view/atoms';
 import {TableRow, Options} from '@/view/molecules';
 
 // UTILS IMPORT 
@@ -44,7 +45,7 @@ const MentorListItem = ({
   return (
     <Box onClick={() => onView(props.id)}>
       <TableRow>
-        <Grid item xs={widths[0]}><Chip avatar={<Avatar>{props.name[0]}</Avatar>} label={props.name} variant="outlined"/></Grid>
+        <Grid item xs={widths[0]}><Chip avatar={<Avatar size="xs" label={props.name[0]}/>} label={props.name} variant="outlined"/></Grid>
         <Grid item xs={widths[1]}>
           <Box className={classes.link} 
           onClick={(event) => {

@@ -6,7 +6,7 @@
  * 
  */
 // GENERIC IMPORT 
-import {Avatar, Box, AvatarGroup} from '@mui/material';
+import {Box, AvatarGroup} from '@mui/material';
 import {AlarmOnOutlined} from '@mui/icons-material';
 
 // API
@@ -14,7 +14,7 @@ import type {TaskGetItem} from '@/api/task/task';
 import type {StudentGetItem} from '@/api/student/student';
 
 // GENERIC COMPONENT IMPORT 
-import {Badge} from '@/view/atoms';
+import {Badge, Avatar} from '@/view/atoms';
 import {Options, TruncatedField} from '@/view/molecules';
 
 // UTILS IMPORT 
@@ -99,7 +99,7 @@ const TaskCard = ({
               }}>
               <AvatarGroup max={4}>
                 {props.students.map((item, index) => 
-                  <Avatar key={item} alt={studentMap[item].name} sx={{ width: 24, height: 24, fontSize: 12, fontWeight: 600, bgcolor: '#027bb3'}}>{studentMap[item].name[0]}</Avatar>
+                  <Avatar key={item} size="xs" label={studentMap[item].name[0]}/>
                 )}
               </AvatarGroup>
             </Box>

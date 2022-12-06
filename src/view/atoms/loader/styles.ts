@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
         right: 0,
         bottom: 0,
         width: '100%',
-        zIndex: 1,
+        zIndex: 4,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

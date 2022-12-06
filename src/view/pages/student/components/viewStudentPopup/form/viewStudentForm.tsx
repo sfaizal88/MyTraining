@@ -6,7 +6,7 @@
  * 
  */
 // GENERIC IMPORT
-import {Box, Avatar, Link} from '@mui/material';
+import {Box, Link} from '@mui/material';
 import {
   PersonOutlineOutlined,
   CalendarMonthOutlined,
@@ -17,6 +17,7 @@ import {
 } from '@mui/icons-material';
 
 // GENERIC COMPONENT IMPORT 
+import {Avatar} from '@/view/atoms';
 import {FormAction, PopupFooter} from '@/view/molecules';
 
 // API
@@ -43,7 +44,7 @@ const ViewStudentForm = ({onClose, data}: ViewStudentFormProps) => {
     <Box className={classes.root}>
       <Box display='flex' flex={1}>
         <Box className={classes.viewAvatar}>
-          <Avatar sx={{ width: 130, height: 130, fontSize: 50, bgcolor: "#b8e994", color: "#10ac84" }}>{data.name[0]}</Avatar>
+          <Avatar size="xl" label={data.name[0]}/>
         </Box>
         <Box flex={1}>
           <Box className={classes.viewFieldSet}><PersonOutlineOutlined style={{color: '#313131', fontSize: 22, marginRight: '4px'}}/>{data.name}</Box>

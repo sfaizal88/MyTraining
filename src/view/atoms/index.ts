@@ -12,3 +12,5 @@ export {default as DateField} from './dateField';
 export {default as Badge} from './badge';
 export {default as SelectField} from './selectField';
 export {default as IconField} from './iconField';
+export {default as Spinner} from './loader/spinner';
+export {default as Avatar} from './avatar';

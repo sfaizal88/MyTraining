@@ -8,10 +8,10 @@
 // GENERCI IMPORT
 import {useContext} from 'react';
 import {Download} from '@mui/icons-material';
-import { Box, Avatar, Stack, Divider } from '@mui/material';
+import { Box, Stack, Divider } from '@mui/material';
 
 // GENERIC IMPORT 
-import {Button} from '@/view/atoms';
+import {Button, Avatar} from '@/view/atoms';
 import {SocialMedia} from '@/view/molecules';
 
 // CONTEXT IMPORT
@@ -30,7 +30,7 @@ const ProfileHeader = () => {
     return (
         <Box className={classes.profileHeader}>
             <Box width="120">
-                <Avatar sx={{ width: 100, height: 100 }}>{profileContext.name[0]}</Avatar>
+                <Avatar size="lg" label={profileContext.name[0]}/>
             </Box>
             <Box className={classes.profileContent}>
                 <Box className={classes.profileTitle}>{profileContext.name}</Box>

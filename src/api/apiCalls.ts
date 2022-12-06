@@ -6,6 +6,9 @@
  * 
  */
 // GENERIC IMPORT
+import { trackPromise} from 'react-promise-tracker';
+
+// UTILS IMPORT
 import {apiFailed} from '@/utils/constants';
 import {validationMessages} from '@/utils/validationMessages';
 
@@ -23,9 +26,9 @@ export const CallDataApi = async({
     data
 }: ApiOptionType) => {
     // CREATING THE API CALL
-    const response = await fetch(url, data && {
+    const response = await trackPromise(fetch(url, data && {
         method, body: data
-    });
+    }));
     // WAITING FOR DATA REPONSE
     const responseObject = await response.json();
     

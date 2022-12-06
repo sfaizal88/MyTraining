@@ -6,9 +6,10 @@
  * 
  */
 // GENERIC IMPORT
-import {Box, Avatar, Chip} from '@mui/material';
+import {Box, Chip} from '@mui/material';
 
 // GENERIC COMPONENT IMPORT 
+import {Avatar} from '@/view/atoms';
 import {FormAction, FormRow, PopupFooter, Timeline} from '@/view/molecules';
 
 // API
@@ -45,7 +46,7 @@ const ViewRoadmapForm = ({onClose, data, studentOptions}: ViewRoadmapFormProps) 
         <FormRow label="assigned to" isViewOnly spacing={1.5}>
             {data.students.map((item: number) => 
               <Box key={item} mr={1} mb={1} display='inline-block'>
-                <Chip avatar={<Avatar>{studentMap[item][0]}</Avatar>} label={studentMap[item]} variant="outlined"/>
+                <Chip avatar={<Avatar size="xs" label={studentMap[item][0]}/>} label={studentMap[item]} variant="outlined"/>
               </Box>
             )}
         </FormRow>

@@ -9,7 +9,7 @@
 import clsx from 'clsx';
 import omit from 'lodash/omit';
 import {useState, useEffect, MouseEvent, useContext} from 'react';
-import {Box, Collapse, Avatar, Typography} from '@mui/material';
+import {Box, Collapse, Typography} from '@mui/material';
 import {KeyboardArrowDownOutlined, KeyboardArrowUpOutlined} from '@mui/icons-material';
 import { Link, useLocation } from "react-router-dom";
 
@@ -21,7 +21,7 @@ import {MenuType, SubMenuType} from '@/view/routes/type';
 import {menuList} from '@/view/routes/constants';
 
 // GENERIC COMPONENT
-import {Loader, SafeLink} from '@/view/atoms';
+import {SafeLink, Avatar} from '@/view/atoms';
 
 // UTILS IMPORT
 import {userRoleDisplayMap} from '@/utils/constants';
@@ -43,13 +43,10 @@ const SideMenu = () => {
     const userContext = useContext(UserContext);
 
     // STATE
-    const [loading, setLoading] = useState(true);
     const [opened, setOpened] = useState({} as Record<string, boolean>);
     const [currentMenu, setCurrentMenu] = useState<string>(location.pathname);
 
     useEffect(() => {
-        setLoading(true);
-        setTimeout(() => setLoading(false), 600);
         setCurrentMenu(location.pathname);
     }, [currentMenu, location.pathname]);
 
@@ -76,11 +73,10 @@ const SideMenu = () => {
                 <img src={LogoIcon}  alt="Loading..." height={25}/>
             </Box>
             <Box className={classes.profileContainer}>
-                <Avatar sx={{ width: 100, height: 100, fontSize: 40, bgcolor: "#b8e994", color: "#10ac84" }}>{userContext.name[0]}</Avatar>
+                <Avatar size="lg" label={userContext.name[0]}/>
                 <Typography mt={1} variant="h6" className={classes.profileTitle}>{userContext.name}</Typography>
                 <Typography variant="caption" className={classes.profileTag}>{userRoleDisplayMap[userContext.role]}</Typography>
             </Box>
-            {loading && <Loader/>}
             <ul className={classes.menu}>
                 {menuList.map((menu: MenuType) => {
                     return (

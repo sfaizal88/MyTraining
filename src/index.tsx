@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom/client';
+import {Spinner} from '@/view/atoms';
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import App from './App';
@@ -8,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-root.render(<MuiPickersUtilsProvider utils={MomentUtils}><App /></MuiPickersUtilsProvider>);
+root.render(<MuiPickersUtilsProvider utils={MomentUtils}><App /><Spinner/></MuiPickersUtilsProvider>);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

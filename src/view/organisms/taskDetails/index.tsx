@@ -6,11 +6,11 @@
  * 
  */
 // GENERIC IMPORT 
-import {Avatar, Box, AvatarGroup, Typography, ImageList, ImageListItem} from '@mui/material';
+import {Box, AvatarGroup, Typography, ImageList, ImageListItem} from '@mui/material';
 import {AlarmOnOutlined} from '@mui/icons-material';
 
 // GENERIC COMPONENT IMPORT 
-import {Badge} from '@/view/atoms';
+import {Badge, Avatar} from '@/view/atoms';
 
 // API
 import type {TaskGetItem} from '@/api/task/task';
@@ -78,7 +78,7 @@ const TaskDetails = ({
               }}>
               <AvatarGroup max={4}>
                 {data.students.map(item => 
-                  <Avatar alt={studentMap[item].name} sx={{ width: 24, height: 24, fontSize: 12, fontWeight: 600, bgcolor: '#027bb3'}}>{studentMap[item].name[0]}</Avatar>
+                  <Avatar key={item} size="xs" label={studentMap[item].name[0]}/>
                 )}
               </AvatarGroup>
               <Box component={'span'} className={classes.link} ml={1}>View all students</Box>

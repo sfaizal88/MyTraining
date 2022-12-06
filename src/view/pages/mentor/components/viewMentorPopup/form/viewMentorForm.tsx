@@ -6,10 +6,17 @@
  * 
  */
 // GENERIC IMPORT
-import {Box, Stack, Avatar, Chip, Grid} from '@mui/material';
+import {Box} from '@mui/material';
+import {
+  PersonOutlineOutlined,
+  CalendarMonthOutlined,
+  PhoneAndroidOutlined,
+  EmailOutlined,
+} from '@mui/icons-material';
 
 // GENERIC COMPONENT IMPORT 
-import {FormAction, FormRow, PopupFooter} from '@/view/molecules';
+import {Avatar} from '@/view/atoms';
+import {FormAction, PopupFooter} from '@/view/molecules';
 
 // API
 import {MentorGetItem} from '@/api/mentor/mentor';
@@ -18,7 +25,9 @@ import {MentorGetItem} from '@/api/mentor/mentor';
 import {OptionType} from '@/models/generic';
 
 // UTILS IMPORT
-import useNotification from '@/utils/notification';
+import {formatDateDisplay} from '@/utils/helper';
+
+// STYLE IMPORT
 import useStyles from '../styles';
 
 type ViewMentorFormProps = {
@@ -31,35 +40,19 @@ const ViewMentorForm = ({onClose, data, studentOptions}: ViewMentorFormProps) =>
   // DECLARE STYLE
   const classes = useStyles();
 
-  // DECLARE NOTIFICATION AND NAVIDATE
-  const setNotification = useNotification();
-
-  // LOCAL VARIABLE
-  const studentMap = studentOptions.reduce(function(acc, cur, i) {
-    acc[cur.value] = cur.label;
-    return acc;
-  }, {} as Record<number, string>);
-
   return (
     <Box className={classes.root}>
-      <form>
-        <FormRow label="mentor name" isViewOnly spacing={1.5}>
-          {data.name}
-        </FormRow>
-        <FormRow label="students" isViewOnly spacing={1.5}>
-            {data.students.map(item => 
-              <Box key={item} mr={1} mb={1} display='inline-block'>
-                <Chip avatar={<Avatar>{studentMap[item][0]}</Avatar>} label={studentMap[item]} variant="outlined"/>
-              </Box>
-            )}
-        </FormRow>
-        <FormRow label="contact" isViewOnly spacing={1.5}>
-          {data.contact_no}
-        </FormRow>
-        <FormRow label="email" isViewOnly spacing={1.5}>
-          {data.email}
-        </FormRow>
-      </form>
+      <Box display='flex' flex={1}>
+        <Box className={classes.viewAvatar}>
+          <Avatar size="xl" label={data.name[0]}/>
+        </Box>
+        <Box flex={1}>
+          <Box className={classes.viewFieldSet}><PersonOutlineOutlined style={{color: '#313131', fontSize: 22, marginRight: '4px'}}/>{data.name}</Box>
+          <Box className={classes.viewFieldSet}><CalendarMonthOutlined style={{color: '#313131', fontSize: 22, marginRight: '4px'}}/>{formatDateDisplay(data.dob)}</Box>
+          <Box className={classes.viewFieldSet}><EmailOutlined style={{color: '#313131', fontSize: 22, marginRight: '4px'}}/>{data.email}</Box>
+          <Box className={classes.viewFieldSet}><PhoneAndroidOutlined style={{color: '#313131', fontSize: 22, marginRight: '4px'}}/>{data.contact_no}</Box>
+        </Box>
+      </Box>
       <PopupFooter>
         <FormAction
             showSubmit
