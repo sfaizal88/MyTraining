@@ -27,12 +27,15 @@ const MentorListTitles = ({widths}: MentorListTitlesProps) => (
         <Title title="No. of Student" />
       </Grid>
       <Grid item xs={widths[2]}>
-        <Title title="Contact No" />
+        <Title title="Date of Birth" />
       </Grid>
       <Grid item xs={widths[3]}>
-        <Title title="Email" />
+        <Title title="Contact No" />
       </Grid>
       <Grid item xs={widths[4]}>
+        <Title title="Email" />
+      </Grid>
+      <Grid item xs={widths[5]}>
         <Title title="Actions" center/>
       </Grid>
     </Grid>

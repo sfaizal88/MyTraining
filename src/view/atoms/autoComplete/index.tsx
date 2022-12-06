@@ -90,6 +90,7 @@ const AutoComplete = ({
                             error={Boolean(errors)}
                             variant="outlined" 
                             helperText={errors?.message || null}
+                            defaultValue={[]}
                             classes={{
                                 root: classes.inputField
                             }}

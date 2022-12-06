@@ -9,18 +9,24 @@
 import {useState} from 'react';
 import {Box} from '@mui/material';
 
-// GENERIC VIEW IMPORT 
+// GENERIC COMPONENT IMPORT 
 import {Popup} from '@/view/molecules';
+
+// MENTIOR IMPORT
 import AddMentorPopup from './index';
 
+// HOOK FUNCTION
 export function useAddMentorPopup() {
+  // DECLARE STATE
   const [{isOpen, selectedId}, setPopupOpen] = useState<{
     isOpen: boolean;
     selectedId: number | null;
   }>({isOpen: false, selectedId: null});
 
+  // CLOSE FUNCTION
   const close = () => setPopupOpen({isOpen: false, selectedId: null});
 
+  // POPUP COMPONENT
   const child = isOpen && (
     <Popup
       isOpen
@@ -28,7 +34,7 @@ export function useAddMentorPopup() {
       title={selectedId ? 'Edit mentor' : 'New mentor'}
       customWidth={500}
     >
-      <Box height="100%" minHeight={200} display="flex" margin="auto">
+      <Box height="100%" minHeight={100} display="flex" margin="auto">
         <AddMentorPopup onClose={close} id={selectedId} />
       </Box>
     </Popup>

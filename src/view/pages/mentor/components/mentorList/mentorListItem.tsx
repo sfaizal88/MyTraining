@@ -7,14 +7,15 @@
  */
 // GENERIC IMPORT
 import {Grid, GridSize, Avatar, Chip, Box} from '@mui/material';
-import {Dispatch, SetStateAction} from 'react';
-import {generatePath, Link} from 'react-router-dom';
 
 // API
 import type {MentorGetItem} from '@/api/mentor/mentor';
 
 // GENERIC COMPONENT IMPORT 
 import {TableRow, Options} from '@/view/molecules';
+
+// UTILS IMPORT 
+import {formatDateDisplay} from '@/utils/helper';
 
 // STYLE IMPORT 
 import useStyles from '../../styles';
@@ -52,9 +53,10 @@ const MentorListItem = ({
             onStudentList(props.id);
           }}>{props.students.length} Students</Box>
         </Grid>
-        <Grid item xs={widths[2]}>{props.contact_no}</Grid>
-        <Grid item xs={widths[3]}>{props.email}</Grid>
-        <Grid item xs={widths[4]}>
+        <Grid item xs={widths[2]}>{formatDateDisplay(props.dob)}</Grid>
+        <Grid item xs={widths[3]}>{props.contact_no}</Grid>
+        <Grid item xs={widths[4]}>{props.email}</Grid>
+        <Grid item xs={widths[5]}>
           <Options 
             itemsKey={['edit', 'delete']}
             itemsHandler={{

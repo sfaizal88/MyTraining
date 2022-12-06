@@ -9,7 +9,7 @@
 import moment from 'moment';
 
 // UTILS IMPORT
-import {displayDateFormat, serverDisplayDateFormat, durationDisplayMap} from '@/utils/constants';
+import {displayDateFormat, serverDateTimeFormat, durationDisplayMap} from '@/utils/constants';
 
 // SET BROWSER STORAGE
 export const setStorage = (key: string, value: string) => {
@@ -31,7 +31,7 @@ export const formatDateDisplay = (
     unformattedDate: string, 
     format: string = displayDateFormat
     ) => {
-    return unformattedDate ? moment(unformattedDate, serverDisplayDateFormat).format(format) : '';
+    return unformattedDate ? moment(unformattedDate, serverDateTimeFormat).format(format) : '';
 }
 
 export const findDuration = (duration: string) => {

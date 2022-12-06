@@ -19,6 +19,7 @@ import {StudentGetItem, useCreateStudentMutation, useUpdateStudentMutation} from
 
 // UTILS IMPORT
 import useNotification from '@/utils/notification';
+import {formatDateDisplay} from '@/utils/helper';
 import schema from '../schema';
 import useStyles from '../styles';
 
@@ -41,15 +42,16 @@ const AddStudentForm = ({onClose, data}: AddStudentFormProps) => {
   const updateStudentMutation = useUpdateStudentMutation(data?.id);
 
   // REACT HOOK FORM DECLARE
-  const {control, handleSubmit, register, formState: { errors }, setValue} = useForm<StudentGetItem>({
+  const {control, handleSubmit, register, formState: { errors }, setValue, watch} = useForm<StudentGetItem>({
       defaultValues: data,
       mode: 'onChange',
       resolver: yupResolver(schema),
   });
+  const formData = watch();
 
     // LOGIN FUNCTION
-  const onSubmit = (formData: StudentGetItem) => {
-    console.log("Add student form data: ", formData);
+  const onSubmit = (postData: StudentGetItem) => {
+    console.log("Add student form data: ", postData);
     // FORMING POST RESPONSE
     const postResponse = {
       onSuccess: (response: any) => {
@@ -63,18 +65,18 @@ const AddStudentForm = ({onClose, data}: AddStudentFormProps) => {
       },
       onError(e: unknown) {
         setNotification.error(e);
-        
       },
     };
     // CHECKING WHETHER ITS TO CALL ADD OR UPDATE API
-    if (formData.id) {
+    if (postData.id) {
       // CALLING UPDATE API
-      updateStudentMutation.mutate(formData, postResponse);
+      updateStudentMutation.mutate(postData, postResponse);
     } else {
       // CALLING CREATE API
-      createStudentMutation.mutate(formData, postResponse);
+      createStudentMutation.mutate(postData, postResponse);
     }
   };
+  console.log("formData.dob: ", formatDateDisplay(formData.dob));
 
   return (
     <Box className={classes.root}>
@@ -103,7 +105,7 @@ const AddStudentForm = ({onClose, data}: AddStudentFormProps) => {
                   placeholder="Date of birth"
                   disablePast={false}
                   errors={errors?.dob}
-                  defaultValue={"04/12/2022"}
+                  defaultValue={formData.dob}
                 />
             </FormRow>
           </Grid>

@@ -7,6 +7,7 @@
  */
 // GENERIC IMPORT
 import moment from 'moment';
+import {Box, TextField} from '@mui/material';
 import {useState, useEffect} from 'react';
 import {Controller} from 'react-hook-form';
 import {KeyboardDatePicker} from '@material-ui/pickers';
@@ -34,7 +35,7 @@ const DateField = ({
     id,
     name,
     placeholder,
-    defaultValue,
+    defaultValue = "",
     setValue,
     control,
     errors,
@@ -46,7 +47,6 @@ const DateField = ({
     // STYLE DECLARE
     const classes = useStyles();
     const [selectedDate, handleDateChange] = useState(defaultValue);
-
     useEffect(() => {
         setValue(name, selectedDate)
     }, [selectedDate]);
@@ -68,7 +68,7 @@ const DateField = ({
                     classes={{root: classes.inputFieldContainer}}
                     error={Boolean(errors)}
                     placeholder={placeholder}
-                    value={selectedDate}
+                    value={new Date(defaultValue)}
                     disableFuture={disableFuture}
                     disablePast={disablePast}
                     onChange={handleDateChange}

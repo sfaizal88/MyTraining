@@ -7,7 +7,6 @@
  */
 // GENERIC IMPORT
 import { Box, GridSize } from '@mui/material';
-import {useNavigate} from 'react-router-dom';
 import {PersonOffOutlined} from '@mui/icons-material';
 
 // GENERIC VIEW IMPORT 
@@ -24,9 +23,6 @@ import {useDeleteMentorPopup} from './hooks';
 import {useViewMentorPopup} from '../viewMentorPopup/hooks';
 import {useViewStudentListPopup} from '../viewSudentListPopup/hooks';
 
-// UTILS IMPORT
-import useNotification from '@/utils/notification';
-
 // STYLE IMPORT
 import useStyles from '../../styles';
 
@@ -35,7 +31,7 @@ type MentorListProps = {
 }
 
 // TITLES COMPONENT PROPS
-const widths: (boolean | GridSize)[] = [3, 3, 2, 3, 1];
+const widths: (boolean | GridSize)[] = [3, 2, 2, 2, 2, 1];
 
 // MENTOR LIST COMPONENT DECLARE
 const MentorList = ({
@@ -51,10 +47,6 @@ const MentorList = ({
     const deleteMentorPopup = useDeleteMentorPopup();
     const viewMentorPopup = useViewMentorPopup();
     const viewStudentListPopup = useViewStudentListPopup();
-
-    // DECLARE NOTIFICATION AND NAVIDATE
-    const setNotification = useNotification();
-    const navigate = useNavigate();
 
     // IF API LOADS, TURN ON LOADER
     if (!mentorListQuery.data) return <Loader/>;
@@ -76,7 +68,7 @@ const MentorList = ({
                     </Box>
             )) : (
                 <EmptyScreen
-                    title={'No Customer'}
+                    title={'No Mentor'}
                     icon={<PersonOffOutlined style={{fontSize: 46}}/>}
                 />
             )}
