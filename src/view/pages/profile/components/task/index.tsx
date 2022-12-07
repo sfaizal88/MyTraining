@@ -51,7 +51,7 @@ const Task = () => {
     // DECLARE HOOK CALL
     const viewStudentListPopup = useViewStudentListPopup();
     const viewTaskPopup = useViewTaskPopup();
-    const profileDetails = useProfileDetails();
+    const profileDetails = useProfileDetails({});
 
     // IF API LOADS, TURN ON LOADER
     if (!studentListQuery.data) return <Loader/>;
@@ -65,7 +65,7 @@ const Task = () => {
                         customLabel='Assign task' 
                         onClick={() => setOpen(true)} 
                         type="button"
-                        hide={profileDetails.isLoginUserStudent()}
+                        show={profileDetails.isLoginUserMentor()}
                     />
                     
                     <Box className={classes.grid4} mt={3}>
@@ -86,7 +86,7 @@ const Task = () => {
                 <EmptyScreen
                     title={'No Task assigned'}
                     subtitle={!profileDetails.isLoginUserStudent() ? 'Assign new task by clicking assign task button' : ''}
-                    button={<AddButton customLabel='Assign task' onClick={() => setOpen(true)} type="button" hide={profileDetails.isLoginUserStudent()}/>}
+                    button={<AddButton customLabel='Assign task' onClick={() => setOpen(true)} type="button" show={profileDetails.isLoginUserMentor()}/>}
                     icon={<PersonOffOutlined style={{fontSize: 46}}/>}
                 />
             )}

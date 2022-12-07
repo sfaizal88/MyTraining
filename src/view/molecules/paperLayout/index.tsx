@@ -6,6 +6,7 @@
  * 
  */
 // GENERIC IMPORT
+import clsx from 'clsx';
 import {PropsWithChildren, ReactNode} from 'react';
 import {Box} from '@mui/material';
 import {ControlPointOutlined} from '@mui/icons-material';
@@ -23,6 +24,7 @@ type PaperLayoutProps = {
     buttonLabel?: string;
     onAddClick?: () => void;
     onAddChild?: ReactNode;
+    disablePaddingX?: boolean
 }
 
 const PaperLayout = ({
@@ -32,10 +34,11 @@ const PaperLayout = ({
     onAddClick,
     onAddChild,
     children,
+    disablePaddingX = false
 }: PropsWithChildren<PaperLayoutProps>) => {
     const classes = useStyles();
     return (
-        <Box className={classes.paperLayoutWrapper}>
+        <Box className={clsx(classes.paperLayoutWrapper, disablePaddingX && classes.disabledPaperPaddingX)}>
             <Box className={classes.paperLayoutContainer} >
                 <Box className={classes.header}>
                     <Box className={classes.title}>{title}</Box>

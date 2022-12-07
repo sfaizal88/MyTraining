@@ -5,23 +5,24 @@
  * @date - 1st December, 2022
  * 
  */
-// GENERIC IMPORT
-import {useContext} from 'react';
-
-// CONTEXT IMPORT
-import {UserContext} from '@/contexts/userContext';
-
 // UTILS IMPORT
 import {UserRoleType} from '@/utils/enum';
 
-export function useProfileDetails() {
-    // CONTEXT DECALRE
-    const userContext = useContext(UserContext);
-    userContext.role = Number(userContext.role);
-    
-    const isLoginUserStudent = () => userContext.role === UserRoleType.student;
-    const isLoginUserAdmin = () => userContext.role === UserRoleType.admin;
-    const isLoginUserMentor = () => userContext.role === UserRoleType.mentor;
+// PROPS TYPE
+type profileDetailsProps = {
+    role?: UserRoleType
+}
+
+export function useProfileDetails({
+    role = UserRoleType.student
+}: profileDetailsProps) {
+    console.log("role: ", role);
+    const isLoginUserStudent = () => Number(role) === UserRoleType.student;
+    const isLoginUserAdmin = () => Number(role) === UserRoleType.admin;
+    const isLoginUserMentor = () => Number(role) === UserRoleType.mentor;
+    console.log("isLoginUserStudent: ", isLoginUserStudent());
+    console.log("isLoginUserAdmin: ", isLoginUserAdmin());
+    console.log("isLoginUserMentor: ", isLoginUserMentor());
 
     return {
         isLoginUserStudent,

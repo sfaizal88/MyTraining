@@ -1,13 +1,13 @@
 /**
  * 
- * Tech Stack page component
+ * Student Tech Stack page component
  * @author - NA 
  * @date - 3th December, 2022
  * 
  */
 // GENERIC IMPORT
 import {useContext, useState} from 'react';
-import { Paper, Box, Stack, Divider } from '@mui/material';
+import { Box, Stack, Divider } from '@mui/material';
 import {useForm} from 'react-hook-form';
 import {VideocamOutlined, ArticleOutlined, CodeOffOutlined} from '@mui/icons-material';
 
@@ -20,10 +20,6 @@ import {AssignTechStackModal} from '@/view/organisms';
 import {TechStackGet, TechStackGetItem} from '@/api/techStack/techStack';
 import {useTechStackByStudentIdQuery} from '@/api/profile/profile';
 
-// CONTEXT IMPORT
-import {ProfileContext} from '@/contexts/profileContext';
-import {UserContext} from '@/contexts/userContext';
-
 // HOOK
 import {useProfileDetails} from '@/view/pages/profile/hook';
 
@@ -31,10 +27,19 @@ import {useProfileDetails} from '@/view/pages/profile/hook';
 import {UserRoleType} from '@/utils/enum';
 
 // STYLE IMPORT
-import useStyles from '../../styles';
+import useStyles from '../styles';
 
-// TASK SCREEN COMPONENT DECLARE
-const TechStack = () => {
+// PROPS TYPE
+type StudentTechStackFormProps = {
+    studentId: number;
+    role: UserRoleType;
+}
+
+// STUDENT TECH STACK SCREEN COMPONENT DECLARE
+const StudentTechStackForm = ({
+    studentId,
+    role,
+}: StudentTechStackFormProps) => {
     // STYLE DECLARE
     const classes = useStyles();
 
@@ -48,17 +53,11 @@ const TechStack = () => {
     });
     const formData = watch();
 
-    // CONTEXT DECALRE
-    const profileContext = useContext(ProfileContext);
-    const userContext = useContext(UserContext);
-    const userId = profileContext.id;
-    const profileId = userContext.role == UserRoleType.student ?  userContext.id : Number(profileContext.id);
-
     // API DECLARE
-    const techStackByStudentIdQuery = useTechStackByStudentIdQuery(profileId);
+    const techStackByStudentIdQuery = useTechStackByStudentIdQuery(studentId);
 
     // DECLARE HOOK CALL
-    const profileDetails = useProfileDetails({});
+    const profileDetails = useProfileDetails({role});
 
     const onSubmit = (postData: TechStackGet) => {
         console.log("postData: ", postData);
@@ -67,16 +66,16 @@ const TechStack = () => {
     if (!techStackByStudentIdQuery.data) return <Loader/>;
     console.log(techStackByStudentIdQuery.data)
     return (
-        <Paper className={classes.profileContentLayout}>
+        <Box className={classes.profileContentLayout}>
             {techStackByStudentIdQuery.data.length > 0 ? 
-                <Box mb={3} className={classes.profileContainer}>
+                <>
                     <Box className={classes.content}>
                         <AddButton 
-                        customLabel='Assign technology stack' 
-                        onClick={() => setOpen(true)}
-                        type="button"
-                        show={profileDetails.isLoginUserMentor()}/>
-                            <Box mt={2} overflow="scroll" height="200">
+                            customLabel='Assign technology stack' 
+                            onClick={() => setOpen(true)}
+                            type="button"
+                            show={profileDetails.isLoginUserMentor()}/>
+                            <Box>
                             {techStackByStudentIdQuery.data.map((item: TechStackGetItem, index: number) => 
                                 <Box key={item.id} mb={2}>
                                     <TitleLayout 
@@ -107,14 +106,15 @@ const TechStack = () => {
                             )}
                             </Box>
                         </Box>
-                        {profileDetails.isLoginUserStudent() && <Box className={classes.footer}>
+                        {profileDetails.isLoginUserStudent() && 
+                        <Box className={classes.footer}>
                             <FormAction
                                 showSubmit
                                 submitLabel="Save"
                                 onSubmit={handleSubmit(onSubmit)}
                             />
                         </Box>}
-                    </Box> : (
+                    </> : (
                     <EmptyScreen
                         title={'No Technology stack assigned'}
                         subtitle={!profileDetails.isLoginUserStudent() ? 'Assign new technology stack by clicking assign technology stack button' : ''}
@@ -123,9 +123,9 @@ const TechStack = () => {
                         showButton={profileDetails.isLoginUserMentor()}
                     />
                 )}
-            {isOpen && <AssignTechStackModal userId={userId} isOpen={isOpen} onClose={() => setOpen(false)}/>}
-        </Paper>
+            {isOpen && <AssignTechStackModal userId={studentId} isOpen={isOpen} onClose={() => setOpen(false)}/>}
+        </Box>
     )
 }
 
-export default TechStack;
+export default StudentTechStackForm;

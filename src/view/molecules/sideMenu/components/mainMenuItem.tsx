@@ -98,8 +98,8 @@ export const myProfileMenuList: MenuType[] = compact([
     {
         id: 'studentTechStack',
         label: 'Tech Stack',
-        link: PATH.STUDENT_PATH,
-        subLinks: PATH.STUDENT_PATH,
+        link: PATH.STUDENT_TECH_STACK_PATH,
+        subLinks: PATH.STUDENT_TECH_STACK_PATH,
         icon: <CodeOutlined style={{fontSize: '20px'}}/>,
         submenuList: [],
         permissionKey: 'student.techStack'

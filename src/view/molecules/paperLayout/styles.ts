@@ -10,6 +10,10 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         background: palette.background.paper,
         flex: 1,
     },
+    disabledPaperPaddingX: {
+        paddingLeft: spacing(0),
+        paddingRight: spacing(0),
+    },
     title: {
         fontSize: 17,
         fontWeight: 500,
@@ -24,7 +28,7 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         flex: 1,
         flexDirection: 'row',
         borderBottom: `1px solid ${palette.primary.light}`,
-        marginBottom: spacing(4),
+        marginBottom: spacing(2),
         paddingBottom: spacing(1),
     },
     header: {

@@ -58,7 +58,7 @@ const MockInterview = () => {
     const viewStudentListPopup = useViewStudentListPopup();
     const addMockInterviewPopup = useAddMockInterviewPopup();
     const viewMockInterviewPopup = useViewMockInterviewPopup();
-    const profileDetails = useProfileDetails();
+    const profileDetails = useProfileDetails({});
 
     // IF API LOADS, TURN ON LOADER
     if (!studentListQuery.data || !mentorListQuery.data) return <Loader/>;
@@ -72,7 +72,7 @@ const MockInterview = () => {
                         customLabel='Create mock interview' 
                         onClick={() => addMockInterviewPopup.show(null)} 
                         type="button"
-                        hide={profileDetails.isLoginUserStudent()}
+                        show={profileDetails.isLoginUserMentor()}
                     />
                     
                     <Box className={classes.grid4} mt={3}>
@@ -98,7 +98,7 @@ const MockInterview = () => {
                 <EmptyScreen
                     title={'No Mock interview created'}
                     subtitle={!profileDetails.isLoginUserStudent() ? 'Create and assign new mock interview' : ''}
-                    button={<AddButton customLabel='Create mock interview' onClick={() => setOpen(true)} type="button" hide={profileDetails.isLoginUserStudent()}/>}
+                    button={<AddButton customLabel='Create mock interview' onClick={() => setOpen(true)} type="button" show={profileDetails.isLoginUserMentor()}/>}
                     icon={<VoiceOverOffOutlined style={{fontSize: 46}}/>}
                 />
             )}

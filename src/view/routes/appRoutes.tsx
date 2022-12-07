@@ -26,6 +26,7 @@ import ReportPage from '@/view/pages/report';
 import TaskPage from '@/view/pages/task';
 import NoPage from '@/view/pages/error/noPage';
 import ProfilePage from '@/view/pages/profile';
+import StudentTechStackPage from '@/view/pages/techStack/components/studentTechStack';
 
 // CONTEXT IMPORT
 import {UserContext} from '@/contexts/userContext';
@@ -87,12 +88,13 @@ const AppRoutes = () => {
                                 <TaskPage />
                             </PermissionGuard>
                         }/>
-                        <Route path={PATH.STUDENT_REPORT_PATH} element={
-                            <PermissionGuard permissionkey={'mentor.report'}>
-                                <ProfilePage />
+                        <Route path={PATH.STUDENT_TECH_STACK_PATH} element={
+                            <PermissionGuard permissionkey={'student.techStack'}>
+                                <StudentTechStackPage />
                             </PermissionGuard>
                         }/>
-                        <Route path={PATH.PROFILE_PATH} element={
+
+                        <Route path={PATH.STUDENT_REPORT_PATH} element={
                             <PermissionGuard permissionkey={'mentor.report'}>
                                 <ProfilePage />
                             </PermissionGuard>

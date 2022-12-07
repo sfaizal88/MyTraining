@@ -23,7 +23,7 @@ export type AddButtonProps = {
   icon?: ReactElement | null;
   onClick: () => void;
   type?: 'link' | 'button',
-  hide?: boolean;
+  show?: boolean;
   direction?: 'flex-start' | 'center' | 'flex-end'
 }
 
@@ -33,7 +33,7 @@ const AddButton = ({
   customLabel,
   type = "link",
   icon = <AddCircleOutlineOutlined style={{fontSize: 24, marginRight: '8px'}}/>,
-  hide,
+  show = true,
   onClick,
   direction = 'flex-start',
 }: AddButtonProps) => {
@@ -42,12 +42,12 @@ const AddButton = ({
   return (
     <>
       {type === 'link' ? 
-        <Box className={clsx(classes.root, hide && classes.hide)} onClick={onClick} justifyContent={direction}>
+        (show && <Box className={classes.root} onClick={onClick} justifyContent={direction}>
           {icon}  {customLabel || `Add ${label}`}
-        </Box> : 
-        <Button className={clsx(hide && classes.hide)} variant="contained" onClick={onClick} justifyContent={direction}>
+        </Box>) : 
+        (show && <Button variant="contained" onClick={onClick} justifyContent={direction}>
           {icon}  {customLabel || `Add ${label}`}
-        </Button>
+        </Button>)
       }
     </>
   );
