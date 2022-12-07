@@ -11,6 +11,14 @@ import {ReactElement} from 'react';
 // UTILS IMPORT
 import {Permission} from '@/utils/permission';
 
+// MAIN MENU
+export type MainMenuType = {
+    id: string,
+    label: string,
+    menuList: MenuType[],
+    permissionKeys: Permission[]
+}
+
 // MENU DATA TYPE
 export type MenuType = { 
     id: string,

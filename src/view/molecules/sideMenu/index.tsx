@@ -17,18 +17,22 @@ import { Link, useLocation } from "react-router-dom";
 import LogoIcon from '@/assets/img/logo.png';
 
 // ROUTER IMPORT
-import {MenuType, SubMenuType} from '@/view/routes/type';
-import {menuList} from '@/view/routes/constants';
+import {MenuType, SubMenuType, MainMenuType} from '@/view/routes/type';
 
 // GENERIC COMPONENT
 import {SafeLink, Avatar} from '@/view/atoms';
 
 // UTILS IMPORT
 import {userRoleDisplayMap} from '@/utils/constants';
-import {useHasPermission as checkPermission} from '@/utils/permission';
 
 // CONTEXT IMPORT
 import {UserContext} from '@/contexts/userContext';
+
+// MENU IMPORT
+import {mainMenuList} from './components/mainMenu';
+
+// UTILS IMPORT
+import {useHasPermission as checkPermission, useHasAnyPermission as checkAnyPermission} from '@/utils/permission';
 
 // STYLE IMPORT
 import useStyles from './styles';
@@ -78,49 +82,54 @@ const SideMenu = () => {
                 <Typography mt={1} variant="h6" className={classes.profileTitle}>{userContext.name}</Typography>
                 <Typography variant="caption" className={classes.profileTag}>{userRoleDisplayMap[userContext.role]}</Typography>
             </Box>
-            <ul className={classes.menu}>
-                {menuList.map((menu: MenuType) => {
-                    return (
-                        <Box key={menu.id}>
-                                {checkPermission(menu.permissionKey) && (<li>
-                                    <Box onClick={() => setCurrentMenu(menu.link)} className={clsx(classes.menuItem, isMenuActive(menu.subLinks) && classes.menuItemActive)}>
-                                        <SafeLink to={menu.link} className={classes.menuLink}>
-                                            <Box className={classes.menuIcon}>{menu.icon}</Box>
-                                            <Box className={classes.menuLabel}>{menu.label}</Box>
-                                            {menu.submenuList.length > 0 && (
-                                                <Box className={classes.expand}>
-                                                    {opened[menu.id] ? <KeyboardArrowUpOutlined 
-                                                        onClick={(event) => submenuOpen(event, menu.id)}
-                                                    /> :
-                                                    <KeyboardArrowDownOutlined 
-                                                        onClick={(event) => submenuOpen(event, menu.id)}
-                                                    />}
-                                                </Box>
-                                            )}
-                                        </SafeLink>
-                                    </Box>
-                                    {menu.submenuList.length > 0 && (
-                                        <Collapse in={opened[menu.id]} timeout="auto" unmountOnExit>
-                                            <ul className={classes.submenu}>
-                                                {menu.submenuList.map((item: SubMenuType) => (
-                                                    checkPermission(item.permissionKey) && <li key={item.id}>
-                                                        <Box onClick={() => setCurrentMenu(item.subLinks)} className={clsx(classes.submenuItem, isMenuActive(item.subLinks) && classes.menuItemActive)}>
-                                                            <Link to={item.link} className={classes.menuLink}>
-                                                                <Box className={classes.menuIcon}>{item.icon}</Box>
-                                                                <Box className={classes.menuLabel}>{item.label}</Box>
-                                                            </Link>
+            <ul className={classes.mainmenu}>
+                {mainMenuList.map((mainMenuItem: MainMenuType) => (
+                    checkAnyPermission(mainMenuItem.permissionKeys) && (
+                    <li key={mainMenuItem.id}><Box className={classes.mainMenuLabel}>{mainMenuItem.label}</Box>
+                        <ul className={classes.menu}>
+                            {mainMenuItem.menuList.map((menu: MenuType) => (
+                                    <Box key={menu.id}>
+                                        {checkPermission(menu.permissionKey) && <li>
+                                            <Box onClick={() => setCurrentMenu(menu.link)} className={clsx(classes.menuItem, isMenuActive(menu.subLinks) && classes.menuItemActive)}>
+                                                <SafeLink to={menu.link} className={classes.menuLink}>
+                                                    <Box className={classes.menuIcon}>{menu.icon}</Box>
+                                                    <Box className={classes.menuLabel}>{menu.label}</Box>
+                                                    {menu.submenuList.length > 0 && (
+                                                        <Box className={classes.expand}>
+                                                            {opened[menu.id] ? <KeyboardArrowUpOutlined 
+                                                                onClick={(event) => submenuOpen(event, menu.id)}
+                                                            /> :
+                                                            <KeyboardArrowDownOutlined 
+                                                                onClick={(event) => submenuOpen(event, menu.id)}
+                                                            />}
                                                         </Box>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </Collapse>
-                                    )}
-                                </li>
-                            )}
-                        </Box>
-                    )
-                })}
-            </ul> 
+                                                    )}
+                                                </SafeLink>
+                                            </Box>
+                                            {menu.submenuList.length > 0 && (
+                                                <Collapse in={opened[menu.id]} timeout="auto" unmountOnExit>
+                                                    <ul className={classes.submenu}>
+                                                        {menu.submenuList.map((item: SubMenuType) => (
+                                                            checkPermission(item.permissionKey) && <li key={item.id}>
+                                                                <Box onClick={() => setCurrentMenu(item.subLinks)} className={clsx(classes.submenuItem, isMenuActive(item.subLinks) && classes.menuItemActive)}>
+                                                                    <Link to={item.link} className={classes.menuLink}>
+                                                                        <Box className={classes.menuIcon}>{item.icon}</Box>
+                                                                        <Box className={classes.menuLabel}>{item.label}</Box>
+                                                                    </Link>
+                                                                </Box>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </Collapse>
+                                            )}
+                                        </li>}
+                                    </Box>)
+                                )}
+                            </ul> 
+                        </li>
+                    ))
+                )}
+            </ul>
         </Box>
     )
 }

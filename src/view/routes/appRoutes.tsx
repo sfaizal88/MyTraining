@@ -93,7 +93,7 @@ const AppRoutes = () => {
                             </PermissionGuard>
                         }/>
                         <Route path={PATH.PROFILE_PATH} element={
-                            <PermissionGuard permissionkey={'student.myProfile'}>
+                            <PermissionGuard permissionkey={'mentor.report'}>
                                 <ProfilePage />
                             </PermissionGuard>
                         }/>

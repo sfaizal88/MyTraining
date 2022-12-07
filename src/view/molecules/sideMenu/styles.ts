@@ -17,6 +17,22 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         listStyle: 'none',
         width: 'inherit',
     },
+    mainmenu: {
+        listStyle: 'none',
+        padding: spacing(0),
+        margin: spacing(0)
+    },
+    mainMenuLabel: {
+        textTransform: 'uppercase',
+        fontWeight: 650,
+        fontSize: 13,
+        padding: spacing(0),
+        margin: spacing(2, 0, 0, 4),
+        height: 40,
+        display: 'inline-flex',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
+    },
     menuItem: {
         padding: spacing(1, 1, 1, 2),
         transition: 'all 0.5s linear',
@@ -78,7 +94,7 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         }
     },
     profileContainer: {
-        padding: spacing(0, 2, 3, 2),
+        padding: spacing(0, 2, 0, 2),
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

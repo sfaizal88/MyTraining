@@ -18,14 +18,26 @@ export const useHasPermission = (key: Permission) => {
     return allowedPermissionKeys.includes(key);
 }
 
+// CHECK WHETHER PERMISSION ALLOWED BY PERMISSION KEY
+export const useHasAnyPermission = (keys: Permission[]) => {
+    const userObject = useContext(UserContext);
+    const allowedPermissionKeys = userObject.permission_ids;
+    const isAllowed = allowedPermissionKeys.some(value => keys.includes(value));
+    return isAllowed;
+}
+
 // ALLOWED PERMISSION KEY
 export type Permission =
+| 'general.dashboard'
 | 'admin.mentor'
 | 'admin.student'
-| 'mentor.roadmap'
-| 'mentor.task'
 | 'mentor.techStack'
+| 'mentor.roadmap'
 | 'mentor.report'
-| 'student.myProfile'
-| 'general.dashboard'
-| 'general.setting'
+| 'mentor.task'
+| 'student.techStack'
+| 'student.task'
+| 'student.roadmap'
+| 'student.mockInterview'
+| 'general.settings'
+
