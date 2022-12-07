@@ -24,3 +24,4 @@ export {default as SocialMedia} from './socialMedia';
 export {default as TitleLayout} from './titleLayout';
 export {default as ChipTech} from './chipTech';
 export {default as ConfirmPopup} from './alertPopup/confirmPopup';
+export {default as IdleTimer} from './idleTimer';

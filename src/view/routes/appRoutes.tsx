@@ -14,7 +14,7 @@ import useStyles from '@/view/routes/styles';
 import * as PATH from '@/view/routes/constants';
 
 // GENERIC VIEW IMPORT 
-import {SideMenu, Header, Footer} from '@/view/molecules';
+import {SideMenu, Header, Footer, IdleTimer} from '@/view/molecules';
 
 // PAGE IMPORT 
 import Dashboard from '@/view/pages/dashboard';
@@ -49,6 +49,7 @@ const AppRoutes = () => {
             </Box>
             <Box className={classes.layout}>
                 <Header/>
+                <IdleTimer/>
                 <Box className={classes.bodyContent}>
                     <Routes>
                         <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />}/>

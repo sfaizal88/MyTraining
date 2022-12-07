@@ -17,7 +17,7 @@ export const serverDateFormat = "YYYY-MM-DD";
 
 // IDEL TIME OUT
 export const SESSION_TIMEOUT =1000 * 60 * 5; // 5 min 
-export const PROMPT_TIMEOUT =1000 * 60; // 30 min
+export const PROMPT_TIMEOUT = 1000 * 60 * 30; // 30 min
 export const apiFailed = -1;
 
 export const taskStatusDisplayMap = {
