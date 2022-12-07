@@ -6,6 +6,7 @@
  * 
  */
 // GENERIC IMPORT
+import {ReactElement} from 'react';
 import {
     Box,
     Dialog, 
@@ -32,6 +33,7 @@ type ConfirmPopupProps = {
     onClose: () => void;
     onSubmit: () => void;
     submitLabel?: string;
+    icon?: ReactElement;
     closeLabel?: string;
     content: string;
     details?: string;
@@ -43,6 +45,7 @@ const ConfirmPopup = ({
     title,
     content,
     details,
+    icon,
     maxWidth = 'xs',
     submitLabel = 'Yes',
     closeLabel = 'Cancel',
@@ -70,6 +73,7 @@ const ConfirmPopup = ({
                 </Grid>
             </DialogTitle>
             <DialogContent dividers className={classes.confirmContent}>
+                {icon && <Box className={classes.bodyIcon}>{icon}</Box>}
                 <Box className={classes.bodyTitle}>{content}</Box>
                 <Box className={classes.bodyDetails}>{details}</Box>
             </DialogContent>

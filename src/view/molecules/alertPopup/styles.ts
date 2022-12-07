@@ -29,6 +29,12 @@ const useStyles = makeStyles(({spacing}: Theme) => ({
         fontWeight: 500,
         color: '#707070',
         padding: spacing(0, 5, 2, 5)
+    },
+    bodyIcon: {
+        "& .MuiSvgIcon-root": {
+            fontSize: 70, 
+            color: '#707070',
+        }
     }
   }));
   

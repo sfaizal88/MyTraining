@@ -27,7 +27,11 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
     },
     menuIcon: {
         cursor: 'pointer'
-    }
+    },
+    listItemIcon: {
+        minWidth: '30px',
+    },
+    
 }));
   
   export default useStyles;

@@ -7,6 +7,7 @@
  */
 // UTILS IMPORT
 import {UserRoleType} from '@/utils/enum';
+import {Permission} from '@/utils/permission';
 
 // LOGIN DATA TYPE
 export type LoginType = {
@@ -21,4 +22,5 @@ export type UserType = {
     role: UserRoleType;
     email: string;
     contact_no: string;
+    permission_ids: Permission[];
 }

@@ -19,6 +19,7 @@ export const UserContext = createContext<UserType>({
     id: 0,
     name: "",
     role: UserRoleType.admin,
+    permission_ids: [],
     email: "",
     contact_no: "",
 });
