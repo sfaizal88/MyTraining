@@ -30,7 +30,7 @@ import schema from '../schema';
 import useStyles from '../styles';
 
 // TITLES COMPONENT PROPS
-const widths: (boolean | GridSize)[] = [true, 4, 4, 2];
+const widths: (boolean | GridSize)[] = [4, 3, 3, 2];
 
 // PROPS TYPE
 type AddTechStackFormProps = {

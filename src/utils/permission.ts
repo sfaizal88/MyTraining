@@ -22,7 +22,7 @@ export const useHasPermission = (key: Permission) => {
 export type Permission =
 | 'admin.mentor'
 | 'admin.student'
-| 'mentor.roadMap'
+| 'mentor.roadmap'
 | 'mentor.task'
 | 'mentor.techStack'
 | 'mentor.report'

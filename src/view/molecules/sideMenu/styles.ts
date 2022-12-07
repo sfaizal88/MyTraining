@@ -85,7 +85,8 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         flexDirection: 'column'
     },
     profileTitle: {
-        fontWeight: 600
+        fontWeight: 600,
+        textAlign: 'center'
     },
     profileTag: {
 

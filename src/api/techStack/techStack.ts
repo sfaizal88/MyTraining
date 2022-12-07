@@ -44,8 +44,8 @@ export type TechStackGet = {
 }
 
 export type TechStackAssignPostItem = {
-    userId: number;
-    name: number;
+    student_id: number;
+    tech_stack_id: number;
 }
 
 // USE TO FETCH ALL TECH STACK
@@ -133,9 +133,9 @@ export function useAssignTechStackToUserMutation(userId: number) {
 // ASSIGN TECH STACK TO USER API DETAILS
 const assignTechStackToUser = (data: TechStackAssignPostItem) => {
     return CallDataApi({
-        url: `${web_url}transaction/single/createTransaction.php`,
+        url: `${api_url}techStack/assignTechStackToStudent.php`,
         method: 'POST',
-        data: JSON.stringify({...data /* , token: getStorage('token') */})
+        data: JSON.stringify({...data , token: getStorage('token')})
     });
 }
 

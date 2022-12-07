@@ -70,7 +70,7 @@ const Header = () => {
             <Box flex={1} className={classes.profileContainer}>
                 <Avatar label={userContext.name[0]} mr={'8px'}/>{userContext.name}</Box>
             <Box width={60} display='inline-flex' justifyContent='center' onClick={handleClick}>
-                <SettingsOutlined style={{fontSize: 25}}/>
+                <SettingsOutlined style={{fontSize: 25, cursor: 'pointer'}}/>
             </Box>
             <Menu
                 anchorEl={anchorEl}
@@ -97,7 +97,7 @@ const Header = () => {
                         </ListItemIcon>
                         Logout
                 </MenuItem>
-            </Menu>bodyIcon
+            </Menu>
             {isLogoutConfirm && (
                 <ConfirmPopup 
                     isOpen={isLogoutConfirm}

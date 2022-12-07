@@ -14,7 +14,7 @@ import useStyles from '@/view/routes/styles';
 import * as PATH from '@/view/routes/constants';
 
 // GENERIC VIEW IMPORT 
-import {SideMenu, Header, Footer, IdleTimer} from '@/view/molecules';
+import {SideMenu, Header, Footer, IdleTimer, PermissionGuard} from '@/view/molecules';
 
 // PAGE IMPORT 
 import Dashboard from '@/view/pages/dashboard';
@@ -52,15 +52,51 @@ const AppRoutes = () => {
                 <IdleTimer/>
                 <Box className={classes.bodyContent}>
                     <Routes>
-                        <Route path={PATH.DASHBOARD_PATH} element={<Dashboard />}/>
-                        <Route path={PATH.STUDENT_PATH} element={<StudentPage />}/>
-                        <Route path={PATH.MENTOR_PATH} element={<MentorPage />}/>
-                        <Route path={PATH.ROADMAP_PATH} element={<RoadmapPage />}/>
-                        <Route path={PATH.TECH_STACK_PATH} element={<TechStackPage />}/>
-                        <Route path={PATH.REPORT_PATH} element={<ReportPage />}/>
-                        <Route path={PATH.TASK_PATH} element={<TaskPage />}/>
-                        <Route path={PATH.STUDENT_REPORT_PATH} element={<ProfilePage />}/>
-                        <Route path={PATH.PROFILE_PATH} element={<ProfilePage />}/>
+                        <Route path={PATH.DASHBOARD_PATH} element={
+                            <PermissionGuard permissionkey={'general.dashboard'}>
+                                <Dashboard />
+                            </PermissionGuard>
+                        }/>
+                        <Route path={PATH.STUDENT_PATH} element={
+                            <PermissionGuard permissionkey={'admin.student'}>
+                                <StudentPage />
+                            </PermissionGuard>
+                        }/>
+                        <Route path={PATH.MENTOR_PATH} element={
+                            <PermissionGuard permissionkey={'admin.mentor'}>
+                                <MentorPage />
+                            </PermissionGuard>
+                        }/>
+                        <Route path={PATH.ROADMAP_PATH} element={
+                            <PermissionGuard permissionkey={'mentor.roadmap'}>
+                                <RoadmapPage />
+                            </PermissionGuard>
+                        }/>
+                        <Route path={PATH.TECH_STACK_PATH} element={
+                            <PermissionGuard permissionkey={'mentor.techStack'}>
+                                <TechStackPage />
+                            </PermissionGuard>
+                        }/>
+                        <Route path={PATH.REPORT_PATH} element={
+                            <PermissionGuard permissionkey={'mentor.report'}>
+                                <ReportPage />
+                            </PermissionGuard>
+                        }/>
+                        <Route path={PATH.TASK_PATH} element={
+                            <PermissionGuard permissionkey={'mentor.task'}>
+                                <TaskPage />
+                            </PermissionGuard>
+                        }/>
+                        <Route path={PATH.STUDENT_REPORT_PATH} element={
+                            <PermissionGuard permissionkey={'mentor.report'}>
+                                <ProfilePage />
+                            </PermissionGuard>
+                        }/>
+                        <Route path={PATH.PROFILE_PATH} element={
+                            <PermissionGuard permissionkey={'student.myProfile'}>
+                                <ProfilePage />
+                            </PermissionGuard>
+                        }/>
                         <Route path="*" element={<NoPage />} />
                     </Routes>
                 </Box>

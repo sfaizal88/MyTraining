@@ -27,7 +27,7 @@ export const formValidationMessages = {
 export const validationMessages: Record<string, () => string> = {
   ERROR_001: () => 'Something went wrong, please try again after sometime.',
   ERROR_002: () => 'Duplicate title.',
-  ERROR_003: () => 'Duplicate customer name exists.',
+  ERROR_003: () => 'Already tech stack assigned.',
   ERROR_004: () => 'Either username or password wrong.',
   ERROR_005: () => 'Session expired, please login again.',
   ERROR_006: () => 'Please enter all requried field before submitting.',

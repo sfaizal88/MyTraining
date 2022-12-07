@@ -80,17 +80,17 @@ const AssignTechStackModal = ({
                     <FormRow label="Assign technology stack" isRow>
                         <SelectField
                             register={register}
-                            id="name"
-                            name="name"
+                            id="tech_stack_id"
+                            name="tech_stack_id"
                             control={control}
                             placeholder="Select Technology stack"
-                            errors={errors?.name}
+                            errors={errors?.tech_stack_id}
                             emptyOptionLabel="Select Technology stack"
                             options={techStackOptionsQuery.data}
                         />
                         <NumberField
-                            id="userId"
-                            name="userId"
+                            id="student_id"
+                            name="student_id"
                             control={control}
                             register={register}
                             hidden

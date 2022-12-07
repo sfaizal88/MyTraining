@@ -25,6 +25,7 @@ import {SafeLink, Avatar} from '@/view/atoms';
 
 // UTILS IMPORT
 import {userRoleDisplayMap} from '@/utils/constants';
+import {useHasPermission as checkPermission} from '@/utils/permission';
 
 // CONTEXT IMPORT
 import {UserContext} from '@/contexts/userContext';
@@ -81,7 +82,7 @@ const SideMenu = () => {
                 {menuList.map((menu: MenuType) => {
                     return (
                         <Box key={menu.id}>
-                                <li>
+                                {checkPermission(menu.permissionKey) && (<li>
                                     <Box onClick={() => setCurrentMenu(menu.link)} className={clsx(classes.menuItem, isMenuActive(menu.subLinks) && classes.menuItemActive)}>
                                         <SafeLink to={menu.link} className={classes.menuLink}>
                                             <Box className={classes.menuIcon}>{menu.icon}</Box>
@@ -102,7 +103,7 @@ const SideMenu = () => {
                                         <Collapse in={opened[menu.id]} timeout="auto" unmountOnExit>
                                             <ul className={classes.submenu}>
                                                 {menu.submenuList.map((item: SubMenuType) => (
-                                                    <li key={item.id}>
+                                                    checkPermission(item.permissionKey) && <li key={item.id}>
                                                         <Box onClick={() => setCurrentMenu(item.subLinks)} className={clsx(classes.submenuItem, isMenuActive(item.subLinks) && classes.menuItemActive)}>
                                                             <Link to={item.link} className={classes.menuLink}>
                                                                 <Box className={classes.menuIcon}>{item.icon}</Box>
@@ -115,6 +116,7 @@ const SideMenu = () => {
                                         </Collapse>
                                     )}
                                 </li>
+                            )}
                         </Box>
                     )
                 })}

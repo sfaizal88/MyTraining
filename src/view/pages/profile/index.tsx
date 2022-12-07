@@ -57,8 +57,8 @@ const ProfilePage = () => {
             <Box className={classes.root}>
                 <ProfileHeader/>
                 <TabContainer
-                    tabsLabel={['Technology stack', 'Mock Interview', 'Task', 'Road Map',]}
-                    tabsComponent={[<TechStack/>, <MockInterview/>, <Task/>, <Roadmap/>]}
+                    tabsLabel={['Technology stack']}
+                    tabsComponent={[<TechStack/>]}
                 />
             </Box>
         </ProfileContext.Provider>
@@ -66,3 +66,5 @@ const ProfilePage = () => {
 }
 
 export default ProfilePage;
+// , 'Mock Interview', 'Task', 'Road Map',
+// , <MockInterview/>, <Task/>, <Roadmap/>

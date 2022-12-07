@@ -17,12 +17,15 @@ import {UserRoleType} from '@/utils/enum';
 export function useProfileDetails() {
     // CONTEXT DECALRE
     const userContext = useContext(UserContext);
-
-    const isLoginUserStudent = () => userContext.role !== UserRoleType.student;
+    userContext.role = Number(userContext.role);
+    
+    const isLoginUserStudent = () => userContext.role === UserRoleType.student;
     const isLoginUserAdmin = () => userContext.role === UserRoleType.admin;
+    const isLoginUserMentor = () => userContext.role === UserRoleType.mentor;
 
     return {
         isLoginUserStudent,
         isLoginUserAdmin,
+        isLoginUserMentor,
     };
 }

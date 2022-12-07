@@ -18,12 +18,14 @@ type EmptyScreenProps = {
     subtitle?: string;
     button?: ReactElement;
     icon?: ReactElement;
+    showButton?: boolean;
 }
 
 const EmptyScreen = ({
     title,
     subtitle,
     button,
+    showButton =  true,
     icon,
 }: EmptyScreenProps) => {
     const classes = useStyles();
@@ -33,7 +35,7 @@ const EmptyScreen = ({
                 {icon}
                 <Box className={classes.title}>{title}</Box>
                 <Box className={classes.subtitle}>{subtitle}</Box>
-                {button}
+                {showButton && button}
             </Box>
         </Box>
     )

@@ -41,7 +41,7 @@ export const menuList: MenuType[] = compact([
     {
         id: 'dashboard',
         label: 'Dashboard',
-        permissionKey: 'dashboard',
+        permissionKey: 'general.dashboard',
         link: DASHBOARD_PATH,
         subLinks: DASHBOARD_PATH,
         icon: <DashboardOutlined style={{fontSize: '20px'}}/>,
@@ -50,7 +50,7 @@ export const menuList: MenuType[] = compact([
     {
         id: 'myProfile',
         label: 'My Profile',
-        permissionKey: 'myProfile',
+        permissionKey: 'student.myProfile',
         link: PROFILE_PATH,
         subLinks: PROFILE_PATH,
         icon: <AssignmentIndOutlined style={{fontSize: '20px'}}/>,
@@ -59,7 +59,7 @@ export const menuList: MenuType[] = compact([
     {
         id: 'student',
         label: 'Student',
-        permissionKey: 'student',
+        permissionKey: 'admin.student',
         link: STUDENT_PATH,
         subLinks: STUDENT_PATH,
         icon: <PersonOutlined style={{fontSize: '20px'}}/>,
@@ -68,7 +68,7 @@ export const menuList: MenuType[] = compact([
     {
         id: 'mentor',
         label: 'Mentor',
-        permissionKey: 'mentor',
+        permissionKey: 'admin.mentor',
         link: MENTOR_PATH,
         subLinks: MENTOR_PATH,
         icon: <SchoolOutlined style={{fontSize: '20px'}}/>,
@@ -77,7 +77,7 @@ export const menuList: MenuType[] = compact([
     {
         id: 'report',
         label: 'Report',
-        permissionKey: 'report',
+        permissionKey: 'mentor.report',
         link: REPORT_PATH,
         subLinks: REPORT_PATH,
         icon: <AssessmentOutlined style={{fontSize: '20px'}}/>,
@@ -86,7 +86,7 @@ export const menuList: MenuType[] = compact([
     {
         id: 'techStack',
         label: 'Tech Stack',
-        permissionKey: 'techStack',
+        permissionKey: 'mentor.techStack',
         link: TECH_STACK_PATH,
         subLinks: TECH_STACK_PATH,
         icon: <CodeOutlined style={{fontSize: '20px'}}/>,
@@ -95,7 +95,7 @@ export const menuList: MenuType[] = compact([
     {
         id: 'roadmap',
         label: 'Roadmap',
-        permissionKey: 'roadmap',
+        permissionKey: 'mentor.roadmap',
         link: ROADMAP_PATH,
         subLinks: ROADMAP_PATH,
         icon: <RouteOutlined style={{fontSize: '20px'}}/>,
@@ -104,7 +104,7 @@ export const menuList: MenuType[] = compact([
     {
         id: 'task',
         label: 'Task',
-        permissionKey: 'task',
+        permissionKey: 'mentor.task',
         link: TASK_PATH,
         subLinks: TASK_PATH,
         icon: <TaskOutlined style={{fontSize: '20px'}}/>,
@@ -113,10 +113,10 @@ export const menuList: MenuType[] = compact([
     {
         id: 'settings',
         label: 'Settings',
-        permissionKey: 'settings',
+        permissionKey: 'general.setting',
         link: SETTINGS_PATH,
         subLinks: SETTINGS_PATH,
         icon: <SettingsOutlined style={{fontSize: '20px'}}/>,
         submenuList: [],
-    }
+    } 
 ]);

@@ -10,7 +10,7 @@ import {Box, Chip} from '@mui/material';
 
 // GENERIC COMPONENT IMPORT 
 import {Avatar} from '@/view/atoms';
-import {FormAction, FormRow, PopupFooter, ChipTech} from '@/view/molecules';
+import {FormAction, FormRow, PopupFooter, ChipTech, EmptyLabel} from '@/view/molecules';
 
 // API
 import type {TechStackGetItem} from '@/api/techStack/techStack';
@@ -43,11 +43,11 @@ const ViewTechStackForm = ({onClose, data, studentOptions}: ViewTechStackFormPro
         {data.title}
       </FormRow>
       <FormRow label="assigned to" isViewOnly>
-          {data.students.map((item: number) => 
+          {data.students.length ? data.students.map((item: number) => 
             <Box key={item} mr={1} mb={1} display='inline-block'>
-              <Chip avatar={<Avatar size="xs" label={studentMap[item][0]}/>} label={studentMap[item]} variant="outlined"/>
+              <Chip avatar={<Avatar size="xs" label={studentMap[item].toString().charAt(0)}/>} label={studentMap[item]} variant="outlined"/>
             </Box>
-          )}
+          ): <EmptyLabel label={'No student assigned'}/>}
       </FormRow>
       <FormRow label="topics" isViewOnly>
         {data.tech_details.map((item) =>

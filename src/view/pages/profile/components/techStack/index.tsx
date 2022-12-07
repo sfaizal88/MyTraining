@@ -8,22 +8,27 @@
 // GENERIC IMPORT
 import {useContext, useState} from 'react';
 import { Paper, Box, Stack, Divider } from '@mui/material';
-import {useForm, useFieldArray} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import {VideocamOutlined, ArticleOutlined, CodeOffOutlined} from '@mui/icons-material';
 
 // GENERIC COMPONENT IMPORT 
-import {IconField, AddButton} from '@/view/atoms';
+import {IconField, AddButton, Loader} from '@/view/atoms';
 import {TitleLayout, ChipTech, EmptyScreen, FormAction} from '@/view/molecules';
 import {AssignTechStackModal} from '@/view/organisms';
 
 // API IMPORT
-import {TechStackGet} from '@/api/techStack/techStack';
+import {TechStackGet, TechStackGetItem} from '@/api/techStack/techStack';
+import {useTechStackByStudentIdQuery} from '@/api/profile/profile';
 
 // CONTEXT IMPORT
 import {ProfileContext} from '@/contexts/profileContext';
+import {UserContext} from '@/contexts/userContext';
 
 // HOOK
 import {useProfileDetails} from '@/view/pages/profile/hook';
+
+// UTILS IMPORT
+import {UserRoleType} from '@/utils/enum';
 
 // STYLE IMPORT
 import useStyles from '../../styles';
@@ -45,8 +50,12 @@ const TechStack = () => {
 
     // CONTEXT DECALRE
     const profileContext = useContext(ProfileContext);
-    const techStack = profileContext.tech_stack;
+    const userContext = useContext(UserContext);
     const userId = profileContext.id;
+    const profileId = userContext.role == UserRoleType.student ?  userContext.id : Number(profileContext.id);
+
+    // API DECLARE
+    const techStackByStudentIdQuery = useTechStackByStudentIdQuery(profileId);
 
     // DECLARE HOOK CALL
     const profileDetails = useProfileDetails();
@@ -55,18 +64,20 @@ const TechStack = () => {
         console.log("postData: ", postData);
     }
 
+    if (!techStackByStudentIdQuery.data) return <Loader/>;
+    console.log(techStackByStudentIdQuery.data)
     return (
         <Paper className={classes.profileContentLayout}>
-            {techStack.length > 0 ? 
+            {techStackByStudentIdQuery.data.length > 0 ? 
                 <Box mb={3} className={classes.profileContainer}>
                     <Box className={classes.content}>
                         <AddButton 
                         customLabel='Assign technology stack' 
                         onClick={() => setOpen(true)}
                         type="button"
-                        hide={!profileDetails.isLoginUserStudent()}/>
+                        hide={!profileDetails.isLoginUserMentor()}/>
                             <Box mt={2} overflow="scroll" height="200">
-                            {techStack.map((item, index) => 
+                            {techStackByStudentIdQuery.data.map((item: TechStackGetItem, index: number) => 
                                 <Box key={item.id} mb={2}>
                                     <TitleLayout 
                                         title={item.title}
@@ -88,8 +99,7 @@ const TechStack = () => {
                                             key={`${item.id}-${techIndex}`}
                                             {...{register, control, setValue, errors}}
                                             name={`tech_stack[${index}].tech_details[${techIndex}].isSelected`}
-                                            disabled={!profileDetails.isLoginUserStudent()}
-                                            showCheckbox
+                                            showCheckbox={profileDetails.isLoginUserStudent()}
                                             defaultValue={formData.tech_stack?.[index].tech_details?.[techIndex].isSelected}/>
                                     )}
                                     </Box>
@@ -97,19 +107,20 @@ const TechStack = () => {
                             )}
                             </Box>
                         </Box>
-                        <Box className={classes.footer}>
+                        {profileDetails.isLoginUserStudent() && <Box className={classes.footer}>
                             <FormAction
-                                showSubmit={profileDetails.isLoginUserStudent()}
+                                showSubmit
                                 submitLabel="Save"
                                 onSubmit={handleSubmit(onSubmit)}
                             />
-                        </Box>
+                        </Box>}
                     </Box> : (
                     <EmptyScreen
                         title={'No Technology stack assigned'}
                         subtitle={!profileDetails.isLoginUserStudent() ? 'Assign new technology stack by clicking assign technology stack button' : ''}
                         button={<AddButton customLabel='Assign technology stack' onClick={() => setOpen(true)} type="button" hide={!profileDetails.isLoginUserStudent()}/>}
                         icon={<CodeOffOutlined style={{fontSize: 46}}/>}
+                        showButton={profileDetails.isLoginUserMentor()}
                     />
                 )}
             {isOpen && <AssignTechStackModal userId={userId} isOpen={isOpen} onClose={() => setOpen(false)}/>}

@@ -31,10 +31,11 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
     profileDetails: {
         fontSize: 13,
         fontWeight: 500,
+        color: '#707070',
     },
     profileBtnContainer: {
-        width: '150px',
-        textAlign: 'right'
+        flex: 1,
+        textAlign: 'right',
     },
     grid4: {
         display: 'grid',

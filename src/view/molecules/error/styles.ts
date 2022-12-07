@@ -15,7 +15,10 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         flex: 1,
         alignItems: 'center',
         color: palette.text.secondary,
-        padding: spacing(7, 0)
+        padding: spacing(7, 0),
+        "& .MuiSvgIcon-root": {
+            fontSize: 70, 
+        }
     },
     title: {
         flex: 1,
