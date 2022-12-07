@@ -99,11 +99,14 @@ const createTechStack = (data: TechStackGetItem) => {
 }
 
 // USE TO UPDATE TECH STACK
-export function useUpdateTechStackMutation() {
+export function useUpdateTechStackMutation(id?: number | null) {
     const queryClient = useQueryClient();
     return useMutation(updateTechStack, {
         onSuccess() {
             queryClient.invalidateQueries(queryKeys.techStackList);
+            if (id) {
+                queryClient.invalidateQueries(queryKeys.techStackById(id)); 
+            }
         },
     });
 }
@@ -147,10 +150,10 @@ export function useDeleteTechStackMutation() {
 }
 
 // DELETE TECH STACK API 
-const deleteTechStack = (tech_stach_id: number | null) => {
+const deleteTechStack = (tech_stack_id: number | null) => {
     return CallDataApi({
         url: `${api_url}techStack/deleteTechStack.php`,
         method: 'POST',
-        data: JSON.stringify({tech_stach_id, token: getStorage('token')})
+        data: JSON.stringify({tech_stack_id, token: getStorage('token')})
     });
 }

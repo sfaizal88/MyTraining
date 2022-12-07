@@ -30,7 +30,6 @@ type TechDetailsFormItemProps = {
   formData: TechStackGetItem;
   widths: (boolean | GridSize)[];
   onDelete?: (id: number | null) => void;
-  canDelete?: boolean;
 };
 
 const TechDetailsFormItem = ({
@@ -41,7 +40,6 @@ const TechDetailsFormItem = ({
   register,
   setValue,
   formData,
-  canDelete = true,
   ...props
 }: TechDetailsFormItemProps) => {
   // DECLARE STYLE
@@ -101,11 +99,11 @@ const TechDetailsFormItem = ({
               }
             />
           </Grid>
-          {canDelete && 
             <Grid item xs={widths[3]} className={classes.center}>
-              <DeleteOutlineOutlined color={'secondary'} style={{fontSize: 24, cursor: 'pointer'}} onClick={() => remove(index)}/>
+              {!formData.tech_details?.[index].id && 
+                <DeleteOutlineOutlined color={'secondary'} style={{fontSize: 24, cursor: 'pointer'}} onClick={() => remove(index)}/>
+              }
             </Grid>
-          }
         </Grid>
       </Box>
       ))}

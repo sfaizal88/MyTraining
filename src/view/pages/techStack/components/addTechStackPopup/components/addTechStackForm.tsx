@@ -30,7 +30,7 @@ import schema from '../schema';
 import useStyles from '../styles';
 
 // TITLES COMPONENT PROPS
-const widths: (boolean | GridSize)[] = [true, 4, 4, true];
+const widths: (boolean | GridSize)[] = [true, 4, 4, 2];
 
 // PROPS TYPE
 type AddTechStackFormProps = {
@@ -49,7 +49,7 @@ const AddTechStackForm = ({onClose, data, studentOptions}: AddTechStackFormProps
 
   // DECLARE API CALL
   const createTechStackMutation = useCreateTechStackMutation();
-  const updateTechStackMutation = useUpdateTechStackMutation();
+  const updateTechStackMutation = useUpdateTechStackMutation(data?.id);
 
   // REACT HOOK FORM
   const {control, handleSubmit, register, formState: { errors }, setValue, watch} = useForm<TechStackGetItem>({
@@ -140,10 +140,9 @@ const AddTechStackForm = ({onClose, data, studentOptions}: AddTechStackFormProps
             </FormRow>
           </Grid>
         </Grid>
-            <TechDetailsTitles widths={widths} canDelete={!Boolean(data?.id && data?.students.length)}/>
+            <TechDetailsTitles widths={widths}/>
             <TechDetailsFormItem 
-            {...{widths, register, control, errors, setValue, formData}}
-            canDelete={!Boolean(data?.id && data?.students.length)}/>
+            {...{widths, register, control, errors, setValue, formData}}/>
             <NumberField
               id="id"
               name="id"

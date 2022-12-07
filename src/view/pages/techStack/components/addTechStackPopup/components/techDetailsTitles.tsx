@@ -14,13 +14,11 @@ import {Title, ListTitles} from '@/view/atoms';
 // TITLES PROPS
 type TechDetailsTitlesProps = {
   widths: (boolean | GridSize)[];
-  canDelete?: boolean;
 };
 
 // RENDER HTML
 const TechDetailsTitles = ({
-  widths,
-  canDelete = true
+  widths
 }: TechDetailsTitlesProps) => (
   <ListTitles>
     <Grid container columnSpacing={2} rowSpacing={0.5}>
@@ -33,11 +31,9 @@ const TechDetailsTitles = ({
       <Grid item xs={widths[2]}>
         <Title title="Video link" />
       </Grid>
-      {canDelete && 
-        <Grid item xs={widths[3]}>
-          <Title title="Actions" center/>
-        </Grid>
-      }
+      <Grid item xs={widths[3]}>
+        <Title title="Actions" center/>
+      </Grid>
     </Grid>
   </ListTitles>
 );
