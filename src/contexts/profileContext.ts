@@ -17,6 +17,9 @@ import type {TaskGetItem} from '@/api/task/task';
 import type {TechStackGetItem} from '@/api/techStack/techStack';
 import type {MockInterviewGetItem} from '@/api/mockInterview/mockInterview';
 
+// UTILS IMPORT
+import {UserRoleType} from '@/utils/enum';
+
 // CREATING CONTEXT WITH INITIAL VALUES
 export const ProfileContext = createContext<ProfileType>({
     id: 0,
@@ -24,6 +27,7 @@ export const ProfileContext = createContext<ProfileType>({
     contact_no: "",
     dob: "",
     email: "",
+    role: UserRoleType.student,
     task: [] as TaskGetItem[],
     roadmap: {} as RoadmapGetItem,
     tech_stack: [] as TechStackGetItem[],

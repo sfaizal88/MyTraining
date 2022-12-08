@@ -88,13 +88,13 @@ const StudentTechStackForm = ({
         <Box className={classes.profileContentLayout}>
             {data.length > 0 ? 
                 <>
-                    <Box className={classes.content}>
+                    {profileDetails.isLoginUserMentor() && <Box ml={4} mb={2}>
                         <AddButton 
                             customLabel='Assign technology stack' 
                             onClick={() => setOpen(true)}
-                            type="button"
-                            show={profileDetails.isLoginUserMentor()}/>
-                            <Box>
+                            type="button"/>
+                    </Box>}
+                    <Box className={classes.content}>
                             {data.map((item: TechStackGetItem, index: number) => 
                                 <Box key={item.id} mb={2}>
                                     <NumberField
@@ -135,6 +135,7 @@ const StudentTechStackForm = ({
                                                 {...{register, control, setValue, errors}}
                                                 name={`tech_stack[${index}].tech_details[${techIndex}].isSelected`}
                                                 showCheckbox={profileDetails.isLoginUserStudent()}
+                                                showTick={profileDetails.isLoginUserMentor()}
                                                 defaultValue={formData.tech_stack?.[index].tech_details?.[techIndex].isSelected}/>
                                                 <NumberField
                                                     name={`tech_stack[${index}].tech_details[${techIndex}].id`}
@@ -149,7 +150,6 @@ const StudentTechStackForm = ({
                                     </Box>
                                 </Box>
                             )}
-                            </Box>
                         </Box>
                         {profileDetails.isLoginUserStudent() && 
                         <Box className={classes.footer}>

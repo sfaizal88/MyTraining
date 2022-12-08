@@ -6,29 +6,21 @@
  * 
  */
 // GENERIC IMPORT
-import {useContext, useState} from 'react';
-import { Paper, Box, Stack, Divider } from '@mui/material';
-import {useForm} from 'react-hook-form';
-import {VideocamOutlined, ArticleOutlined, CodeOffOutlined} from '@mui/icons-material';
+import {useContext} from 'react';
+import { Paper} from '@mui/material';
 
 // GENERIC COMPONENT IMPORT 
-import {IconField, AddButton, Loader} from '@/view/atoms';
-import {TitleLayout, ChipTech, EmptyScreen, FormAction} from '@/view/molecules';
-import {AssignTechStackModal} from '@/view/organisms';
+import {Loader} from '@/view/atoms';
 
 // API IMPORT
-import {TechStackGet, TechStackGetItem} from '@/api/techStack/techStack';
 import {useTechStackByStudentIdQuery} from '@/api/profile/profile';
 
 // CONTEXT IMPORT
 import {ProfileContext} from '@/contexts/profileContext';
 import {UserContext} from '@/contexts/userContext';
 
-// HOOK
-import {useProfileDetails} from '@/view/pages/profile/hook';
-
-// UTILS IMPORT
-import {UserRoleType} from '@/utils/enum';
+// TECH STACK IMPORT
+import StudentTechStackForm from '@/view/pages/techStack/components/studentTechStack/components/studentTechStackForm';
 
 // STYLE IMPORT
 import useStyles from '../../styles';
@@ -38,92 +30,21 @@ const TechStack = () => {
     // STYLE DECLARE
     const classes = useStyles();
 
-    // STATE DECLARE
-    const [isOpen, setOpen] = useState(false);
-
-    // REACT HOOK FORM
-    const {control, handleSubmit, register, formState: { errors }, setValue, watch} = useForm<TechStackGet>({
-        defaultValues: {} as TechStackGet,
-        mode: 'onChange',
-    });
-    const formData = watch();
-
     // CONTEXT DECALRE
     const profileContext = useContext(ProfileContext);
     const userContext = useContext(UserContext);
-    const userId = profileContext.id;
-    const profileId = userContext.role == UserRoleType.student ?  userContext.id : Number(profileContext.id);
-
+    console.log("userContext: ", userContext);
     // API DECLARE
-    const techStackByStudentIdQuery = useTechStackByStudentIdQuery(profileId);
-
-    // DECLARE HOOK CALL
-    const profileDetails = useProfileDetails({});
-
-    const onSubmit = (postData: TechStackGet) => {
-        console.log("postData: ", postData);
-    }
+    const techStackByStudentIdQuery = useTechStackByStudentIdQuery(profileContext.id);
 
     if (!techStackByStudentIdQuery.data) return <Loader/>;
-    console.log(techStackByStudentIdQuery.data)
+
     return (
         <Paper className={classes.profileContentLayout}>
-            {techStackByStudentIdQuery.data.length > 0 ? 
-                <Box mb={3} className={classes.profileContainer}>
-                    <Box className={classes.content}>
-                        <AddButton 
-                        customLabel='Assign technology stack' 
-                        onClick={() => setOpen(true)}
-                        type="button"
-                        show={profileDetails.isLoginUserMentor()}/>
-                            <Box mt={2} overflow="scroll" height="200">
-                            {techStackByStudentIdQuery.data.map((item: TechStackGetItem, index: number) => 
-                                <Box key={item.id} mb={2}>
-                                    <TitleLayout 
-                                        title={item.title}
-                                        info={`0/${item.tech_details.length} completed`}
-                                        rightChild={
-                                            <Stack
-                                                direction="row"
-                                                divider={<Divider orientation="vertical" flexItem />}
-                                                spacing={1}
-                                                >
-                                                <IconField link={item.video_url} icon={<VideocamOutlined/>} tooltip={item.video_url ? 'Tutorial video link' : 'Link not available'}/>
-                                                <IconField link={item.tutorial_url} icon={<ArticleOutlined/>} tooltip={item.tutorial_url ? 'Tutorial document link' : 'Link not available'}/>
-                                            </Stack>
-                                        }
-                                    />
-                                    <Box>{item.tech_details.map((tech, techIndex) => 
-                                        <ChipTech 
-                                            label={tech.title}
-                                            key={`${item.id}-${techIndex}`}
-                                            {...{register, control, setValue, errors}}
-                                            name={`tech_stack[${index}].tech_details[${techIndex}].isSelected`}
-                                            showCheckbox={profileDetails.isLoginUserStudent()}
-                                            defaultValue={formData.tech_stack?.[index].tech_details?.[techIndex].isSelected}/>
-                                    )}
-                                    </Box>
-                                </Box>
-                            )}
-                            </Box>
-                        </Box>
-                        {profileDetails.isLoginUserStudent() && <Box className={classes.footer}>
-                            <FormAction
-                                showSubmit
-                                submitLabel="Save"
-                                onSubmit={handleSubmit(onSubmit)}
-                            />
-                        </Box>}
-                    </Box> : (
-                    <EmptyScreen
-                        title={'No Technology stack assigned'}
-                        subtitle={!profileDetails.isLoginUserStudent() ? 'Assign new technology stack by clicking assign technology stack button' : ''}
-                        button={<AddButton customLabel='Assign technology stack' onClick={() => setOpen(true)} type="button" show={profileDetails.isLoginUserMentor()}/>}
-                        icon={<CodeOffOutlined style={{fontSize: 46}}/>}
-                        showButton={profileDetails.isLoginUserMentor()}
-                    />
-                )}
-            {isOpen && <AssignTechStackModal userId={userId} isOpen={isOpen} onClose={() => setOpen(false)}/>}
+            <StudentTechStackForm 
+                studentId={profileContext.id} 
+                role={userContext.role}
+                data={techStackByStudentIdQuery.data}/>
         </Paper>
     )
 }

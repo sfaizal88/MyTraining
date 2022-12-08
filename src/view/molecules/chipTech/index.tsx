@@ -7,6 +7,7 @@
  */
 // GENERIC IMPORT
 import {Box, } from '@mui/material';
+import {Done} from '@mui/icons-material';
 
 // GENERIC COMPONENT IMPORT 
 import {CheckboxField} from '@/view/atoms';
@@ -17,6 +18,7 @@ import useStyles from './styles';
 type ChipTechProps = {
   label: string;
   showCheckbox?: boolean;
+  showTick?: boolean;
   name: string;
   control?: any;
   register?: any;
@@ -31,6 +33,7 @@ type ChipTechProps = {
 const ChipTech = ({
   label,
   showCheckbox = false,
+  showTick = false,
   name,
   control,
   register,
@@ -55,7 +58,8 @@ const ChipTech = ({
         >
             {label}
         </CheckboxField>
-        : <Box className={classes.chipLabel}>{label}</Box>}
+        : <Box className={classes.chipLabel}>
+          {defaultValue && <Done style={{fontSize: 18, color: '#27ae60'}}/>}&nbsp;{label}</Box>}
     </Box>  
   )
 }

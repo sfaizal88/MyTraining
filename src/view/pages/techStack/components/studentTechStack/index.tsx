@@ -30,7 +30,7 @@ const StudentTechStackPage = () => {
     const techStackByStudentIdQuery = useTechStackByStudentIdQuery(userContext.id);
     
     if (!techStackByStudentIdQuery.data) return <Loader/>;
-    console.log("Answer data: ", techStackByStudentIdQuery.data);
+    
     return (
         <PaperLayout
                 title="All Tech Stack"

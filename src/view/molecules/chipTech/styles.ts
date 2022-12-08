@@ -18,6 +18,9 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
     chipLabel: {
         fontSize: 14,
         fontWeight: 400,
+        display: 'inline-flex',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
     }
   }));
   

@@ -6,7 +6,6 @@
  * 
  */
 // GENERIC IMPORT
-import clsx from 'clsx';
 import {Box} from '@mui/material';
 import {ReactElement} from 'react';
 import {AddCircleOutlineOutlined} from '@mui/icons-material';
@@ -45,7 +44,7 @@ const AddButton = ({
         (show && <Box className={classes.root} onClick={onClick} justifyContent={direction}>
           {icon}  {customLabel || `Add ${label}`}
         </Box>) : 
-        (show && <Button variant="contained" onClick={onClick} justifyContent={direction}>
+        (show && <Button className={classes.btn} variant="contained" onClick={onClick} justifyContent={direction}>
           {icon}  {customLabel || `Add ${label}`}
         </Button>)
       }

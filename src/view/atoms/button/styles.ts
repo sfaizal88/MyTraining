@@ -6,6 +6,7 @@ const useStyles = makeStyles(({spacing, palette} : Theme) => ({
         background: palette.primary.main,
         color: palette.background.paper,
         boxSizing: 'border-box',
+        display: 'inline-block',
         '&:hover': {
             color: palette.background.paper,
             background: palette.primary.main,
@@ -17,6 +18,7 @@ const useStyles = makeStyles(({spacing, palette} : Theme) => ({
         color: palette.primary.main,
         marginRight: spacing(1),
         boxSizing: 'border-box',
+        display: 'inline-block',
         '&:hover': {
             color: palette.primary.main,
             background: palette.background.paper
@@ -26,6 +28,7 @@ const useStyles = makeStyles(({spacing, palette} : Theme) => ({
         fontWeight: 600,
         fontSize: 12,
         textTransform: 'capitalize',
+        display: 'inline-block',
     }
   }));
   

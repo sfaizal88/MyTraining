@@ -19,6 +19,7 @@ import {CallDataApi} from '@/api/apiCalls';
 
 // UTILS IMPORT
 import {getStorage} from '@/utils/helper';
+import {UserRoleType} from '@/utils/enum';
 
 // GET TYPE
 export type StudentGetItem = {
@@ -27,6 +28,7 @@ export type StudentGetItem = {
     contact_no: string;
     email: string;
     dob: string;
+    role: UserRoleType;
     permission_ids?: string[];
     linked_link?: string;
     github_link?: string;
