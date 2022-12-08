@@ -21,6 +21,10 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
         display: 'inline-flex',
         justifyContent: 'flex-start',
         alignItems: 'center'
+    },
+    checkedChipTechBox: {
+        borderColor: `${palette.success.main}`,
+        color: `${palette.success.main}`,
     }
   }));
   

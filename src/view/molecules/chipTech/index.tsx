@@ -6,6 +6,7 @@
  * 
  */
 // GENERIC IMPORT
+import clsx from 'clsx';
 import {Box, } from '@mui/material';
 import {Done} from '@mui/icons-material';
 
@@ -46,7 +47,7 @@ const ChipTech = ({
 }: ChipTechProps) => {
   const classes = useStyles();
   return (
-    <Box className={classes.chipTechBox} mr={1} mb={1}>
+    <Box className={clsx(classes.chipTechBox, defaultValue && classes.checkedChipTechBox)} mr={1} mb={1}>
         {showCheckbox ? <CheckboxField
           register={register}
           name={name}
@@ -59,7 +60,7 @@ const ChipTech = ({
             {label}
         </CheckboxField>
         : <Box className={classes.chipLabel}>
-          {defaultValue && <Done style={{fontSize: 18, color: '#27ae60'}}/>}&nbsp;{label}</Box>}
+          {defaultValue && <Done style={{fontSize: 18}}/>}&nbsp;{label}</Box>}
     </Box>  
   )
 }

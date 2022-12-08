@@ -16,6 +16,6 @@ export const optionsList: OptionsList[] = [
     {
         id: 'delete',
         label: 'Delete',
-        icon: <DeleteOutlineOutlined style={{fontSize: 24, color: '#e74c3c'}}/>
+        icon: <DeleteOutlineOutlined color={'secondary'} style={{fontSize: 24}}/>
     }
 ]

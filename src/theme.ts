@@ -12,7 +12,7 @@ const theme = createTheme({
           dark: '#6261B5', //
         },
         secondary: {
-          main: '#FA777C', //
+          main: '#e74c3c', //
           light: '#f2f2f2', // Text field bg
         },
         background: {
