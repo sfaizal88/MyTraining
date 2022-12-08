@@ -25,9 +25,6 @@ const useStyles = makeStyles(({spacing, palette}: Theme) => ({
         fontSize: 14,
         fontWeight: 600
     },
-    menuIcon: {
-        cursor: 'pointer'
-    },
     listItemIcon: {
         minWidth: '30px',
     },

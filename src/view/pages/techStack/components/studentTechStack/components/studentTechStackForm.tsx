@@ -6,25 +6,28 @@
  * 
  */
 // GENERIC IMPORT
-import {useContext, useState} from 'react';
+import {useState} from 'react';
 import { Box, Stack, Divider } from '@mui/material';
 import {useForm} from 'react-hook-form';
 import {VideocamOutlined, ArticleOutlined, CodeOffOutlined} from '@mui/icons-material';
 
 // GENERIC COMPONENT IMPORT 
-import {IconField, AddButton, Loader} from '@/view/atoms';
+import {IconField, AddButton, Loader, NumberField} from '@/view/atoms';
 import {TitleLayout, ChipTech, EmptyScreen, FormAction} from '@/view/molecules';
 import {AssignTechStackModal} from '@/view/organisms';
 
 // API IMPORT
-import {TechStackGet, TechStackGetItem} from '@/api/techStack/techStack';
-import {useTechStackByStudentIdQuery} from '@/api/profile/profile';
+import {TechStackGet, TechStackGetItem, useUpdateTechStackTopicsByUserIdMutation} from '@/api/techStack/techStack';
 
 // HOOK
 import {useProfileDetails} from '@/view/pages/profile/hook';
 
 // UTILS IMPORT
 import {UserRoleType} from '@/utils/enum';
+import useNotification from '@/utils/notification';
+
+// TECH STACK IMPORT
+import {preparePostData} from '../helper';
 
 // STYLE IMPORT
 import useStyles from '../styles';
@@ -33,12 +36,14 @@ import useStyles from '../styles';
 type StudentTechStackFormProps = {
     studentId: number;
     role: UserRoleType;
+    data: TechStackGetItem[];
 }
 
 // STUDENT TECH STACK SCREEN COMPONENT DECLARE
 const StudentTechStackForm = ({
     studentId,
     role,
+    data,
 }: StudentTechStackFormProps) => {
     // STYLE DECLARE
     const classes = useStyles();
@@ -46,28 +51,42 @@ const StudentTechStackForm = ({
     // STATE DECLARE
     const [isOpen, setOpen] = useState(false);
 
+    // DECLARE NOTIFICATION AND NAVIDATE
+    const setNotification = useNotification();
+
+    // API DECLARE
+    const updateTechStackTopicsByUserIdMutation = useUpdateTechStackTopicsByUserIdMutation(studentId);
+
     // REACT HOOK FORM
     const {control, handleSubmit, register, formState: { errors }, setValue, watch} = useForm<TechStackGet>({
-        defaultValues: {} as TechStackGet,
+        defaultValues: {tech_stack: data},
         mode: 'onChange',
     });
     const formData = watch();
-
-    // API DECLARE
-    const techStackByStudentIdQuery = useTechStackByStudentIdQuery(studentId);
 
     // DECLARE HOOK CALL
     const profileDetails = useProfileDetails({role});
 
     const onSubmit = (postData: TechStackGet) => {
-        console.log("postData: ", postData);
+        // FORMING POST RESPONSE
+        updateTechStackTopicsByUserIdMutation.mutate(preparePostData(postData), {
+            onSuccess: (response: any) => {
+              // IF ERROR COMES
+              if (response.code === -1) {
+                setNotification.error();
+              } else {
+                setNotification.success();
+              }
+            },
+            onError(e: unknown) {
+              setNotification.error(e); 
+            },
+        });
     }
 
-    if (!techStackByStudentIdQuery.data) return <Loader/>;
-    console.log(techStackByStudentIdQuery.data)
     return (
         <Box className={classes.profileContentLayout}>
-            {techStackByStudentIdQuery.data.length > 0 ? 
+            {data.length > 0 ? 
                 <>
                     <Box className={classes.content}>
                         <AddButton 
@@ -76,11 +95,27 @@ const StudentTechStackForm = ({
                             type="button"
                             show={profileDetails.isLoginUserMentor()}/>
                             <Box>
-                            {techStackByStudentIdQuery.data.map((item: TechStackGetItem, index: number) => 
+                            {data.map((item: TechStackGetItem, index: number) => 
                                 <Box key={item.id} mb={2}>
+                                    <NumberField
+                                        name={`tech_stack[${index}].id`}
+                                        id={`tech_stack[${index}].id`}
+                                        control={control}
+                                        register={register}
+                                        hidden
+                                        defaultValue={item.id}
+                                    />
+                                    <NumberField
+                                        name={`tech_stack[${index}].student_id`}
+                                        id={`tech_stack[${index}].student_id`}
+                                        control={control}
+                                        register={register}
+                                        hidden
+                                        defaultValue={studentId}
+                                    />
                                     <TitleLayout 
                                         title={item.title}
-                                        info={`0/${item.tech_details.length} completed`}
+                                        info={`${formData.tech_stack?.[index].tech_details.filter(formItem => formItem.isSelected).length}/${item.tech_details.length} completed`}
                                         rightChild={
                                             <Stack
                                                 direction="row"
@@ -93,13 +128,23 @@ const StudentTechStackForm = ({
                                         }
                                     />
                                     <Box>{item.tech_details.map((tech, techIndex) => 
-                                        <ChipTech 
-                                            label={tech.title}
-                                            key={`${item.id}-${techIndex}`}
-                                            {...{register, control, setValue, errors}}
-                                            name={`tech_stack[${index}].tech_details[${techIndex}].isSelected`}
-                                            showCheckbox={profileDetails.isLoginUserStudent()}
-                                            defaultValue={formData.tech_stack?.[index].tech_details?.[techIndex].isSelected}/>
+                                        <Box key={`${item.id}-${techIndex}`} component='span'>
+                                            <ChipTech 
+                                                label={tech.title}
+                                                
+                                                {...{register, control, setValue, errors}}
+                                                name={`tech_stack[${index}].tech_details[${techIndex}].isSelected`}
+                                                showCheckbox={profileDetails.isLoginUserStudent()}
+                                                defaultValue={formData.tech_stack?.[index].tech_details?.[techIndex].isSelected}/>
+                                                <NumberField
+                                                    name={`tech_stack[${index}].tech_details[${techIndex}].id`}
+                                                    id={`tech_stack[${index}].tech_details[${techIndex}].id`}
+                                                    control={control}
+                                                    register={register}
+                                                    hidden
+                                                    defaultValue={tech.id}
+                                            />
+                                        </Box>
                                     )}
                                     </Box>
                                 </Box>

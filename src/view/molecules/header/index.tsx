@@ -8,7 +8,7 @@
 // GENERIC IMPORT
 import {useContext, useState} from 'react';
 import {Box, Menu, MenuItem, ListItemIcon} from '@mui/material';
-import {SettingsOutlined, MenuOutlined, PowerSettingsNewOutlined, LogoutOutlined} from '@mui/icons-material';
+import {SettingsOutlined, PowerSettingsNewOutlined, LogoutOutlined} from '@mui/icons-material';
 import {useNavigate} from 'react-router-dom';
     
 // GENERIC COMPONENT
@@ -64,9 +64,6 @@ const Header = () => {
 
     return (
         <Box className={classes.header}>
-            <Box flex={1} className={classes.menuIcon}><MenuOutlined style={{fontSize: 25}}/></Box>
-            <Box flex={1}></Box>
-            <Box flex={1}></Box>
             <Box flex={1} className={classes.profileContainer}>
                 <Avatar label={userContext.name[0]} mr={'8px'}/>{userContext.name}</Box>
             <Box width={60} display='inline-flex' justifyContent='center' onClick={handleClick}>

@@ -38,7 +38,7 @@ const PaperLayout = ({
 }: PropsWithChildren<PaperLayoutProps>) => {
     const classes = useStyles();
     return (
-        <Box className={clsx(classes.paperLayoutWrapper, disablePaddingX && classes.disabledPaperPaddingX)}>
+        <Box className={clsx(classes.paperLayoutWrapper)}>
             <Box className={classes.paperLayoutContainer} >
                 <Box className={classes.header}>
                     <Box className={classes.title}>{title}</Box>
@@ -58,7 +58,7 @@ const PaperLayout = ({
                         </Box>
                 )}
             </Box>
-            {children}
+            <Box mx={disablePaddingX ? 0 : 4}>{children}</Box>
         </Box>
     )
 }

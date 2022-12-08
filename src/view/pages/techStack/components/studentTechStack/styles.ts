@@ -7,7 +7,7 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
         boxSizing: 'border-box'
     },
     footer: {
-        // position: 'sticky',
+        position: 'sticky',
         bottom: 0,
         background: palette.background.paper,
         width: '100%',
@@ -22,6 +22,8 @@ const useStyles = makeStyles(({palette, spacing}: Theme) => ({
         display: 'flex', 
         flexDirection: 'column',
         overflowY: 'auto',
+        paddingLeft: spacing(4),
+        paddingRight: spacing(4),
     },
 }));
   

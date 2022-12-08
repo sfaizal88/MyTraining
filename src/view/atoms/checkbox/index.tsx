@@ -70,8 +70,6 @@ const CheckboxField = ({
                          },
                        }}
                     onChange={(e) => {
-                        console.log("name: ", name);
-                        console.log("e.target.checked: ", e.target.checked);
                         changeEffect?.(e.target.checked);
                         setValue(name, e.target.checked);
                         setState(e.target.checked)

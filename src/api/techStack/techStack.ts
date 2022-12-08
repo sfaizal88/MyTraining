@@ -12,10 +12,11 @@ import {useQuery, QueryFunctionContext, useQueryClient, useMutation} from '@tans
 import queryKeys from '@/api/techStack/queryKeys';
 
 // UTILS IMPORT
-import {web_url, api_url} from '@/api/constants';
+import {api_url} from '@/api/constants';
 
 // API IMPORT 
 import {CallDataApi} from '@/api/apiCalls';
+import profileQueryKeys from '@/api/profile/queryKeys';
 
 // UTILS IMPORT
 import {getStorage} from '@/utils/helper';
@@ -37,6 +38,7 @@ export type TechStackGetItem = {
     students: number[];
     total_topics?: number;
     can_delete?: boolean;
+    student_id?: number;
 }
 
 export type TechStackGet = {
@@ -47,7 +49,11 @@ export type TechStackAssignPostItem = {
     student_id: number;
     tech_stack_id: number;
 }
-
+export type UpdateTechStackTopicsPostItem = {
+    tech_stack_id: number;
+    topic_ids: number[];
+    student_id?: number;
+}
 // USE TO FETCH ALL TECH STACK
 export function useTechStackListQuery() {
     return useQuery(queryKeys.techStackList, getTechStackList);
@@ -155,5 +161,26 @@ const deleteTechStack = (tech_stack_id: number | null) => {
         url: `${api_url}techStack/deleteTechStack.php`,
         method: 'POST',
         data: JSON.stringify({tech_stack_id, token: getStorage('token')})
+    });
+}
+
+// USE TO UPDATE TECH STACK TOPICS TO USER
+export function useUpdateTechStackTopicsByUserIdMutation(userId: number) {
+    const queryClient = useQueryClient();
+    return useMutation(updateTechStackTopicsByUserIdMutation, {
+        onSuccess() {
+            if (userId) {
+                queryClient.invalidateQueries(profileQueryKeys.techStackByStudentId(userId)); 
+            }
+        },
+    });
+}
+
+// ASSIGN UPDATE TECH STACK TOPICS API DETAILS
+const updateTechStackTopicsByUserIdMutation = (data: UpdateTechStackTopicsPostItem[]) => {
+    return CallDataApi({
+        url: `${api_url}techStack/updateTechStackTopicsByUserId.php`,
+        method: 'POST',
+        data: JSON.stringify({tech_stack_details: data , token: getStorage('token')})
     });
 }
