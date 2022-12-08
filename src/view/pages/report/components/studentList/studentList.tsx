@@ -14,7 +14,7 @@ import {Loader} from '@/view/atoms';
 import {EmptyScreen} from '@/view/molecules';
 
 // API
-import {StudentGetItem, useStudentListQuery} from '@/api/student/student';
+import {StudentGetItem, useAllStudentAssignedToMentorQuery} from '@/api/student/student';
 
 // STUDENT IMPORT
 import StudentListTitles from './studentListTitles';
@@ -27,16 +27,16 @@ const widths: (boolean | GridSize)[] = [3, 3, 3, 3];
 const StudentList = () => {
 
     // DECLARE API CALL
-    const studentListQuery = useStudentListQuery();
+    const allStudentAssignedToMentorQuery = useAllStudentAssignedToMentorQuery();
 
     // IF API LOADS, TURN ON LOADER
-    if (!studentListQuery.data) return <Loader/>;
+    if (!allStudentAssignedToMentorQuery.data) return <Loader/>;
 
     return (
         <>
             <StudentListTitles widths={widths}/>
-            {studentListQuery.data.length > 0 ? 
-                studentListQuery.data.map((item: StudentGetItem) => (
+            {allStudentAssignedToMentorQuery.data.length > 0 ? 
+                allStudentAssignedToMentorQuery.data.map((item: StudentGetItem) => (
                     <Box key={item.id}>
                         <StudentListItem
                             {...item}

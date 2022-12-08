@@ -50,6 +50,15 @@ export function useStudentOptionsQuery() {
 const getStudentList = () => 
     CallDataApi({url: `${api_url}student/getAllStudent.php`});
 
+// USE TO FETCH ALL STUDENTS ASSIGNED TO SPECIFIC MENTOR
+export function useAllStudentAssignedToMentorQuery() {
+    return useQuery(queryKeys.studentList, getAllStudentAssignedToMentor);
+}
+
+// FETCH ALL STUDENTS ASSIGNED TO SPECIFIC MENTOR API DETAILS
+const getAllStudentAssignedToMentor = () => 
+    CallDataApi({url: `${api_url}student/getAllStudentAssignedToMentor.php`});
+
 export function useStudentByIdQuery(id?: number | null) {
     return useQuery(queryKeys.studentById(id), getStudentById, {
       enabled: Boolean(id),

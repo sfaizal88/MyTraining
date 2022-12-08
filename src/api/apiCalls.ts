@@ -27,7 +27,8 @@ export const CallDataApi = async({
 }: ApiOptionType) => {
     // CREATING THE API CALL
     const response = await trackPromise(fetch(url, data && {
-        method, body: data
+        method, 
+        body: data
     }));
     // WAITING FOR DATA REPONSE
     const responseObject = await response.json();
