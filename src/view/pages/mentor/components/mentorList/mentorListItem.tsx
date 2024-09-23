@@ -13,7 +13,7 @@ import type {MentorGetItem} from '@/api/mentor/mentor';
 
 // GENERIC COMPONENT IMPORT 
 import {Avatar} from '@/view/atoms';
-import {TableRow, Options} from '@/view/molecules';
+import {TableRow, Options, EmptyLabel} from '@/view/molecules';
 
 // UTILS IMPORT 
 import {formatDateDisplay} from '@/utils/helper';
@@ -47,12 +47,13 @@ const MentorListItem = ({
       <TableRow>
         <Grid item xs={widths[0]}><Chip avatar={<Avatar size="xs" label={props.name[0]}/>} label={props.name} variant="outlined"/></Grid>
         <Grid item xs={widths[1]}>
-          <Box className={classes.link} 
+        {props.students.length ? <Box className={classes.link} 
           onClick={(event) => {
             event.stopPropagation();
             event.preventDefault();
             onStudentList(props.students);
           }}>{props.students.length} Students</Box>
+          : <EmptyLabel label={'No student assigned'}/>}
         </Grid>
         <Grid item xs={widths[2]}>{formatDateDisplay(props.dob)}</Grid>
         <Grid item xs={widths[3]}>{props.contact_no}</Grid>

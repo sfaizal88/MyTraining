@@ -15,7 +15,6 @@ import {fieldLength} from '@/utils/constants';
 const schema = 
   yup.object({
     name: yup.string().nullable().required(formValidationMessages.required()).max(fieldLength.NAME, formValidationMessages.max(fieldLength.NAME)),
-    students: yup.array().min(1, formValidationMessages.required()),
     dob: yup.string().nullable().required(formValidationMessages.required()),
     contact_no: yup.string().nullable().required(formValidationMessages.required()).max(fieldLength.CONTACT_NO, formValidationMessages.max(fieldLength.CONTACT_NO)),
     email: yup.string().nullable().required(formValidationMessages.required()).email(formValidationMessages.email()).max(fieldLength.EMAIL, formValidationMessages.max(fieldLength.EMAIL)),

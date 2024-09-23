@@ -10,7 +10,7 @@ import {Loader} from '@/view/atoms';
 
 // API IMPORT
 import {useTechStackByIdQuery} from '@/api/techStack/techStack';
-import {useStudentOptionsQuery} from '@/api/student/student';
+import {useAllStudentOptionsAssignedToMentorQuery} from '@/api/student/student';
 
 // TECH STACK IMPORT
 import AddTechStackForm from './components/addTechStackForm';
@@ -25,16 +25,16 @@ type AddTechStackPopupProps = {
 const AddTechStackPopup = ({onClose, id}: AddTechStackPopupProps) => {
     // DECLARE API
     const techStackByIdQuery = useTechStackByIdQuery(id);
-    const studentOptionsQuery = useStudentOptionsQuery();
+    const allStudentAssignedToMentorQuery = useAllStudentOptionsAssignedToMentorQuery();
 
     // LOADER
-    if (!studentOptionsQuery.data || (id && !techStackByIdQuery?.data)) return <Loader/>;
+    if (!allStudentAssignedToMentorQuery.data || (id && !techStackByIdQuery?.data)) return <Loader/>;
 
     return (
         <AddTechStackForm
             onClose={onClose}
             data={techStackByIdQuery.data}
-            studentOptions={studentOptionsQuery.data}
+            studentOptions={allStudentAssignedToMentorQuery.data}
         />
     );
 };

@@ -6,12 +6,9 @@
  * 
  */
 // GENERIC IMPORT
-import moment from 'moment';
-import {Box, TextField} from '@mui/material';
 import {useState, useEffect} from 'react';
 import {Controller} from 'react-hook-form';
 import {KeyboardDatePicker} from '@material-ui/pickers';
-import {formatDateDisplay} from '@/utils/helper';
 
 // STYLE IMPORT
 import useStyles from './styles';

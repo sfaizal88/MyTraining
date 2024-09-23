@@ -48,16 +48,23 @@ export function useStudentOptionsQuery() {
 
 // FETCH ALL USERS API DETAILS
 const getStudentList = () => 
-    CallDataApi({url: `${api_url}student/getAllStudent.php`});
+    CallDataApi({url: `${api_url}student/getAllStudent.php?token=${getStorage('token')}`});
 
 // USE TO FETCH ALL STUDENTS ASSIGNED TO SPECIFIC MENTOR
 export function useAllStudentAssignedToMentorQuery() {
     return useQuery(queryKeys.studentList, getAllStudentAssignedToMentor);
 }
 
+// USE TO FETCH ALL STUDENT AS OPTIONS
+export function useAllStudentOptionsAssignedToMentorQuery() {
+    return useQuery(queryKeys.studentList, getAllStudentAssignedToMentor, {
+        select: (data) => data.map((item: StudentGetItem) => ({label: item.name, value: item.id})),
+    });
+}
+
 // FETCH ALL STUDENTS ASSIGNED TO SPECIFIC MENTOR API DETAILS
 const getAllStudentAssignedToMentor = () => 
-    CallDataApi({url: `${api_url}student/getAllStudentAssignedToMentor.php`});
+    CallDataApi({url: `${api_url}student/getAllStudentAssignedToMentor.php?token=${getStorage('token')}`});
 
 export function useStudentByIdQuery(id?: number | null) {
     return useQuery(queryKeys.studentById(id), getStudentById, {

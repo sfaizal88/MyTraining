@@ -109,7 +109,7 @@ const AddMentorForm = ({onClose, data, studentOptions}: AddMentorFormProps) => {
             </FormRow>
           </Grid>
           <Grid item xs={12}>
-            <FormRow label="students" required isRow>
+            <FormRow label="students" isRow>
                 <AutoComplete
                   register={register}
                   setValue={setValue}

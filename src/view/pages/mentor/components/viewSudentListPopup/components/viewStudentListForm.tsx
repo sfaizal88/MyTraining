@@ -14,7 +14,7 @@ import {FormAction, TableRow, PopupFooter} from '@/view/molecules';
 
 // API
 import {MentorGetItem} from '@/api/mentor/mentor';
-import type {StudentGetItem} from '@/api/student/student';
+import {StudentGetItem, useStudentByIdsQuery} from '@/api/student/student';
 
 // MENTOR COMPONENTS
 import ViewStudentListTitles from './viewStudentListTitles';
@@ -29,16 +29,17 @@ import useStyles from '../styles';
 type ViewMentorFormProps = {
   onClose: () => void;
   data: MentorGetItem;
-  studentOptions: StudentGetItem[];
 };
 
 // DEFAULT COMPONENT
-const ViewMentorForm = ({onClose, data, studentOptions}: ViewMentorFormProps) => {
+const ViewMentorForm = ({onClose, data}: ViewMentorFormProps) => {
   // DECLARE STYLE
   const classes = useStyles();
+  
+  const studentListQuery = useStudentByIdsQuery(data.students.map(item => item));
 
   // LOCAL VARIABLE
-  const studentMap = studentOptions.reduce(function(acc, cur) {
+  const studentMap = studentListQuery.data.reduce(function(acc: Record<number, StudentGetItem>, cur: StudentGetItem) {
     acc[cur.id] = cur;
     return acc;
   }, {} as Record<number, StudentGetItem>);
